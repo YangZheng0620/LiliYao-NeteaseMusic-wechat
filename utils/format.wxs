@@ -1,0 +1,56 @@
+// 播放量格式化
+function formatCount (count) {
+  var counter = parseInt(count) // 强制转为 INT 类型
+  if (counter > 99999999) {
+    return (counter / 100000000).toFixed(1) + '亿'
+  } else if (counter > 9999) {
+    return (counter / 10000).toFixed(1) + '万'
+  } else {
+    return counter + ''
+  }
+}
+
+// 美化时间格式
+function padLeftZero (time) {
+  time = time + '' // 将时间变为字符串，用来获取字符串长度
+  // 例如 6 的长度为 1，那么 006 截取一位，则获得 06
+  return ('00' + time).slice(time.length)
+}
+
+// 播放时长格式化
+function formatDuration (duration) {
+  duration = duration / 1000 // 毫秒转为秒
+  var minute = Math.floor(duration / 60) // 获取【分钟】
+  var second = Math.floor(duration) % 60 // 获取【秒钟】
+  return padLeftZero(minute) + ':' + padLeftZero(second)
+}
+
+// 时间戳格式化
+function formatTime(time) {
+  if (!time) return
+  // 判断时间戳是否为 13 位数，如果不是则 *1000
+  // 时间戳只有 13 位数(带毫秒)和 10 位数(不带毫秒)的
+  if (time.toString().length == 13) {
+      var newTime = getDate(time);
+  } else {
+      var newTime = getDate(time * 1000);
+  }
+
+  var year = newTime.getFullYear();
+  var month = (newTime.getMonth() + 1 < 10 ? '0' + (newTime.getMonth() + 1) : newTime.getMonth() + 1);
+  var day = newTime.getDate();
+  // var hour = newTime.getHours();
+  // var minute = newTime.getMinutes();
+  // var second = padLeftZero(newTime.getSeconds());
+  // formatTime = year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second
+  formatTime = year + '-' + month + '-' + day
+  
+  return formatTime
+}
+
+// 不支持 ES6 语法，需要使用 commonJS 的方式
+module.exports = {
+  formatCount: formatCount,
+  formatDuration: formatDuration,
+  formatTime: formatTime,
+}
