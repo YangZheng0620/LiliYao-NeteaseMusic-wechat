@@ -1,0 +1,29 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 88rpx;
+}
+
+.header .title {
+  font-size: 36rpx;
+  font-weight: 700;
+}
+
+/* 如果 slot 是空的，那么设置 .default 为 flex 布局 */
+.header .slot:empty + .default {
+  display: flex;
+}
+
+
+.header .default {
+  display: none;
+  align-items: center;
+  font-size: 28rpx;
+  color: #777777;
+}
+
+.header .default .icon {
+  width: 50rpx;
+  height: 50rpx;
+}

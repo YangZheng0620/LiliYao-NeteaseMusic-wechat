@@ -1,0 +1,30 @@
+<!-- 搜索页面 -->
+
+<!-- 搜索框 -->
+<van-search class="search" placeholder="搜索 音乐/视频/歌手/歌单/电台" shape="round" background="#fafafa" bind:click-input="handleSearchClick" 
+bind:change="handleSearchChange" show-action="{{ searchKeywords }}"/>
+
+<!-- 热门搜索 -->
+<view class="hotSearch" wx:if="{{ !searchKeywords.length && !suggestSongs.length }}">
+  <item-header title="热门搜索" showRightItem="{{ false }}"></item-header>
+  <view class="hotList">
+    <block wx:for="{{ hotKeywords }}" wx:key="first">
+      <view class="hotItem">
+        {{ item.first }}
+      </view>
+    </block>
+  </view>
+</view>
+
+<!-- 建议搜索 -->
+<view class="suggestSearch" wx:elif="suggestSongs.length && !resultSongs.length">
+  <view class="title">搜索 “{{ searchKeywords }}”</view>
+  <view class="suggestList">
+    <block wx:for="{{ suggestSongs }}" wx:key="keyword">
+      <view class="suggestItem">
+        <image class="icon" mode="widthFix" src="/assets/images/icons/search_icon.png"></image>
+        <rich-text nodes="{{ suggestSongsNodes[index] }}"></rich-text>
+      </view>
+    </block>
+  </view>
+</view>
