@@ -1,6 +1,10 @@
 {
   "usingComponents": {
     "van-search": "@vant/weapp/search/index",
-    "item-header": "/components/item-header/index"
+    "item-header": "/components/item-header/index",
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "song-item-v2": "/components/song-item-v2/index",
+    "related-info": "/components/related-singer/index"
   }
 }

@@ -1,6 +1,7 @@
 import {
   getHotSearch,
-  getSearchSuggest
+  getSearchSuggest,
+  getSearchResult
 } from '../../apis/api_search'
 
 import debounce from '../../utils/debounce'
@@ -21,6 +22,8 @@ Page({
     suggestSongs: [], // 建议搜索获取的歌曲
     resultSongs: [], // 用户选择后获取的歌曲
     suggestSongsNodes: [], // 保存搜索关键字节点
+    songsRelatedSinger: [], // 搜索歌曲匹配到的歌手
+    songsRelatedSingerName: "", // 搜索歌曲匹配到的歌手名字
   },
 
   /**
@@ -45,12 +48,18 @@ Page({
     const searchKeywords = event.detail
 
     // 2. 保存关键字
-    this.setData({ searchKeywords })
+    this.setData({
+      searchKeywords
+    })
 
     // 3. 判断关键字为空字符的处理逻辑
     if (!searchKeywords.length) {
-      this.setData({ suggestSongs: []})
-      this.setData({ resultSongs: [] })
+      this.setData({
+        suggestSongs: []
+      })
+      this.setData({
+        resultSongs: []
+      })
       return
     }
 
@@ -58,7 +67,9 @@ Page({
     debounceGetSearchSuggest(searchKeywords).then(res => {
       // 1. 获取建议搜索的歌曲
       const suggestSongs = res.result.allMatch
-      this.setData({ suggestSongs})
+      this.setData({
+        suggestSongs
+      })
 
       // 2. 转换成 nodes 节点
       const suggestKeywords = suggestSongs.map(item => item.keyword)
@@ -67,8 +78,48 @@ Page({
         const nodes = stringToNodes(keyword, searchKeywords)
         suggestSongsNodes.push(nodes)
       }
-      this.setData({ suggestSongsNodes })
+      this.setData({
+        suggestSongsNodes
+      })
     })
+  },
+
+  handleSearchAction: function () {
+    // 1. 获取到输入关键字
+    const searchKeywords = this.data.searchKeywords
+
+    // 2. 搜索歌曲网络请求
+    getSearchResult(searchKeywords).then(res => {
+      this.setData({
+        resultSongs: res.result.songs
+      })
+      this.setData({
+        songsRelatedSingerName: res.result.songs[0].artists[0].name
+      });
+
+      // 发送请求寻找歌曲关联歌手
+      let name = res.result.songs[0].artists[0].name
+      getSearchResult(name, 30, 0, 100).then(res => {
+        this.setData({
+          songsRelatedSinger: res.result.artists[0]
+        });
+      })
+    })
+
+    // console.log(this.data.resultSongs);
+  },
+
+  handleKeywordItemClick: function (event) {
+    // 1.获取点击的关键字
+    const keyword = event.currentTarget.dataset.keyword
+
+    // 2.将关键设置到 searchKeywords 中
+    this.setData({
+      searchKeywords: keyword
+    })
+
+    // 3.发送网络请求
+    this.handleSearchAction()
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

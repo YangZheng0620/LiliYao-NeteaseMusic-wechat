@@ -1,0 +1,26 @@
+.relatedSinger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 30rpx 0 0 0;
+}
+
+.relatedSinger .info {
+  display: flex;
+  align-items: center;
+}
+
+.relatedSinger .info .image {
+  height: 160rpx;
+  width: 160rpx;
+  border-radius: 24rpx;
+}
+
+.relatedSinger .info .firstText {
+  margin-left: 20rpx;
+}
+
+.relatedSinger .right .icon {
+  width: 50rpx;
+  height: 50rpx;
+}

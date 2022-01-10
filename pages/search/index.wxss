@@ -11,6 +11,7 @@ page {
   top: 0;
   left: 20rpx;
   right: 20rpx;
+  z-index: 2;
 }
 
 /* 热门搜索 */
@@ -60,3 +61,32 @@ page {
 .suggestSearch .suggestItem .text {
   font-size: 28rpx;
 }
+
+
+/* 搜索结果 */
+
+.result {
+  z-index: 1;
+  margin-left: 16rpx;
+}
+
+.result .title {
+  display: block;
+  font-size: 32rpx;
+  height: 34rpx;
+  color: #26ce8a;
+}
+
+.van-tabs__wrap {
+  position: fixed;
+  top: 90rpx;
+  left: 20rpx;
+  right: 20rpx;
+  z-index: 2;
+  
+}
+
+.van-tabs-class {
+  background-color: #fafafa;
+}
+
