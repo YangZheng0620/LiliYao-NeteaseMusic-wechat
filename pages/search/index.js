@@ -11,6 +11,8 @@ import stringToNodes from '../../utils/stringToNodes'
 // 使用防抖函数进行处理后返回新函数
 const debounceGetSearchSuggest = debounce(getSearchSuggest)
 
+const app = getApp()
+
 Page({
 
   /**
@@ -24,6 +26,11 @@ Page({
     suggestSongsNodes: [], // 保存搜索关键字节点
     songsRelatedSinger: [], // 搜索歌曲匹配到的歌手
     songsRelatedSingerName: "", // 搜索歌曲匹配到的歌手名字
+    statusHeight: app.globalData.statusHeight, // 状态栏高度
+    navBarHeight: app.globalData.navBarHeight, // 导航栏高度
+    menuRight: app.globalData.menuRight, // 导航栏高度
+    menuBotton: app.globalData.menuBotton, // 导航栏高度
+    menuHeight: app.globalData.menuHeight, // 导航栏高度
   },
 
   /**

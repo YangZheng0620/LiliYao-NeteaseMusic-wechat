@@ -1,3 +1,21 @@
+/* 标签页背景 */
+.van-tabs__scroll {
+  background: #fafafa !important;
+  height: 44px;
+}
+
+/* 标签宽度 */
+.van-tabs-class {
+  width: 200rpx;
+}
+
+/* 标签文字样式 */
+.tab-class {
+  color: #26ce8a;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+}
+
 /* 顶部状态栏 */
 .nav-bar {
   position: fixed;

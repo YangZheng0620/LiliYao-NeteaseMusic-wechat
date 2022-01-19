@@ -1,17 +1,50 @@
-/* pages/search/index.wxss */
 
-page {
-  padding: 0 24rpx;
-  padding-top: 112rpx;
+
+
+/* 顶部状态栏 */
+.nav-bar {
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  background: #999999;
+  width: 100%;
+}
+
+/* 胶囊按钮区域 */
+.nav-bar .menu-bar {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  background: #333;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* 搜索区域 */
+.content {
+  padding: 0 24rpx 24rpx 24rpx;
+  position: relative;
 }
 
 /* 搜索框 */
 .search {
   position: fixed;
-  top: 0;
-  left: 20rpx;
-  right: 20rpx;
+  right: 24rpx;
+  left: 24rpx;
   z-index: 2;
+  padding: 24rpx 0rpx;
+  background-color: #fafafa;
+  height: 32px;
+  /* top: 24rpx;
+  left: 24rpx;
+  right: 24rpx;
+   */
+}
+
+.van-search {
+  padding: 0 !important;
+  height: 32px !important;
 }
 
 /* 热门搜索 */
@@ -38,7 +71,8 @@ page {
 
 /* 建议搜索 */
 .suggestSearch {
-  padding: 10rpx;
+  padding: 100rpx 10rpx 10rpx 10rpx;
+  
 }
 
 .suggestSearch .title {
@@ -64,6 +98,10 @@ page {
 
 
 /* 搜索结果 */
+.result-search {
+  background-color: #fafafa;
+}
+
 
 .result {
   z-index: 1;
@@ -79,10 +117,13 @@ page {
 
 .van-tabs__wrap {
   position: fixed;
-  top: 90rpx;
+  left: 24rpx;
+  right: 24rpx;
+  /* top: 280rpx; */
+  /* top: 90rpx;
   left: 20rpx;
   right: 20rpx;
-  z-index: 2;
+  z-index: 2; */
   
 }
 

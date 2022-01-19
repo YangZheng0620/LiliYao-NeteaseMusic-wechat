@@ -3,13 +3,15 @@
     "pages/index/index",
     "pages/mv/index",
     "pages/logs/logs",
-    "pages/search/index"
+    "pages/search/index",
+    "pages/user/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "Weixin",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
   },
   "tabBar": {
     "color": "#000000",
@@ -26,9 +28,18 @@
         "text": "MV",
         "iconPath": "assets/images/tabbar/video_normal.png",
         "selectedIconPath": "assets/images/tabbar/video_active.png"
+      },
+      {
+        "pagePath": "pages/user/index",
+        "text": "我的",
+        "iconPath": "assets/images/tabbar/user_normal.png",
+        "selectedIconPath": "assets/images/tabbar/user_active.png"
       }
     ]
   },
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "iconfont": "/iconfont/iconfont"
+  }
 }

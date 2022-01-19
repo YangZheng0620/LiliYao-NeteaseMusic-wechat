@@ -1,52 +1,66 @@
 <!-- 搜索页面 -->
 
-<!-- 搜索框 -->
-<van-search class="search" value="{{ searchKeywords }}" placeholder="搜索 音乐/视频/歌手/歌单/电台" shape="round" background="#fafafa" bind:change="handleSearchChange" show-action="{{ searchKeywords }}" bind:search="handleSearchAction" />
-
-<!-- 热门搜索 -->
-<view class="hotSearch" wx:if="{{ !searchKeywords.length && !suggestSongs.length }}">
-  <item-header title="热门搜索" showRightItem="{{ false }}"></item-header>
-  <view class="hotList">
-    <block wx:for="{{ hotKeywords }}" wx:key="first">
-      <view class="hotItem">
-        {{ item.first }}
-      </view>
-    </block>
+<!-- 导航栏 -->
+<view class="nav-bar" style="height: {{navBarHeight}}px;">
+  <view class="menu-bar" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px; left:{{menuRight}}px; bottom:{{menuBotton}}px;">
+    <iconfont name="arrow_left_fat"></iconfont>123
   </view>
 </view>
 
-<!-- 建议搜索 -->
-<view class="suggestSearch" wx:elif="{{ suggestSongs.length && !resultSongs.length }}">
-  <view class="title">搜索“{{ searchKeywords }}”</view>
-  <view class="suggestList">
-    <block wx:for="{{ suggestSongs }}" wx:key="keyword">
-      <view class="suggestItem" bindtap="handleKeywordItemClick" data-keyword="{{item.keyword}}">
-        <image class="icon" mode="widthFix" src="/assets/images/icons/search_icon.png"></image>
-        <rich-text nodes="{{ suggestSongsNodes[index] }}"></rich-text>
-      </view>
-    </block>
+<view class="content" style="margin-top: {{navBarHeight}}px;">
+  <!-- 搜索框 -->
+  <view class="search">
+    <van-search value="{{ searchKeywords }}" placeholder="搜索 音乐/视频/歌手/歌单/电台" shape="round" background="#fafafa" bind:change="handleSearchChange" show-action="{{ searchKeywords }}" bind:search="handleSearchAction" />
   </view>
-</view>
+  
 
 
-<!-- 搜索结果 -->
-<view class="resultSearch" wx:elif="{{ resultSongs.length }}">
-  <van-tabs animated swipeable color="#26ce8a" nav-class="van-tabs-class" title-active-color="#26ce8a" line-width="40rpx" z-index="{{ 2 }}">
-    <van-tab title="歌曲">
-      <view class="result">
-        <view class="title"></view>
-        <view class="title"></view>
-        <view class="title">最佳匹配</view>
-        <related-info songsRelatedSinger="{{ songsRelatedSinger }}"></related-info>
-        <view class="list">
-          <block wx:for="{{resultSongs}}" wx:key="id">
-            <song-item-v2 item="{{item}}" index="{{index+1}}"></song-item-v2>
-          </block>
+
+  <!-- 热门搜索 -->
+  <view class="hotSearch" wx:if="{{ !searchKeywords.length && !suggestSongs.length }}">
+    <item-header title="热门搜索" showRightItem="{{ false }}"></item-header>
+    <view class="hotList">
+      <block wx:for="{{ hotKeywords }}" wx:key="first">
+        <view class="hotItem">
+          {{ item.first }}
         </view>
-      </view>
-    </van-tab>
-    <van-tab title="歌单">内容 2</van-tab>
-    <van-tab title="视频">内容 3</van-tab>
-    <van-tab title="电台">内容 4</van-tab>
-  </van-tabs>
+      </block>
+    </view>
+  </view>
+
+  <!-- 建议搜索 -->
+  <view class="suggestSearch" wx:elif="{{ suggestSongs.length && !resultSongs.length }}">
+    <view class="title">搜索“{{ searchKeywords }}”</view>
+    <view class="suggestList">
+      <block wx:for="{{ suggestSongs }}" wx:key="keyword">
+        <view class="suggestItem" bindtap="handleKeywordItemClick" data-keyword="{{item.keyword}}">
+          <image class="icon" mode="widthFix" src="/assets/images/icons/search_icon.png"></image>
+          <rich-text nodes="{{ suggestSongsNodes[index] }}"></rich-text>
+        </view>
+      </block>
+    </view>
+  </view>
+
+
+  <!-- 搜索结果 -->
+  <view class="result-search" wx:elif="{{ resultSongs.length }}" style="padding-top: 90rpx;">
+    <van-tabs animated swipeable color="#26ce8a" nav-class="van-tabs-class" title-active-color="#26ce8a" line-width="40rpx" z-index="{{ 2 }}">
+      <van-tab title="歌曲">
+        <view class="result" style="margin-top: 44rpx;">
+          <view class="title"></view>
+          <view class="title"></view>
+          <view class="title">最佳匹配</view>
+          <related-singer songsRelatedSinger="{{ songsRelatedSinger }}"></related-singer>
+          <view class="list">
+            <block wx:for="{{resultSongs}}" wx:key="id">
+              <song-item-v2 item="{{item}}" index="{{index+1}}"></song-item-v2>
+            </block>
+          </view>
+        </view>
+      </van-tab>
+      <van-tab title="歌单">内容 2</van-tab>
+      <van-tab title="视频">内容 3</van-tab>
+      <van-tab title="电台">内容 4</van-tab>
+    </van-tabs>
+  </view>
 </view>

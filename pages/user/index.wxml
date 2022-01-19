@@ -1,4 +1,4 @@
-<!-- 首页 -->
+<!-- 用户中心 -->
 
 <!-- 导航栏 -->
 <view class="nav-bar" style="height: {{navBarHeight}}px;">

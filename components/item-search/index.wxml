@@ -1,0 +1,2 @@
+<!-- 搜索框 -->
+<van-search input-align="center" placeholder="搜索" disabled shape="round" background="#fafafa" bind:click-input="handleSearchClick" />

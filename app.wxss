@@ -1,5 +1,10 @@
 /**app.wxss**/
 
+@import "./assets/iconfont/iconfont.wxss"; /* 导入 iconfont 样式 */
+/* <text class="iconfont icon-yinle"></text> */
+/* <iconfont name="yinle"></iconfont> */
+/* npx iconfont-wechat */
+
 page {
   background-color: #fafafa;
   box-sizing: border-box;
@@ -13,6 +18,10 @@ page {
   justify-content: space-between;
   padding: 200rpx 0;
   box-sizing: border-box;
+}
+
+.yinle {
+  color: red;
 }
 
 /* 输入框样式 */

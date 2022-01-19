@@ -5,6 +5,6 @@
     "van-tab": "@vant/weapp/tab/index",
     "van-tabs": "@vant/weapp/tabs/index",
     "song-item-v2": "/components/song-item-v2/index",
-    "related-info": "/components/related-singer/index"
+    "related-singer": "/components/related-singer/index"
   }
 }

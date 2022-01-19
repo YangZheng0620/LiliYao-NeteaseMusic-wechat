@@ -5,7 +5,7 @@
     <view class="slot"></view>
     <view class="default">
       <text>{{ rightText }}</text>
-      <image class="icon" src="/assets/images/icons/arrow-right.png"></image>
+      <iconfont name="arrow_right_fat" color="#26ce8a"></iconfont>
     </view>
 
   </view>

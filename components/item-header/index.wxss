@@ -22,8 +22,3 @@
   font-size: 28rpx;
   color: #777777;
 }
-
-.header .default .icon {
-  width: 50rpx;
-  height: 50rpx;
-}
