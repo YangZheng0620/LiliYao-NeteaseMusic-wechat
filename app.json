@@ -4,7 +4,8 @@
     "pages/mv/index",
     "pages/logs/logs",
     "pages/search/index",
-    "pages/user/index"
+    "pages/user/index",
+    "pages/playlist-detail/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

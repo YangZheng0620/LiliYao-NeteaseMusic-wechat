@@ -1,0 +1,157 @@
+/* 顶部状态栏 */
+.nav-bar {
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  /* background: #999999; */
+  width: 100%;
+}
+
+/* 胶囊按钮区域 */
+.nav-bar .menu-bar {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  background: #333;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* 导航栏按钮 */
+.nav-bar .menu-bar .left {
+  display: flex;
+  flex: 1;
+}
+
+/* 导航栏标题 */
+.nav-bar .menu-bar .title {
+  flex: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+}
+
+/* 导航栏占位 */
+.nav-bar .menu-bar .right {
+  flex: 1;
+}
+
+
+/* 毛玻璃背景 */
+.header {
+  width: 100vw;
+  position: relative;
+  /* left: -20rpx; */
+  display: flex;
+  flex-direction: column;
+  height: 450rpx;
+  color: #fff;
+}
+
+.header .bg-image {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+.header .bg-cover {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  backdrop-filter: blur(15px);
+}
+
+/* 歌单图片以及文本 */
+.content {
+  display: flex;
+  margin-top: 60rpx;
+  padding: 0 50rpx;
+}
+
+.content .image {
+  width: 220rpx;
+  height: 220rpx;
+  border-radius: 16rpx;
+}
+
+
+.content .info {
+  position: relative;
+  height: 220rpx;
+  flex: 1;
+  margin-left: 50rpx;
+}
+
+.content .anthor {
+  margin-top: 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.content .anthor .avatar {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 25rpx;
+}
+
+.content .anthor .nickname {
+  font-size: 24rpx;
+  margin-left: 18rpx;
+}
+
+.content .info .desc {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  margin-top: 30rpx;
+  font-size: 24rpx;
+}
+
+.content .info .desc .desc-info {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* 喜爱评论分享 */
+.operation {
+  display: flex;
+  justify-content: space-around;
+  padding: 30rpx;
+  margin-top: 30rpx;
+}
+
+.operation .item {
+  display: flex;
+  align-items: center;
+}
+
+.operation .item .icon {
+  width: 48rpx;
+  margin-right: 10rpx;
+}
+
+.operation .item .text {
+  font-size: 28rpx;
+}
+
+/* 歌单列表 */
+.playlist {
+  z-index: 1;
+  margin: 0 24rpx;
+}

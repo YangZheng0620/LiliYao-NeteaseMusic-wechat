@@ -27,21 +27,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-// 获取导航栏内容宽高
-this.getNavBarStyle()
+    // 获取导航栏内容宽高
+    this.getNavBarStyle()
   },
 
-// 获取导航栏内容宽高
-getNavBarStyle: function () {
-  const query = wx.createSelectorQuery()
-  query.select('.navbar-selected').boundingClientRect()
-  query.exec((res) => {
-    this.setData({
-      navbarLeft: res[0].left,
-      navbarWidth: res[0].width
+  // 获取导航栏内容宽高
+  getNavBarStyle: function () {
+    const query = wx.createSelectorQuery()
+    query.select('.navbar-selected').boundingClientRect()
+    query.exec((res) => {
+      this.setData({
+        navbarLeft: res[0].left,
+        navbarWidth: res[0].width
+      })
     })
-  })
-},
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

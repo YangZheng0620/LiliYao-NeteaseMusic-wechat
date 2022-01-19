@@ -6,6 +6,8 @@ App({
     const systemInfo = wx.getSystemInfoSync()
     // 获取状态栏高度
     this.globalData.statusHeight = systemInfo.statusBarHeight
+    // 获取屏幕宽度
+    this.globalData.screenWidth = systemInfo.screenWidth
 
     // 胶囊按钮位置信息
     const menuButtonInfo = wx.getMenuButtonBoundingClientRect();
@@ -37,5 +39,6 @@ App({
     menuRight: 0, // 胶囊距右方间距（方保持左、右间距一致）
     menuBotton: 0, // 胶囊距底部间距（保持底部间距一致）
     menuHeight: 0, // 胶囊高度（自定义内容可与胶囊高度保证一致）
+    screenWidth: 0, // 屏幕宽度
   }
 })

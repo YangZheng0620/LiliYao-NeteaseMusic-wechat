@@ -1,0 +1,30 @@
+<!-- 歌单详情 -->
+
+<!-- 导入格式化工具 -->
+<wxs src="../../utils/format.wxs" module="format"></wxs>
+
+
+<!-- 导航栏 -->
+<view class="nav-bar" style="height: {{navBarHeight}}px;">
+  <view class="menu-bar" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px; left:{{menuRight}}px; bottom:{{menuBotton}}px;">
+    <view class="left">
+      <iconfont name="arrow_left_fat"></iconfont>
+      <iconfont name="home-hover" bindtap="backToIndex"></iconfont>
+    </view>
+
+    <view class="title">是否我就能够更加靠近你</view>
+    <view class="right"></view>
+  </view>
+</view>
+
+
+<view>
+  <!-- 歌单详情头部 -->
+  <playlist-detail-header playlistInfo="{{playlistInfo}}" navBarHeight="{{navBarHeight}}"></playlist-detail-header>
+</view>
+
+<view class="playlist">
+  <block wx:for="{{playlistInfo.tracks}}" wx:key="id">
+    <song-item-v3 item="{{item}}" index="{{index+1}}"></song-item-v3>
+  </block>
+</view>

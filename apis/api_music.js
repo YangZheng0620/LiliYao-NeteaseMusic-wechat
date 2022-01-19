@@ -9,3 +9,11 @@ export function getBanner(type) {
     type: 2
   })
 }
+
+
+// 获取歌单详情数据
+export function getPlaylistDetail(id) {
+  return api.GET('/playlist/detail/dynamic', {
+      id,
+  })
+}

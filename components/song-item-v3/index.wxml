@@ -1,0 +1,25 @@
+<!-- 歌曲列表 搜索 -->
+<view class="item" bindtap="handleSongItemClick">
+  <view class="index">{{index}}</view>
+  <view class="info">
+    <view class="name">
+      <view class="song-name">
+        {{item.name}}
+      </view>
+      <text wx:if="{{item.transNames || item.alia[0] || item.alias[0]}}" class="trans-name"> - ({{item.transNames || item.alia[0] || item.alias[0]}})</text>
+
+
+      <!-- <view class="trans-name">123</view> -->
+    </view>
+
+    <view class="source">
+      <image class="icon" src="/assets/images/icons/sq_icon.png"></image>
+      <view class="source-name">{{item.ar[0].name || item.artists[0].name}} </view>
+      <view class="playlist-info" wx:if="{{item.al.name || item.alia[0] || item.alias[0]}}">
+      
+        <text class="playlist-name">· {{item.al.name || item.alia[0] || item.alias[0]}}</text>
+        
+      </view>
+    </view>
+  </view>
+</view>

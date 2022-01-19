@@ -1,6 +1,6 @@
 Component({
   properties: {
-    // arrow_left_fat | arrow_right_fat
+    // pinglun | home-hover | arrow_left_fat | arrow_right_fat
     name: {
       type: String,
     },

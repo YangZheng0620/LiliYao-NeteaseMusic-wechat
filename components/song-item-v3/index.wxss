@@ -7,14 +7,16 @@
 .index {
   font-size: 30rpx;
   text-align: center;
-  box-sizing: border-box;
-  width: 34px;
-  padding-right: 6px;
+  box-sizing: content-box;
+  width: 22px;
+  margin-right: 6px;
 }
 
+/* 歌曲标题 */
 .info {
   flex: 1;
   margin-left: 16rpx;
+  min-width: 0;
 
 }
 
@@ -22,20 +24,17 @@
   display: flex;
   align-items: center;
   font-size: 30rpx;
+
 }
 
 .info .name .song-name {
+  white-space: nowrap;
 }
 
-.info .name .demo {
-  min-width: 0;
-}
-
-.info .name .demo .trans-name {
+.info .name .trans-name {
   display: block;
-  max-width: 100%;
   font-size: 26rpx;
-  margin-left: 6rpx;
+  margin-left: 10rpx;
   color: #999999;
   overflow: hidden;
   white-space: nowrap;
@@ -48,24 +47,32 @@
   font-size: 24rpx;
   color: #666;
   margin-top: 10rpx;
+  
 }
 
+/* 专辑 */
 .source .icon {
   width: 38rpx;
   height: 22rpx;
   margin-right: 10rpx;
 }
 
+.source .source-name {
+  white-space: nowrap;
+}
+
 .source .playlist-info {
   display: flex;
+  min-width: 0;
 }
+
 
 .source .playlist-info .dots {
   margin: 0 6rpx;
 }
 
 .source .playlist-info .playlist-name {
-
+  margin-left: 10rpx;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

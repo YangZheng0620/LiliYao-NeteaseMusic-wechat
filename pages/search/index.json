@@ -4,7 +4,7 @@
     "item-header": "/components/item-header/index",
     "van-tab": "@vant/weapp/tab/index",
     "van-tabs": "@vant/weapp/tabs/index",
-    "song-item-v2": "/components/song-item-v2/index",
+    "song-item-v3": "/components/song-item-v3/index",
     "related-singer": "/components/related-singer/index"
   }
 }
