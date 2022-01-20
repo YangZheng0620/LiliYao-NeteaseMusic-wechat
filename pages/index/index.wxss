@@ -1,3 +1,7 @@
+page {
+  padding-bottom: 20rpx;
+}
+
 /* 顶部状态栏 */
 .nav-bar {
   position: fixed;
@@ -44,8 +48,9 @@
   z-index: 1;
 }
 
-.demo {
-  height: 1000px;
+/* 首页高度样式 */
+.indexStyle {
+  height: 2600rpx;
   padding: 0 24rpx;
 }
 
@@ -75,5 +80,25 @@
   font-size: 26rpx;
   border-radius: 10rpx;
   padding: 2rpx 10rpx;
-  
+
+}
+
+.anchor-top {
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 0;
+}
+
+.anchor-bottom {
+  position: absolute;
+  width: 0;
+  height: 0;
+  bottom: 0;
+}
+
+.bottom-image {
+  position: absolute;
+  bottom: 0;
+  height: 100px;
 }

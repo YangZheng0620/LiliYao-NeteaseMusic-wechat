@@ -1,10 +1,13 @@
 import {
   getBanners,
-  getRecommendSongs
+  getRecommendSongs,
+  getRecommendPlaylists
 } from '../../apis/api_music'
 import queryRect from '../../utils/query-rect'
 import throttle from '../../utils/throttle'
-
+import {
+  rankingStore
+} from '../../store/index'
 
 const app = getApp()
 
@@ -21,11 +24,12 @@ Page({
     menuRight: app.globalData.menuRight, // 导航栏高度
     menuBotton: app.globalData.menuBotton, // 导航栏高度
     menuHeight: app.globalData.menuHeight, // 导航栏高度
+    screenWidth: app.globalData.screenWidth, // 屏幕宽度
     navList: [{
-        title: '我的'
+        title: '推荐'
       },
       {
-        title: '手写的从前'
+        title: '音乐馆'
       },
     ],
     currentTab: 0, // 当前 swiper
@@ -34,7 +38,13 @@ Page({
     banners: [], // 轮播图数据
     swiperHeight: 0, // 轮播图图片的高度,
     recommendSongs: [], // 推荐歌曲列表
-    recommendSongMenu: [], // 获取推荐歌单
+    recommendSongMenu: [], // 推荐歌曲总列表
+    recommendPlaylists: [], // 推荐歌单
+    rankings: {
+      0: {},
+      1: {},
+      2: {}
+    }, // 榜单数据（初始化数据保证数据顺序）
   },
 
   /**
@@ -45,6 +55,14 @@ Page({
     this.getNavBarStyle()
 
     this.getPageData()
+
+    // 发起共享数据的请求
+    rankingStore.dispatch("getRankingDataAction")
+
+    // 从 store 中获取共享数据
+    rankingStore.onState("rankingZero", this.getRankingHandler(0))
+    rankingStore.onState("rankingOne", this.getRankingHandler(1))
+    rankingStore.onState("rankingTwo", this.getRankingHandler(2))
   },
 
   // 网络请求封装的方法
@@ -65,13 +83,61 @@ Page({
       })
     })
 
-    // // 获取华语歌单数据
-    // getSongMenu("华语").then(res => {
-    //   this.setData({ recommendSongMenu: res.playlists })
-    // })
+    // 获取推荐歌单数据
+    getRecommendPlaylists().then(res => {
+
+      let arr = []
+      for (let i = 1; i <= 23; i++) {
+        arr.push(i)
+      }
+
+      // 随机获取歌单列表
+      let randValue = this.getArrRandValue(arr)
+
+      this.setData({
+        recommendPlaylists: res.result.splice(randValue, 6)
+      })
+    })
+
+
 
   },
 
+  // 调用 rank-store 中的 action 方法获取巅峰榜数据
+  getRankingHandler: function (idx) {
+    return (res) => {
+      if (Object.keys(res).length === 0) return
+      const id = res.id
+      const name = res.name
+      const coverImgUrl = res.tracks[0].al.picUrl
+      const songList = res.tracks.slice(0, 3)
+      const playCount = res.playCount
+      const rankingObj = {
+        id,
+        name,
+        coverImgUrl,
+        playCount,
+        songList
+      }
+      const newRankings = {
+        ...this.data.rankings,
+        [idx]: rankingObj
+      }
+      this.setData({
+        rankings: newRankings
+      })
+    }
+  },
+
+
+  // 获取数组随机值
+  getArrRandValue: function (arr) {
+    if (arr.length < 1) {
+      return '';
+    }
+    let index = Math.floor((Math.random() * arr.length));
+    return arr[index];
+  },
   // 获取导航栏内容宽高
   getNavBarStyle: function () {
     const query = wx.createSelectorQuery()

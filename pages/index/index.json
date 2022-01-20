@@ -2,6 +2,8 @@
   "usingComponents": {
     "item-search": "../../components/item-search/index",
     "item-header": "../../components/item-header/index",
-    "song-item-v1": "../../components/song-item-v1/index"
+    "song-item-v1": "../../components/song-item-v1/index",
+    "playlist-area": "../../components/playlist-area/index",
+    "ranking-area": "../../components/ranking-area/index"
   }
 }

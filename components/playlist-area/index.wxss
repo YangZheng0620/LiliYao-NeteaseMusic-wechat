@@ -1,0 +1,18 @@
+.album-list {
+  /* vw 是视口宽度，和获取到屏幕宽度的方法达到的效果是一致的 */
+  width: 100vw;
+  white-space: nowrap;
+  position: relative;
+  left: -20rpx;
+}
+
+.album-item {
+  display: inline-block;
+  vertical-align: top;
+  width: 210rpx;
+  margin-left: 20rpx;
+}
+
+.album-item:last-of-type {
+  margin-right: 20rpx;
+}

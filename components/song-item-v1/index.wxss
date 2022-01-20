@@ -12,6 +12,7 @@
   width: 120rpx;
   height: 120rpx;
   border-radius: 16rpx;
+  box-shadow:0 2px 2px rgba(0,0,0,0.3);
 }
 
 .image-info .play-counter {
@@ -42,6 +43,7 @@
 .content .name-info .name {
   font-size: 32rpx;
   color: #555;
+  font-weight: 600;
   white-space: nowrap;
 }
 

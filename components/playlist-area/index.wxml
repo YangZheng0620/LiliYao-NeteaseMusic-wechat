@@ -1,0 +1,11 @@
+<!-- 推荐歌单列表 -->
+<view class="area">
+  <item-header title="个性推荐"></item-header>
+  <scroll-view class="album-list" scroll-x>
+    <block wx:for="{{recommendPlaylists}}" wx:key="id">
+      <view class="album-item">
+        <playlist-area-item item="{{item}}" bindtap="handleMenuItemClick" data-item="{{item}}"></playlist-area-item>
+      </view>
+    </block>
+  </scroll-view>
+</view>

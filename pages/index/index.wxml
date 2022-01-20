@@ -1,5 +1,5 @@
 <!-- 首页 -->
-
+<view>
 <!-- 导航栏 -->
 <view class="nav-bar" style="height: {{navBarHeight}}px;">
   <view class="menu-bar" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px; left:{{menuRight}}px; bottom:{{menuBotton}}px;">
@@ -7,8 +7,8 @@
     <view class='underline' style="left:{{navbarLeft - 7}}px; width: {{navbarWidth}}px;"></view>
   </view>
 </view>
-<view style="margin-top: {{navBarHeight}}px;">
-  <swiper interval="5000" duration="500" current="{{currentTab}}" bindchange='sliderNav' class="demo">
+<view class="text" style="margin-top: {{navBarHeight}}px;">
+  <swiper interval="5000" duration="500" current="{{currentTab}}" bindchange='sliderNav' class="indexStyle">
 
     <swiper-item>
       <!-- 搜索框 -->
@@ -18,7 +18,8 @@
         <block wx:for="{{banners}}" wx:key="bannerId">
           <swiper-item class="swiper-item">
             <image class="swiper-image" src="{{item.pic}}" mode="widthFix" bindload="handleSwiperImageLoaded"></image>
-            <view class="type" style="background: {{item.titleColor}};"><view>{{item.typeTitle}}</view>
+            <view class="type" style="background: {{item.titleColor}};">
+              <view>{{item.typeTitle}}</view>
             </view>
           </swiper-item>
         </block>
@@ -33,9 +34,22 @@
           </block>
         </view>
       </view>
+      <!-- 个性推荐 -->
+       <playlist-area class="demo" recommendPlaylists="{{recommendPlaylists}}"></playlist-area>
 
-       
+      <!-- 巅峰榜 -->
+      <view class="ranking">
+        <item-header title="巅峰榜"></item-header>
+        <view class="ranking-list">
+          <block wx:for="{{rankings}}" wx:key="index">
+            <ranking-area item="{{item}}" bindtap="handleRankingItemClick" data-idx="{{index}}"></ranking-area>
+          </block>
+          
+        </view>
+      </view>
     </swiper-item>
+
+
 
     <swiper-item>
 
@@ -71,4 +85,5 @@
     </swiper-item>
 
   </swiper>
+</view>
 </view>
