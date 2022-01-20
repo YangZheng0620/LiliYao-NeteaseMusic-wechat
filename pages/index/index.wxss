@@ -34,7 +34,7 @@
 }
 
 /* 导航栏下换线样式 */
-.underline{
+.underline {
   position: absolute;
   bottom: 5px;
   background: #26ce8a;
@@ -42,9 +42,38 @@
   transition: all .3s linear;
   border-radius: 10rpx;
   z-index: 1;
- }
+}
 
- .demo {
-   height: 1000px;
-   padding: 0 24rpx;
- }
+.demo {
+  height: 1000px;
+  padding: 0 24rpx;
+}
+
+/* 轮播图样式 */
+.swiper {
+  border-radius: 10rpx;
+  overflow: hidden;
+  /* 如果某些机型出现圆角不显示的情况，可以使用这个样式 */
+  transform: translateY(0);
+}
+
+.swiper-item {
+  display: flex;
+  position: relative;
+}
+
+.swiper-item .swiper-image {
+  width: 100%;
+}
+
+.swiper-item .type {
+  position: absolute;
+  font-weight: 500;
+  right: 0;
+  bottom: 2rpx;
+  color: #fff;
+  font-size: 26rpx;
+  border-radius: 10rpx;
+  padding: 2rpx 10rpx;
+  
+}

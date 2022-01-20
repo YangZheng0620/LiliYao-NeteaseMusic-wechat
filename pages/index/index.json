@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "item-search": "../../components/item-search/index"
+    "item-search": "../../components/item-search/index",
+    "item-header": "../../components/item-header/index",
+    "song-item-v1": "../../components/song-item-v1/index"
   }
 }

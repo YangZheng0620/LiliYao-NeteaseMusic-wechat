@@ -18,12 +18,12 @@
 </view>
 
 
-<view>
+<view class="playlist-header">
   <!-- 歌单详情头部 -->
   <playlist-detail-header playlistInfo="{{playlistInfo}}" navBarHeight="{{navBarHeight}}"></playlist-detail-header>
 </view>
 
-<view class="playlist">
+<view class="playlist" style="margin-top: {{playlistHeaderHeight + 12}}px;">
   <block wx:for="{{playlistInfo.tracks}}" wx:key="id">
     <song-item-v3 item="{{item}}" index="{{index+1}}"></song-item-v3>
   </block>

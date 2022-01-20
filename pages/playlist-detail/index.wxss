@@ -150,6 +150,13 @@
   font-size: 28rpx;
 }
 
+/* 歌单头部 */
+.playlist-header {
+  position: fixed;
+  top: 0;
+}
+
+
 /* 歌单列表 */
 .playlist {
   z-index: 1;

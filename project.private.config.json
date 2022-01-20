@@ -29,6 +29,12 @@
           "pathName": "pages/playlist-detail/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
         }
       ]
     }

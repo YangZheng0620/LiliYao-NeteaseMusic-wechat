@@ -14,20 +14,35 @@ Component({
     showRightItem: {
       type: Boolean,
       value: true
-    }
+    },
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-
+    titleWidth: 0, // 标题宽度
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
+    getTitleWidth: function () {
+      const query = wx.createSelectorQuery()
+      query.in(this).select('.title').boundingClientRect()
+      query.exec((res) => {
+        this.setData({
+          titleWidth: res[0].width
+        })
+      })
+    },
+  },
 
-  }
+  lifetimes: {
+    // 生命周期函数
+    attached: function () {
+      this.getTitleWidth()
+    },
+  },
 })

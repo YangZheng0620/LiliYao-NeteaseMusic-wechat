@@ -5,9 +5,21 @@
   height: 88rpx;
 }
 
-.header .title {
+.header .title-info {
   font-size: 36rpx;
   font-weight: 700;
+  position: relative;
+}
+
+/* 导航栏下换线样式 */
+.header .title-info .underline {
+  position: absolute;
+  bottom: 4px;
+  background: #26ce8a;
+  height: 10rpx;
+  transition: all .3s linear;
+  border-radius: 10rpx;
+  z-index: -1;
 }
 
 /* 如果 slot 是空的，那么设置 .default 为 flex 布局 */

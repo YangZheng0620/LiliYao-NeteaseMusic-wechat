@@ -11,9 +11,29 @@
   <swiper interval="5000" duration="500" current="{{currentTab}}" bindchange='sliderNav' class="demo">
 
     <swiper-item>
-    <item-search></item-search>
+      <!-- 搜索框 -->
+      <item-search></item-search>
+      <!-- 轮播图 -->
+      <swiper class="swiper" indicator-dots circular autoplay style="height: {{swiperHeight}}px;">
+        <block wx:for="{{banners}}" wx:key="bannerId">
+          <swiper-item class="swiper-item">
+            <image class="swiper-image" src="{{item.pic}}" mode="widthFix" bindload="handleSwiperImageLoaded"></image>
+            <view class="type" style="background: {{item.titleColor}};"><view>{{item.typeTitle}}</view>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
 
-    
+      <!-- 推荐歌曲 -->
+      <view class="recommend-song" wx:if="{{recommendSongs.length > 0}}">
+        <item-header title="推荐新歌" bind:click="handleMoreClick"></item-header>
+        <view class="song-list">
+          <block wx:for="{{recommendSongs}}" wx:key="id">
+            <song-item-v1 item="{{item}}"></song-item-v1>
+          </block>
+        </view>
+      </view>
+
        
     </swiper-item>
 

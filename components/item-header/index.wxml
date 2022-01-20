@@ -1,6 +1,10 @@
 <!-- 项目头部 -->
 <view class="header">
-  <view class="title">{{ title }}</view>
+  <view class="title-info">
+    <view class="title">{{ title }}</view>
+
+    <view class='underline' style="width: {{titleWidth}}px;"></view>
+  </view>
   <view class="right" wx:if="{{ showRightItem }}">
     <view class="slot"></view>
     <view class="default">

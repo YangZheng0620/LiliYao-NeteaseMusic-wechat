@@ -1,0 +1,25 @@
+<!-- 推荐新歌 -->
+
+<!-- 导入格式化工具 -->
+<wxs src="../../utils/format.wxs" module="format"></wxs>
+
+<view class="item" bindtap="handleSongItemClick">
+  <view class="image-info">
+    <image class="image" src="{{item.picUrl}}"></image>
+    <view class="play-counter">
+      <iconfont name="arrow_right_fat" color="#26ce8a"></iconfont>
+      {{format.formatCount(item.song.bMusic.playTime)}}
+    </view>
+  </view>
+
+  <view class="content">
+    <view class="name-info">
+      <view class="name">{{item.name}}</view>
+      <view class="tran-name" wx:if="{{item.song.transName}}">({{item.song.transName}})</view>
+    </view>
+    <view class="source">{{item.song.artists[0].name}} · {{item.song.album.name}}</view>
+  </view>
+  <view class="arrow">
+    <image class="icon" src="/assets/images/icons/arrow-right.png"></image>
+  </view>
+</view>

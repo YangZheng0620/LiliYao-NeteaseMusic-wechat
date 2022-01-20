@@ -1,4 +1,14 @@
+import {
+  getBanners,
+  getRecommendSongs
+} from '../../apis/api_music'
+import queryRect from '../../utils/query-rect'
+import throttle from '../../utils/throttle'
+
+
 const app = getApp()
+
+const throttleQueryRect = throttle(queryRect) // 使用节流生成新函数来使用
 
 Page({
 
@@ -21,6 +31,10 @@ Page({
     currentTab: 0, // 当前 swiper
     navbarLeft: 0, // 导航栏内容左距离
     navbarWidth: 0, // 导航栏内容宽度
+    banners: [], // 轮播图数据
+    swiperHeight: 0, // 轮播图图片的高度,
+    recommendSongs: [], // 推荐歌曲列表
+    recommendSongMenu: [], // 获取推荐歌单
   },
 
   /**
@@ -29,6 +43,33 @@ Page({
   onLoad: function (options) {
     // 获取导航栏内容宽高
     this.getNavBarStyle()
+
+    this.getPageData()
+  },
+
+  // 网络请求封装的方法
+  getPageData: function () {
+    getBanners().then((res) => {
+      this.setData({
+        banners: res.banners
+      })
+    })
+
+
+    // 获取推荐歌曲数据
+    getRecommendSongs().then(res => {
+      const recommendSongs = res.result.slice(0, 5)
+      this.setData({
+        recommendSongs,
+        recommendSongMenu: res.result
+      })
+    })
+
+    // // 获取华语歌单数据
+    // getSongMenu("华语").then(res => {
+    //   this.setData({ recommendSongMenu: res.playlists })
+    // })
+
   },
 
   // 获取导航栏内容宽高
@@ -42,6 +83,19 @@ Page({
       })
     })
   },
+
+  // 轮播图图片加载完成后触发方法
+  handleSwiperImageLoaded: function () {
+    // 获取图片的高度
+    throttleQueryRect('.swiper-image').then(res => {
+
+      const rect = res[0]
+      this.setData({
+        swiperHeight: rect
+      })
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -96,16 +150,27 @@ Page({
     if (this.data.currentTab == e.currentTarget.dataset.index) {
       return false;
     } else {
-      const query = wx.createSelectorQuery()
-      query.select('.navbar-normal').boundingClientRect()
-      query.exec((res) => {
-        if (res[0].left !== this.data.left) {
+      queryRect('.navbar-normal').then(res => {
+
+        const rect = res[0]
+        if (rect.left !== this.data.left) {
           this.setData({
-            navbarLeft: res[0].left,
-            navbarWidth: res[0].width
+            navbarLeft: rect.left,
+            navbarWidth: rect.width
           })
         }
+
       })
+      // const query = wx.createSelectorQuery()
+      // query.select('.navbar-normal').boundingClientRect()
+      // query.exec((res) => {
+      //   if (res[0].left !== this.data.left) {
+      //     this.setData({
+      //       navbarLeft: res[0].left,
+      //       navbarWidth: res[0].width
+      //     })
+      //   }
+      // })
 
       this.setData({
         currentTab: e.currentTarget.dataset.index
@@ -116,15 +181,16 @@ Page({
   // 滑动切换
   sliderNav: function (e) {
     if (e.detail.source === 'touch') {
-      const query = wx.createSelectorQuery()
-      query.select('.navbar-normal').boundingClientRect()
-      query.exec((res) => {
-        if (res[0].left !== this.data.left) {
+      queryRect('.navbar-normal').then(res => {
+
+        const rect = res[0]
+        if (rect.left !== this.data.left) {
           this.setData({
-            navbarLeft: res[0].left,
-            navbarWidth: res[0].width
+            navbarLeft: rect.left,
+            navbarWidth: rect.width
           })
         }
+
       })
 
       this.setData({

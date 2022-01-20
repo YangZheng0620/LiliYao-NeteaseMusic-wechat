@@ -16,6 +16,7 @@ Page({
     menuBotton: app.globalData.menuBotton, // 导航栏高度
     menuHeight: app.globalData.menuHeight, // 导航栏高度
     playlistInfo: {},
+    playlistHeaderHeight: 0, //  歌单详情头部高度
   },
 
   /**
@@ -30,6 +31,8 @@ Page({
         playlistInfo: res.playlist
       })
     })
+
+    this.getPlaylistHeaderHeight()
   },
 
   /**
@@ -80,7 +83,16 @@ Page({
   onShareAppMessage: function () {
 
   },
-
+  // 获取歌单详情头部高度
+  getPlaylistHeaderHeight: function () {
+    const query = wx.createSelectorQuery()
+    query.select('.playlist-header').boundingClientRect()
+    query.exec((res) => {
+      this.setData({
+        playlistHeaderHeight: res[0].height
+      })
+    })
+  },
   // 回到首页
   backToIndex: function () {
     wx.reLaunch({
