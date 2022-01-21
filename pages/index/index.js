@@ -6,7 +6,8 @@ import {
 import queryRect from '../../utils/query-rect'
 import throttle from '../../utils/throttle'
 import {
-  rankingStore
+  rankingStore,
+  rankingMap
 } from '../../store/index'
 
 const app = getApp()
@@ -147,6 +148,19 @@ Page({
         navbarLeft: res[0].left,
         navbarWidth: res[0].width
       })
+    })
+  },
+  // 点击巅峰榜触发
+  handleRankingItemClick: function (event) {
+    const idx = event.currentTarget.dataset.idx
+    const rankingName = rankingMap[idx]
+    this.navigateToDetailSongPage(rankingName)
+  },
+
+  // 跳转到榜单详情
+  navigateToDetailSongPage: function (rankingName) {
+    wx.navigateTo({
+      url: `/pages/ranking-detail/index?ranking=${rankingName}`
     })
   },
 

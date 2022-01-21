@@ -1,8 +1,4 @@
 import {
-  getPlaylistDetail
-} from '../../apis/api_music'
-
-import {
   rankingStore
 } from "../../store/index"
 
@@ -19,26 +15,51 @@ Page({
     menuRight: app.globalData.menuRight, // 导航栏高度
     menuBotton: app.globalData.menuBotton, // 导航栏高度
     menuHeight: app.globalData.menuHeight, // 导航栏高度
-    playlistInfo: {},
-    playlistHeaderHeight: 0, //  歌单详情头部高度
+    rankingInfo: {},
+    rankingHeaderHeight: 0, //  榜单详情头部高度
+    rankingName: "", // 榜单名字
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // const id = options.id
-    let id = '2537308137'
-    getPlaylistDetail(id).then(res => {
-      console.log(res);
-      this.setData({
-        playlistInfo: res.playlist
-      })
+    const name = options.ranking
+    this.setData({
+      rankingName: name
     })
+
+    rankingStore.dispatch("getRankingDataAction")
+    // 获取数据
+    rankingStore.onState(name, this.getRankingDataHandler)
+
 
     this.getPlaylistHeaderHeight()
   },
 
+  getRankingDataHandler: function (res) {
+    this.setData({
+      rankingInfo: res
+    })
+  },
+
+  // 获取榜单详情头部高度
+  getPlaylistHeaderHeight: function () {
+    const query = wx.createSelectorQuery()
+    query.select('.ranking-header').boundingClientRect()
+    query.exec((res) => {
+      this.setData({
+        rankingHeaderHeight: res[0].height + 20
+      })
+      rankingStore.onState("moveDistance", (moveDistance) => {
+        this.setData({
+          rankingHeaderHeight: res[0].height + 20 + moveDistance
+        })
+      })
+    })
+    
+
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -87,25 +108,6 @@ Page({
   onShareAppMessage: function () {
 
   },
-  // 获取歌单详情头部高度
-  getPlaylistHeaderHeight: function () {
-    const query = wx.createSelectorQuery()
-    query.select('.playlist-header').boundingClientRect()
-    query.exec((res) => {
-      this.setData({
-        playlistHeaderHeight: res[0].height + 20
-      })
-      rankingStore.onState("moveDistance", (moveDistance) => {
-        this.setData({
-          playlistHeaderHeight: res[0].height + 20 + moveDistance
-        })
-      })
-    })
-  },
-  // 回到首页
-  backToIndex: function () {
-    wx.reLaunch({
-      url: '../index/index'
-    })
-  },
+
+
 })

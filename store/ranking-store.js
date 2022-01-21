@@ -17,7 +17,8 @@ const rankingStore = new HYEventStore({
   state: {
     rankingZero: {},
     rankingOne: {},
-    rankingTwo: {}
+    rankingTwo: {},
+    moveDistance: 0,
   },
   actions: {
     getRankingDataAction(ctx) {
@@ -43,10 +44,14 @@ const rankingStore = new HYEventStore({
         })
       })
 
+    },
+    changeMoveDistance(ctx, height) {
+      ctx.moveDistance = height
     }
   }
 })
 
 export {
   rankingStore,
+  rankingMap
 }

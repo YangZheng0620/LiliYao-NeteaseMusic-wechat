@@ -3,7 +3,7 @@
 <!-- 导入格式化工具 -->
 <wxs src="../../utils/format.wxs" module="format"></wxs>
 
-<view class="header" style="padding-top: {{navBarHeight}}px;">
+<view class="header" style="padding-top: {{navBarHeight}}px; height: {{coverHeight}}rpx; transition: {{coverTransition}};" bindtouchstart="handleTouchStart" bindtouchmove="handleTouchMove" bindtouchend="handleTouchEnd">
   <!-- 背景 -->
   <image class="bg-image" mode="aspectFill" src="{{playlistInfo.coverImgUrl}}"></image>
   <view class="bg-cover"></view>

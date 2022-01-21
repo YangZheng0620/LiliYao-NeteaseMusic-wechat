@@ -12,6 +12,10 @@ Component({
     item: {
       type: Object,
       value: {}
+    },
+    hotNumList: {
+      type: Number,
+      value: 3
     }
   },
 
@@ -20,6 +24,7 @@ Component({
    */
   data: {
     screenWidth: app.globalData.screenWidth, // 屏幕宽度
+    hotNumList: [1, 2, 3], // 榜单前三名
   },
 
   /**

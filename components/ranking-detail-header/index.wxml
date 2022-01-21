@@ -1,2 +1,34 @@
-<!--components/ranking-detail-header/index.wxml-->
-<text>components/ranking-detail-header/index.wxml</text>
+<!-- 榜单详情头部 -->
+
+<!-- 导入格式化工具 -->
+<wxs src="../../utils/format.wxs" module="format"></wxs>
+
+<view class="header" style="padding-top: {{navBarHeight}}px; height: {{coverHeight}}rpx; transition: {{coverTransition}};" bindtouchstart="handleTouchStart" bindtouchmove="handleTouchMove" bindtouchend="handleTouchEnd">
+  <!-- 背景 -->
+  <image class="bg-image" mode="aspectFill" src="{{rankingInfo.tracks[0].al.picUrl}}"></image>
+  <view class="bg-cover"></view>
+  <!-- 内容 -->
+  <view class="content">
+    <view class="info">
+      <view class="title-info">
+        <view class="desc">
+          <view class="desc-info">
+            <view class="desc-info-name">巅峰榜</view>
+            <text class="desc-info-time"> · 每小时更新</text>
+          </view>
+          <view class="title">{{rankingInfo.name}}</view>
+          <view class="updateTime">最近更新 {{format.formatTimeWithDate(rankingInfo.trackUpdateTime)}}</view>
+        </view>
+        <view>
+          <image class="image-info" src="../../assets/images/ranking/background-image.png"></image>
+        </view>
+      </view>
+
+    </view>
+    <view>
+      <image class="image" mode="aspectFill" src="{{rankingInfo.tracks[0].al.picUrl}}"></image>
+    </view>
+
+
+  </view>
+</view>

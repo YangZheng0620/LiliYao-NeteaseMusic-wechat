@@ -48,9 +48,32 @@ function formatTime(time) {
   return formatTime
 }
 
+// 时间戳格式化（不带日期）
+function formatTimeWithDate(time) {
+  if (!time) return
+  // 判断时间戳是否为 13 位数，如果不是则 *1000
+  // 时间戳只有 13 位数(带毫秒)和 10 位数(不带毫秒)的
+  if (time.toString().length == 13) {
+      var newTime = getDate(time);
+  } else {
+      var newTime = getDate(time * 1000);
+  }
+
+  var year = newTime.getFullYear();
+  var month = (newTime.getMonth() + 1 < 10 ? '0' + (newTime.getMonth() + 1) : newTime.getMonth() + 1);
+  var day = newTime.getDate();
+  var hour = newTime.getHours();
+  var minute = newTime.getMinutes();
+  // var second = padLeftZero(newTime.getSeconds());
+  formatTime = year + '-' + month + '-' + padLeftZero(day) + ' ' + padLeftZero(hour) + ':' + padLeftZero(minute)
+  
+  return formatTime
+}
+
 // 不支持 ES6 语法，需要使用 commonJS 的方式
 module.exports = {
   formatCount: formatCount,
   formatDuration: formatDuration,
   formatTime: formatTime,
+  formatTimeWithDate: formatTimeWithDate,
 }

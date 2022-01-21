@@ -10,31 +10,53 @@
   box-sizing: border-box;
   width: 34px;
   padding-right: 6px;
+  font-weight: 600;
+}
+
+.hotIndex {
+  font-size: 50rpx;
+  color: #26ce8a;
+  font-weight: 700;
+  text-align: center;
+  box-sizing: border-box;
+  width: 34px;
+  padding-right: 6px;
+}
+
+.hotImage {
+  height: 70rpx;
+  width: 70rpx;
+  margin-right: 10px;
+  margin-top: 2rpx;
+  border-radius: 6px;
+  box-shadow:0 5px 5px rgba(0,0,0,0.5)
 }
 
 .info {
   flex: 1;
   margin-left: 16rpx;
-
+  min-width: 0;
 }
 
 .info .name {
   display: flex;
   align-items: center;
   font-size: 30rpx;
+  min-width: 0;
+  font-weight: 600;
 }
 
 .info .name .song-name {
-}
-
-.info .name .demo {
-  min-width: 0;
-}
-
-.info .name .demo .trans-name {
   display: block;
-  max-width: 100%;
-  font-size: 26rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+
+.info .name .trans-name {
+  display: block;
+  font-size: 20rpx;
   margin-left: 6rpx;
   color: #999999;
   overflow: hidden;
@@ -48,24 +70,20 @@
   font-size: 24rpx;
   color: #666;
   margin-top: 10rpx;
+  min-width: 0;
 }
 
-.source .icon {
-  width: 38rpx;
-  height: 22rpx;
-  margin-right: 10rpx;
+.source .source-name {
+  white-space: nowrap;
 }
 
 .source .playlist-info {
   display: flex;
-}
-
-.source .playlist-info .dots {
-  margin: 0 6rpx;
+  min-width: 0;
 }
 
 .source .playlist-info .playlist-name {
-
+  margin-left: 10rpx;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

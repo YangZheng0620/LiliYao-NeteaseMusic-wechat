@@ -35,6 +35,12 @@
           "pathName": "pages/index/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/ranking-detail/index",
+          "query": "ranking=rankingOne",
+          "scene": null
         }
       ]
     }

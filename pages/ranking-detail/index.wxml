@@ -1,4 +1,4 @@
-<!-- 歌单详情 -->
+<!-- 榜单详情 -->
 
 <!-- 导入格式化工具 -->
 <wxs src="../../utils/format.wxs" module="format"></wxs>
@@ -17,14 +17,13 @@
   </view>
 </view>
 
-
-<view class="playlist-header">
-  <!-- 歌单详情头部 -->
-  <playlist-detail-header playlistInfo="{{playlistInfo}}" navBarHeight="{{navBarHeight}}"></playlist-detail-header>
+<view class="ranking-header">
+  <!-- 榜单详情头部 -->
+  <ranking-detail-header rankingInfo="{{rankingInfo}}" navBarHeight="{{navBarHeight}}"></ranking-detail-header>
 </view>
 
-<view class="playlist" style="margin-top: {{playlistHeaderHeight}}px;transition: 0.5s margin ease;">
-  <block wx:for="{{playlistInfo.tracks}}" wx:key="id">
-    <song-item-v3 item="{{item}}" index="{{index+1}}"></song-item-v3>
+<view class="rankingList" style="margin-top: {{rankingHeaderHeight}}px;transition: 1s margin ease;">
+  <block wx:for="{{rankingInfo.tracks}}" wx:key="id">
+    <song-item-v2 item="{{item}}" index="{{index+1}}"></song-item-v2>
   </block>
 </view>

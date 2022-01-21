@@ -5,7 +5,8 @@
     "pages/logs/logs",
     "pages/search/index",
     "pages/user/index",
-    "pages/playlist-detail/index"
+    "pages/playlist-detail/index",
+    "pages/ranking-detail/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

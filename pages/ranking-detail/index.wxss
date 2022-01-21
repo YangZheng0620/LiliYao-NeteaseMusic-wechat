@@ -39,16 +39,15 @@
   flex: 1;
 }
 
-
-/* 歌单头部 */
-.playlist-header {
+/* 榜单头部 */
+.ranking-header {
   position: fixed;
   top: 0;
 }
 
 
-/* 歌单列表 */
-.playlist {
+/* 榜单列表 */
+.rankingList {
   z-index: 1;
   margin: 0 24rpx;
 }

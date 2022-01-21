@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "ranking-detail-header": "../../components/ranking-detail-header/index",
+    "song-item-v2": "../../components/song-item-v2/index"
+  }
+}

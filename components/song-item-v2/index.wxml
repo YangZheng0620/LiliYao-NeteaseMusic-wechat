@@ -1,27 +1,22 @@
 <!-- 歌曲列表 -->
 <view class="item" bindtap="handleSongItemClick">
-  <view class="index">{{index}}</view>
+  <view class="{{index <= hotNumList ? 'hotIndex' : 'index'}}">{{index}}</view>
+  <image wx:if="{{index <= hotNumList}}" class="hotImage" src="{{item.al.picUrl}}"></image>
   <view class="info">
     <view class="name">
-      <view class="song-name">
-        <view>{{item.name}}</view>
-      </view>
-      <view class="demo">
-        <text wx:if="{{item.alia[0] || item.alias[0]}}" class="trans-name"> - ({{item.alia[0] || item.alias[0]}})</text>
-      </view>
-      
+      <text class="song-name">{{item.name}}</text>
+      <text wx:if="{{item.alia[0] || item.alias[0]}}" class="trans-name">({{item.alia[0] || item.alias[0]}})</text>
+
       <!-- <view class="trans-name">123</view> -->
     </view>
 
     <view class="source">
-      <image class="icon" src="/assets/images/icons/sq_icon.png"></image>
-      <text>{{item.ar[0].name || item.artists[0].name}} </text>
+      <text class="source-name">{{item.ar[0].name || item.artists[0].name}} </text>
+      <text class="source-name" wx:if="{{item.ar[1].name || item.artists[1].name}}">/{{item.ar[1].name || item.artists[1].name}} </text>
+      <text class="source-name" wx:if="{{item.ar[2].name || item.artists[2].name}}">/{{item.ar[2].name || item.artists[2].name}} </text>
       <view class="playlist-info" wx:if="{{item.al.name}}">
-        <text class="dots">·</text>
 
-
-        <view class="playlist-name" style="width:{{screenWidth * 0.6}}px;">{{item.al.name}}</view>
-
+        <text class="playlist-name">· {{item.al.name || item.alia[0] || item.alias[0]}}</text>
 
       </view>
     </view>
