@@ -44,7 +44,9 @@
   font-size: 32rpx;
   color: #555;
   font-weight: 600;
+  overflow: hidden;
   white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .content .name-info .tran-name {
@@ -61,6 +63,9 @@
   margin-top: 16rpx;
   font-size: 24rpx;
   color: #999;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .arrow .icon {

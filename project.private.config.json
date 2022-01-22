@@ -41,6 +41,12 @@
           "pathName": "pages/ranking-detail/index",
           "query": "ranking=rankingOne",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/player/index",
+          "query": "id=1886535812",
+          "scene": null
         }
       ]
     }

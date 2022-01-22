@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "player-nav-bar": "/components/player-nav-bar/index"
+  }
+}

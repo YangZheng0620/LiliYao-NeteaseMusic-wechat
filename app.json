@@ -6,7 +6,8 @@
     "pages/search/index",
     "pages/user/index",
     "pages/playlist-detail/index",
-    "pages/ranking-detail/index"
+    "pages/ranking-detail/index",
+    "pages/player/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -15,11 +16,13 @@
     "navigationBarTextStyle": "black",
     "navigationStyle": "custom"
   },
+  "requiredBackgroundModes": [
+    "audio"
+  ],
   "tabBar": {
     "color": "#000000",
     "selectedColor": "#26ce8a",
-    "list": [
-      {
+    "list": [{
         "pagePath": "pages/index/index",
         "text": "首页",
         "iconPath": "assets/images/tabbar/music_normal.png",

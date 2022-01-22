@@ -8,7 +8,10 @@ App({
     this.globalData.statusHeight = systemInfo.statusBarHeight
     // 获取屏幕宽度
     this.globalData.screenWidth = systemInfo.screenWidth
+    // 获取屏幕高度
+    this.globalData.screenHeight = systemInfo.screenHeight
 
+    this.globalData.statusBarHeight = systemInfo.statusBarHeight
     // 胶囊按钮位置信息
     const menuButtonInfo = wx.getMenuButtonBoundingClientRect();
 
@@ -19,6 +22,10 @@ App({
     this.globalData.menuBotton = menuButtonInfo.top - systemInfo.statusBarHeight;
     // 胶囊高度
     this.globalData.menuHeight = menuButtonInfo.height;
+
+
+    const deviceRadio = systemInfo.screenHeight / systemInfo.screenWidth
+    this.globalData.deviceRadio = deviceRadio
 
     // 展示本地存储能力
     const logs = wx.getStorageSync('logs') || []
@@ -40,5 +47,8 @@ App({
     menuBotton: 0, // 胶囊距底部间距（保持底部间距一致）
     menuHeight: 0, // 胶囊高度（自定义内容可与胶囊高度保证一致）
     screenWidth: 0, // 屏幕宽度
+    screenHeight:0, // 屏幕高度
+    deviceRadio: 0,
+    statusBarHeight: 0,
   }
 })
