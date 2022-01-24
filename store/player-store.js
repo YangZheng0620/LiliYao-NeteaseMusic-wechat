@@ -3,7 +3,8 @@ import {
 } from 'hy-event-store'
 import {
   getSongDetail,
-  getSongLyric
+  getSongLyric,
+  getSingerDetail
 } from '../apis/api_player'
 import {
   parseLyric
@@ -29,7 +30,10 @@ const playerStore = new HYEventStore({
 
     playModeIndex: 0, // 0: 循环播放 1: 单曲循环 2: 随机播放
     playListSongs: [],
-    playListIndex: 0
+    playListIndex: 0,
+
+    singerPic: "",
+    singerId: 0,
   },
   actions: {
     playMusicWithSongIdAction(ctx, {
@@ -57,6 +61,11 @@ const playerStore = new HYEventStore({
         ctx.currentSong = res.songs[0]
         ctx.durationTime = res.songs[0].dt
         audioContext.title = res.songs[0].name
+        // 获取歌手信息
+        getSingerDetail(res.songs[0].ar[0].id).then(res => {
+          ctx.singerPic = res.data.artist.cover
+          ctx.singerId = res.data.artist.id
+        })
       })
       // 请求歌词数据
       getSongLyric(id).then(res => {

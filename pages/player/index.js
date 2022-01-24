@@ -3,6 +3,11 @@ import {
   playerStore
 } from '../../store/index'
 
+import {
+  getSimiSong,
+  getSongComment
+} from '../../apis/api_player'
+
 const playModeNames = ["order", "repeat", "random"]
 const app = getApp()
 
@@ -18,7 +23,7 @@ Page({
     menuBotton: app.globalData.menuBotton, // 导航栏高度
     menuHeight: app.globalData.menuHeight, // 导航栏高度
     screenWidth: app.globalData.screenWidth, // 屏幕宽度
-
+    screenHeight: app.globalData.screenHeight, // 屏幕高度
     currentSong: {},
     durationTime: 0,
     lyricInfos: [],
@@ -38,15 +43,48 @@ Page({
     contentHeight: 0,
     sliderValue: 0,
     isSliderChanging: false,
-    lyricScrollTop: 0
+    lyricScrollTop: 0,
+
+    simiSongsList: [],
+    singerPic: "",
+    singerId: 0,
+    normalComments: [],
+    songId: 0,
+    show: false,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // 传入歌曲 id 获取歌曲评论
+    this.setData({
+      songId: options.id
+    })
+
+
     // 1.获取传入的id
     const id = options.id
+
+    // 获取相似歌曲
+    this.getSimiSongs(id)
+
+    // 获取歌手照片
+    playerStore.onState("singerPic", (res) => {
+      this.setData({
+        singerPic: res
+      })
+    })
+
+    playerStore.onState("singerId", (res) => {
+      this.setData({
+        singerId: res
+      })
+    })
+
+    // 获取歌手评论
+    this.getSongComments(id)
+
     this.setData({
       id
     })
@@ -68,7 +106,23 @@ Page({
       isMusicLyric: deviceRadio >= 2
     })
   },
-
+  // 获取相似歌曲
+  getSimiSongs: function (id) {
+    getSimiSong(id).then(res => {
+      const simiSongsList = res.songs
+      this.setData({
+        simiSongsList
+      })
+    })
+  },
+  // 获取歌曲评论
+  getSongComments: function (id) {
+    getSongComment(id).then(res => {
+      this.setData({
+        normalComments: res.comments
+      })
+    })
+  },
   handleSwiperChange: function (event) {
     const current = event.detail.current
     this.setData({
@@ -196,7 +250,26 @@ Page({
       }
     })
   },
+  handleSongItemClick: function (event) {
+    const id = event.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '/pages/player/index?id=' + id,
+    })
 
+  },
+
+  onClickShow() {
+    console.log(123);
+    this.setData({
+      show: true
+    });
+  },
+
+  onClickHide() {
+    this.setData({
+      show: false
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

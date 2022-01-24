@@ -1,0 +1,62 @@
+.bg-info {
+  background: rgba(255, 255, 255, .1);
+  border-radius: 22rpx;
+  padding: 30rpx 60rpx 30rpx 30rpx;
+  margin-bottom: 40rpx;
+}
+
+.bg-info .title {
+  font-size: 44rpx;
+  font-weight: 700;
+  height: 80rpx;
+  line-height: 60rpx;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+.bg-info .hot-comment {
+  margin: 30rpx 0 30rpx 0;
+  display: flex;
+  min-width: 0;
+}
+
+.bg-info .hot-comment .image {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 20rpx;
+  margin-right: 20rpx;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+
+.bg-info .hot-comment .user-info {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+  font-size: 36rpx;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+
+.user-info .user-content {
+  display: flex;
+  align-items: center;
+}
+
+.bg-info .hot-comment .user-info .like {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 30rpx;
+  font-size: 30rpx;
+}
+
+.bg-info .hot-comment .comment-time {
+  font-size: 26rpx;
+  color: rgba(255, 255, 255, .5);
+  margin-bottom: 10rpx;
+}
+
+.bg-info .hot-comment .comment-content {
+  font-size: 36rpx;
+}

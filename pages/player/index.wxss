@@ -78,6 +78,107 @@ page {
   color: #fff;
 }
 
+/* 推荐信息 */
+.comment {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 30rpx;
+  
+}
+
+.comment .info {
+  height: 100%;
+  flex: 2;
+}
+
+/* 歌曲标题、歌手、专辑名 */
+.info .bg-info {
+  background: rgba(255, 255, 255, .1);
+  border-radius: 22rpx;
+  padding: 30rpx 60rpx 30rpx 30rpx;
+  margin-bottom: 40rpx;
+}
+
+.info .bg-info .title {
+  font-size: 56rpx;
+  font-weight: 700;
+  height: 100rpx;
+  line-height: 60rpx;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(255, 255, 255, .5);
+  white-space: nowrap;
+}
+
+
+.info .bg-info .singer-name {
+  font-size: 36rpx;
+  font-weight: 600;
+  margin: 30rpx 0;
+  display: flex;
+  align-items: center;
+}
+
+.info .bg-info .singer-name .image{
+  width: 110rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+  box-shadow:0 2px 2px rgba(0,0,0,0.2);
+}
+
+.info .bg-info .album-name {
+  font-size: 36rpx;
+  font-weight: 600;
+  margin: 30rpx 0 0 0;
+  display: flex;
+  align-items: center;
+}
+
+.info .bg-info .album-name .image{
+  width: 110rpx;
+  height: 90rpx;
+  border-radius: 20rpx;
+  margin-right: 20rpx;
+  box-shadow:0 2px 2px rgba(0,0,0,0.2);
+}
+
+/* 相关歌曲 */
+.info .bg2-info {
+  background: rgba(255, 255, 255, .1);
+  border-radius: 22rpx;
+  padding: 30rpx 60rpx 30rpx 30rpx;
+  margin-bottom: 40rpx;
+}
+
+.info .bg2-info .title {
+  font-size: 44rpx;
+  font-weight: 700;
+  height: 80rpx;
+  line-height: 60rpx;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+.info .bg2-info .songs-info {
+  font-size: 36rpx;
+  font-weight: 600;
+  margin: 30rpx 0 0 0;
+  display: flex;
+  align-items: center;
+}
+
+.info .bg2-info .songs-info .image {
+  width: 110rpx;
+  height: 90rpx;
+  border-radius: 20rpx;
+  margin-right: 20rpx;
+  box-shadow:0 2px 2px rgba(0,0,0,0.2);
+}
+
+
+
 /* 内容样式 */
 .content {
   color: #fff;
@@ -88,14 +189,18 @@ page {
   flex-direction: column;
   justify-content: space-between;
   box-sizing: border-box;
-  padding: 30rpx 60rpx;
+  padding: 30rpx 40rpx;
 }
+
+.music .music-content {
+  height: 100%;
+}
+
 
 /* 封面 */
 .album {
   display: flex;
   align-items: center;
-  flex: 5;
 }
 
 .album .image {
@@ -103,9 +208,11 @@ page {
   border-radius: 12rpx;
 }
 
+
+
 /* 歌曲信息 */
 .music .info {
-  margin: 20rpx 0;
+  margin: 60rpx 0;
 }
 
 .music .info .title {
@@ -131,7 +238,7 @@ page {
   flex: 1;
   font-size: 28rpx;
   color: #26ce8a;
-  height: 100rpx;
+  margin: 60rpx 0;
 }
 
 .music .lyric .song-lyric {
@@ -141,7 +248,7 @@ page {
 
 /* 进度 */
 .progress {
-  margin: 10rpx 0;
+  margin: 50rpx 0;
 }
 
 .slider {
@@ -165,7 +272,7 @@ page {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 20rpx 0 30rpx;
+  margin: 70rpx 0 0rpx;
 }
 
 .operation .btn {
@@ -225,4 +332,20 @@ page {
   vertical-align: middle;
   text-align: center;
   font-weight: 700;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 30rpx 40rpx;
+}
+
+.block {
+  width: 120px;
+  height: 120px;
+  background-color: #fff;
+  color: #26ce8a;
 }

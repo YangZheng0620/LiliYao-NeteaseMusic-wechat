@@ -10,57 +10,117 @@
 <!-- 2.导航 -->
 <player-nav-bar bind:click="handleBackBtnClick">
   <view slot="title" class="tab">
-    <view class="{{currentPage === 0 ? 'active': ''}}">歌曲</view>
+    <view class="{{currentPage === 0 ? 'active': ''}}">评论</view>
     <view class="divider">|</view>
-    <view class="{{currentPage === 1 ? 'active': ''}}">歌词</view>
+    <view class="{{currentPage === 1 ? 'active': ''}}">歌曲</view>
+    <view class="divider">|</view>
+    <view class="{{currentPage === 2 ? 'active': ''}}">歌词</view>
   </view>
 </player-nav-bar>
 
 <!-- 3.内容 -->
-<swiper class="content" style="height: {{contentHeight + 40}}px;" bindchange="handleSwiperChange">
+<swiper class="content" style="height: {{contentHeight + 40}}px;" bindchange="handleSwiperChange" current="{{currentPage}}">
+  <swiper-item class="comment">
+    <scroll-view class="info" scroll-y>
+      <view class="content">
+        <view class="bg-info">
+          <view class="title">
+            <scroll-view scroll-x>{{currentSong.name}} {{(currentSong.tns[0])}}</scroll-view>
+          </view>
+          <view class="singer-name">
+            <image class="image" mode="aspectFill" src="{{singerPic}}"></image>
+            <scroll-view scroll-x>
+              <block wx:for="{{currentSong.ar}}" wx:key="index">
+                <text wx:if="{{index === 0}}">歌手：{{item.name}} </text>
+                <text wx:else>/ {{item.name}}</text>
+              </block>
+            </scroll-view>
+
+          </view>
+          <view class="album-name" wx:if="{{currentSong.alia[0] || currentSong.al.name}}">
+            <image class="image" mode="aspectFill" src="{{currentSong.al.picUrl}}"></image>
+            <scroll-view scroll-x>专辑: {{currentSong.alia[0] || currentSong.al.name}}</scroll-view>
+          </view>
+        </view>
+        <view class="bg2-info">
+          <view class="title">
+            相关歌曲
+          </view>
+          <view class="songs-info" wx:for="{{simiSongsList}}" wx:key="id" bindtap="handleSongItemClick" data-id="{{item.id}}">
+            <image class="image" mode="aspectFill" src="{{item.album.picUrl}}"></image>
+            <scroll-view scroll-x style="white-space: nowrap; min-width: 0;">
+              <text>{{item.name}}</text>
+              <block wx:for="{{item.artists}}" wx:key="index">
+                <text wx:if="{{index === 0}}" style="margin-left: 10rpx;">- {{item.name}} </text>
+                <text wx:else>/ {{item.name}}</text>
+              </block>
+            </scroll-view>
+
+          </view>
+        </view>
+        <comment-area songId="{{songId}}"></comment-area>
+      </view>
+    </scroll-view>
+  </swiper-item>
   <swiper-item class="music">
-    <view class="album">
-      <image class="image" mode="widthFix" src="{{currentSong.al.picUrl}}"></image>
-    </view>
-    <view class="info">
-      <view class="title">
-        <scroll-view scroll-x>{{currentSong.name}} {{(currentSong.tns[0])}}</scroll-view>
-
+    <scroll-view class="music-content" scroll-y enable-flex>
+      <view class="album">
+        <image class="image" mode="widthFix" src="{{currentSong.al.picUrl}}"></image>
       </view>
-      <view class="subtitle">
-        <view class="singer">
-          <scroll-view scroll-x>
-            <block wx:for="{{currentSong.ar}}" wx:key="index">
-              <text wx:if="{{index === 0}}">{{item.name}} </text>
-              <text wx:else>/ {{item.name}}</text>
-            </block>
+      <view class="info">
+        <view class="title">
+          <scroll-view scroll-x>{{currentSong.name}} {{(currentSong.tns[0])}}</scroll-view>
+
+        </view>
+        <view class="subtitle">
+          <view class="singer">
+            <scroll-view scroll-x>
+              <block wx:for="{{currentSong.ar}}" wx:key="index">
+                <text wx:if="{{index === 0}}">{{item.name}} </text>
+                <text wx:else>/ {{item.name}}</text>
+              </block>
+            </scroll-view>
+
+          </view>
+
+          <view class="alias" wx:if="{{currentSong.alia[0] || currentSong.al.name}}">
+            <scroll-view scroll-x>专辑: {{currentSong.alia[0] || currentSong.al.name}}</scroll-view>
+          </view>
+        </view>
+      </view>
+      <view class="lyric" wx:if="{{isMusicLyric}}">
+        <text class="song-lyric">{{currentLyricText}}</text>
+      </view>
+      <view class="progress">
+        <slider class="slider" block-size="{{12}}" value="{{sliderValue}}" bindchanging="handleSliderChanging" bindchange="handleSliderChange">
+        </slider>
+        <view class="time">
+          <view class="current">{{format.formatDuration(currentTime)}}</view>
+          <view class="duration">{{format.formatDuration(durationTime)}}</view>
+        </view>
+      </view>
+      <view class="operation">
+        <image class="btn btn-mode" src="../../assets/images/player/play_{{playModeName}}.png" bindtap="handleModeBtnClick"></image>
+        <image class="btn btn-prev" src="../../assets/images/player/play_prev.png" bindtap="handlePrevBtnClick"></image>
+        <image class="btn btn-pause" src="../../assets/images/player/play_{{playingName}}.png" bindtap="handlePlayBtnClick"></image>
+        <image class="btn btn-next" src="../../assets/images/player/play_next.png" bindtap="handleNextBtnClick"></image>
+        <image class="btn btn-music" src="../../assets/images/player/play_music.png" bindtap="onClickShow"></image>
+      </view>
+      <van-overlay show="{{ show }}" bind:click="onClickHide" lock-scroll="{{false}}">
+        <view class="wrapper">
+          <scroll-view scroll-y style="height: 100%;">
+            <view class="block">123</view>
+            <view class="block">123</view>
+            <view class="block">123</view>
+            <view class="block">45</view>
+            <view class="block">1341</view>
+            <view class="block">123213</view>
+            <view class="block">asda</view>
           </scroll-view>
-
         </view>
-
-        <view class="alias" wx:if="{{currentSong.alia[0]}}">
-          <scroll-view scroll-x>专辑: {{currentSong.alia[0]}}</scroll-view>
-        </view>
-      </view>
-    </view>
-    <view class="lyric" wx:if="{{isMusicLyric}}">
-      <text class="song-lyric">{{currentLyricText}}</text>
-    </view>
-    <view class="progress">
-      <slider class="slider" block-size="{{12}}" value="{{sliderValue}}" bindchanging="handleSliderChanging" bindchange="handleSliderChange">
-      </slider>
-      <view class="time">
-        <view class="current">{{format.formatDuration(currentTime)}}</view>
-        <view class="duration">{{format.formatDuration(durationTime)}}</view>
-      </view>
-    </view>
-    <view class="operation">
-      <image class="btn btn-mode" src="../../assets/images/player/play_{{playModeName}}.png" bindtap="handleModeBtnClick"></image>
-      <image class="btn btn-prev" src="../../assets/images/player/play_prev.png" bindtap="handlePrevBtnClick"></image>
-      <image class="btn btn-pause" src="../../assets/images/player/play_{{playingName}}.png" bindtap="handlePlayBtnClick"></image>
-      <image class="btn btn-next" src="../../assets/images/player/play_next.png" bindtap="handleNextBtnClick"></image>
-      <image class="btn btn-music" src="../../assets/images/player/play_music.png"></image>
-    </view>
+      </van-overlay>
+      
+    </scroll-view>
   </swiper-item>
   <swiper-item class="lyric">
     <scroll-view class="lyric-list" scroll-y scroll-top="{{lyricScrollTop}}" scroll-with-animation>

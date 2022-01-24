@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "player-nav-bar": "/components/player-nav-bar/index"
+    "player-nav-bar": "/components/player-nav-bar/index",
+    "comment-area": "/components/comment-area/index",
+    "van-overlay": "@vant/weapp/overlay/index"
   }
 }

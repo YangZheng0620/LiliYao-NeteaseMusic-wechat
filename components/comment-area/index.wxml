@@ -1,0 +1,38 @@
+<!-- 评论区 -->
+
+<!-- 导入格式化工具 -->
+<wxs src="../../utils/format.wxs" module="format"></wxs>
+
+<view class="bg-info" wx:if="{{normalComments.length}}">
+  <view class="title">
+    精彩评论
+  </view>
+  <view class="hot-comment" wx:for="{{normalComments}}" wx:key="index">
+    <view>
+      <image class="image" mode="aspectFill" src="{{item.user.avatarUrl}}"></image>
+    </view>
+
+    <view class="comment-info">
+      <view class="user-info">
+        <view class="user-content">
+          <scroll-view scroll-x style="width: 400rpx;">
+            <text style="margin-right: 10rpx; white-space: nowrap; color: #26ce8a;">{{item.user.nickname}}</text>
+          </scroll-view>
+        </view>
+        <view class="like">
+          <text style="margin-right: 10rpx;">{{format.formatCount(item.likedCount)}}</text>
+          <image src="../../assets/images/comments/like.png" alt="" style="height: 50rpx; width: 50rpx;" />
+        </view>
+      </view>
+      <view class="comment-time">{{format.formatTimeWithDate(item.time)}}</view>
+      <view class="comment-content">{{item.content}}</view>
+    </view>
+
+  </view>
+</view>
+<van-divider contentPosition="center" customStyle="color: #fff; border-color: #fff; font-size: 18px;" wx:if="{{normalComments.length}}">
+  仅展示最近十条精彩评论
+</van-divider>
+<van-divider contentPosition="center" customStyle="color: #fff; border-color: #fff; font-size: 18px;" wx:else>
+  无评论
+</van-divider>
