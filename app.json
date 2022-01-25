@@ -7,7 +7,8 @@
     "pages/user/index",
     "pages/playlist-detail/index",
     "pages/ranking-detail/index",
-    "pages/player/index"
+    "pages/player/index",
+    "pages/singer/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -22,7 +23,8 @@
   "tabBar": {
     "color": "#000000",
     "selectedColor": "#26ce8a",
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/index/index",
         "text": "首页",
         "iconPath": "assets/images/tabbar/music_normal.png",

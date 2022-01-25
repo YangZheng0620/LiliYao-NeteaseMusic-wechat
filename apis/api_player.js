@@ -19,14 +19,26 @@ export function getSimiSong(id) {
 }
 
 export function getSingerDetail(id) {
-  return api.GET("/artist/detail", {
+  return api.get("/artist/detail", {
     id
   })
 }
 
-export function getSongComment(id, limit=10) {
+export function getSongComment(id, limit = 10) {
   return api.GET("/comment/music", {
     id,
     limit
+  })
+}
+
+export function getSingerSongs(id) {
+  return api.get("/artists", {
+    id
+  })
+}
+
+export function getSimiSingers(id) {
+  return api.get("/simi/artist", {
+    id
   })
 }

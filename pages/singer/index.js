@@ -1,6 +1,7 @@
 import {
-  getPlaylistDetail
-} from '../../apis/api_music'
+  getSingerSongs,
+  getSimiSingers
+} from '../../apis/api_player'
 
 import {
   rankingStore
@@ -19,8 +20,11 @@ Page({
     menuRight: app.globalData.menuRight, // 导航栏高度
     menuBotton: app.globalData.menuBotton, // 导航栏高度
     menuHeight: app.globalData.menuHeight, // 导航栏高度
-    playlistInfo: {},
     playlistHeaderHeight: 0, //  歌单详情头部高度
+    singerSongsList: [], // 歌手歌曲
+    singerHotSongsList: [], // 歌手精选歌曲
+    simiSingersList: [], // 相似歌手信息
+    singerDescInfo: [], // 歌手信息
   },
 
   /**
@@ -28,18 +32,53 @@ Page({
    */
   onLoad: function (options) {
     const id = options.id
-    // let id = '2537308137'
-    getPlaylistDetail(id).then(res => {
+    console.log(id);
+
+    this.getPageData(id)
+  },
+
+  getPageData: function (id) {
+    // 获取歌手歌曲
+    getSingerSongs(id).then((res) => {
       console.log(res);
       this.setData({
-        playlistInfo: res.playlist
+        singerSongsList: res.hotSongs,
+        singerDescInfo: res.artist
+      })
+
+      let arr = [0, 4, 7]
+
+      // 随机获取歌单列表
+      let randValue = this.getArrRandValue(arr)
+
+      this.setData({
+        singerHotSongsList: res.hotSongs.splice(randValue, 4)
       })
     })
 
-    this.getPlaylistHeaderHeight()
+    // 获取相似歌手信息
+    getSimiSingers(id).then((res) => {
+      console.log(res);
+      this.setData({getSimiSingers: res.artists})
+    })
+
   },
-  handleBackBtnClick: function () {
-    wx.navigateBack()
+
+  // 获取数组随机值
+  getArrRandValue: function (arr) {
+    if (arr.length < 1) {
+      return '';
+    }
+    let index = Math.floor((Math.random() * arr.length));
+    return arr[index];
+  },
+
+  handleSingerInfoBtn: function(event) {
+    const id = event.currentTarget.dataset.id
+    console.log(id);
+    wx.navigateTo({
+      url: '/pages/singer/index?id=' + id,
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -89,22 +128,9 @@ Page({
   onShareAppMessage: function () {
 
   },
-  // 获取歌单详情头部高度
-  getPlaylistHeaderHeight: function () {
-    const query = wx.createSelectorQuery()
-    query.select('.playlist-header').boundingClientRect()
-    query.exec((res) => {
-      this.setData({
-        playlistHeaderHeight: res[0].height + 20
-      })
-      rankingStore.onState("moveDistance", (moveDistance) => {
-        this.setData({
-          playlistHeaderHeight: res[0].height + 20 + moveDistance
-        })
-      })
-    })
+  handleBackBtnClick: function () {
+    wx.navigateBack()
   },
-  // 回到首页
   backToIndex: function () {
     wx.reLaunch({
       url: '../index/index'

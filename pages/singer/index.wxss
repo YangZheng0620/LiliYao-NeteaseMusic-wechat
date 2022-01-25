@@ -1,0 +1,210 @@
+/* 顶部状态栏 */
+.nav-bar {
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  /* background: #999999; */
+  width: 100%;
+}
+
+/* 胶囊按钮区域 */
+.nav-bar .menu-bar {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  /* background: #333; */
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* 导航栏按钮 */
+.nav-bar .menu-bar .left {
+  display: flex;
+  flex: 1;
+}
+
+/* 导航栏标题 */
+.nav-bar .menu-bar .title {
+  flex: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+}
+
+/* 导航栏占位 */
+.nav-bar .menu-bar .right {
+  flex: 1;
+}
+
+
+/* 歌单头部 */
+.playlist-header {}
+
+.playlist-header .image {
+  width: 100%;
+}
+
+/* 歌手信息页面 */
+.singer-content {
+  width: 100%;
+}
+
+.van-tabs-class {
+  background-color: #fafafa;
+}
+
+.singer-content .desc-info {
+  margin: 30rpx;
+}
+
+.singer-name {
+  margin: 30rpx;
+  font-size: 56rpx;
+  font-weight: 700;
+  text-align: center;
+}
+
+
+
+/* 简介 */
+.desc-info .desc {
+  background: rgba(0, 0, 0, .3);
+  border-radius: 22rpx;
+  padding: 30rpx 60rpx 30rpx 30rpx;
+  margin-bottom: 40rpx;
+}
+
+.desc-info .desc .title {
+  font-size: 44rpx;
+  font-weight: 700;
+  height: 80rpx;
+  line-height: 60rpx;
+  box-sizing: border-box;
+  white-space: nowrap;
+  color: #fff;
+}
+
+.desc-info .desc .desc-content {
+  text-align: left;
+}
+
+/* .desc-info .bg2-info .songs-info .image {
+  width: 110rpx;
+  height: 90rpx;
+  border-radius: 20rpx;
+  margin-right: 20rpx;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+} */
+
+.desc-info .hot-songs {
+  background: rgba(0, 0, 0, .3);
+  border-radius: 22rpx;
+  padding: 30rpx 60rpx 30rpx 30rpx;
+  margin-bottom: 40rpx;
+}
+
+.desc-info .hot-songs .title {
+  font-size: 44rpx;
+  font-weight: 700;
+  height: 80rpx;
+  line-height: 60rpx;
+  box-sizing: border-box;
+  white-space: nowrap;
+  color: #fff;
+}
+
+.songs .songs-info {
+  font-size: 36rpx;
+  font-weight: 600;
+  margin: 30rpx 0 0 0;
+  display: flex;
+  align-items: center;
+}
+
+.songs .songs-info .image {
+  width: 110rpx;
+  height: 90rpx;
+  border-radius: 20rpx;
+  margin-right: 20rpx;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* 消除 scroll-view 的滚动条 */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.simi {
+  padding: 30rpx 0 30rpx 30rpx;
+}
+
+.simi .album-list {
+  /* vw 是视口宽度，和获取到屏幕宽度的方法达到的效果是一致的 */
+  width: 100vw;
+  white-space: nowrap;
+  position: relative;
+  left: -90rpx;
+}
+
+.simi .title {
+  font-size: 44rpx;
+  font-weight: 700;
+  height: 80rpx;
+  line-height: 60rpx;
+  box-sizing: border-box;
+  margin-bottom: 20rpx;
+}
+
+.simi .album-item {
+  display: flex;
+  vertical-align: top;
+  width: 210rpx;
+  margin-left: 90rpx;
+}
+
+.simi .album-item:last-of-type {
+  margin-right: 20rpx;
+}
+
+.simi .item {
+  display: inline-block;
+  width: 100%;
+  vertical-align: middle;
+  margin-right: 40rpx;
+}
+
+.simi .item:last-of-type {
+  display: inline-block;
+  width: 100%;
+  vertical-align: middle;
+  margin-right: 60rpx;
+}
+
+.simi .top {
+  width: 150rpx;
+  height: 100%;
+}
+
+.simi .top .image {
+  width: 150rpx;
+  height: 135rpx;
+  border-radius: 22rpx;
+  /* background-size: cover; */
+  /* box-shadow: 3px 2px 2px rgba(0, 0, 0, 0.5) */
+}
+
+.simi .top .bottom {
+  width: 100%;
+  font-size: 32rpx;
+  font-weight: 700;
+  text-align: center;
+  /* 显示两行 */
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

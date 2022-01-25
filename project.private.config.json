@@ -47,6 +47,12 @@
           "pathName": "pages/player/index",
           "query": "id=1875023978",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/singer/index",
+          "query": "id=32820626",
+          "scene": null
         }
       ]
     }

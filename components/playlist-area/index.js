@@ -27,10 +27,10 @@ Component({
   methods: {
     handleMenuItemClick: function (event) {
       const item = event.currentTarget.dataset.item
-      console.log(item);
-      // wx.navigateTo({
-      //   url: `/pages/detail-songs/index?id=${item.id}&type=menu`,
-      // });
+      console.log(item.id);
+      wx.navigateTo({
+        url: `/pages/playlist-detail/index?id=${item.id}`,
+      });
     },
   }
 })

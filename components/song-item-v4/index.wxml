@@ -1,0 +1,27 @@
+<!-- 歌手详情精选歌曲 -->
+
+<!-- 导入格式化工具 -->
+<wxs src="../../utils/format.wxs" module="format"></wxs>
+
+<view class="item" bindtap="handleSongItemClick">
+  <view class="image-info">
+    <image class="image" src="{{item.al.picUrl}}"></image>
+  </view>
+
+  <view class="content">
+    <view class="name-info">
+      <scroll-view scroll-x style="width: 100%">
+        <view style="display: flex; align-items: center;">
+          <view class="name">{{item.name}}</view>
+          <view class="tran-name" wx:if="{{item.tns[0]}}" decode="{{true}}">({{item.tns[0]}})</view>
+        </view>
+
+      </scroll-view>
+
+
+    </view>
+    <view class="source">{{item.ar[0].name}}
+      <text wx:if="{{item.al.name}}" decode="{{true}}"> · {{item.al.name}}</text>
+    </view>
+  </view>
+</view>

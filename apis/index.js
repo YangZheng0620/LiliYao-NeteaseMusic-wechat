@@ -1,9 +1,10 @@
-const BASE_URL = 'http://cloud-music.pl-fe.cn' // 接口 BASE_URL 地址
+const BASE_URL = 'http://123.207.32.32:9001' // 接口 BASE_URL 地址
+const BASE_URL2 = 'http://cloud-music.pl-fe.cn'
 
 class REQUEST {
   request(URL, METHOD, PARAMS) {
     // 使用 Promise 获得返回的结果（resolve 和 reject 来接收）
-    return new Promise ((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       wx.request({
         // 基本配置信息
         url: BASE_URL + URL,
@@ -11,12 +12,35 @@ class REQUEST {
         data: PARAMS,
 
         // 成功回调
-        success (res) {
+        success(res) {
           resolve(res.data)
         },
 
         // 失败回调
-        fail (res) {
+        fail(res) {
+          reject(res)
+        }
+
+      })
+    })
+  }
+
+  request2(URL, METHOD, PARAMS) {
+    // 使用 Promise 获得返回的结果（resolve 和 reject 来接收）
+    return new Promise((resolve, reject) => {
+      wx.request({
+        // 基本配置信息
+        url: BASE_URL2 + URL,
+        method: METHOD,
+        data: PARAMS,
+
+        // 成功回调
+        success(res) {
+          resolve(res.data)
+        },
+
+        // 失败回调
+        fail(res) {
           reject(res)
         }
 
@@ -27,6 +51,11 @@ class REQUEST {
   // 封装 GET 请求
   GET(URL, PARAMS) {
     return this.request(URL, 'GET', PARAMS)
+  }
+
+  // 封装 get 请求
+  get(URL, PARAMS) {
+    return this.request2(URL, 'GET', PARAMS)
   }
 
   // 封装 POST 请求
