@@ -69,13 +69,13 @@ page {
 
 .swiper-item .swiper-image {
   width: 100%;
+  
 }
-
 .swiper-item .type {
   position: absolute;
   font-weight: 500;
   right: 0;
-  bottom: 2rpx;
+  bottom: 0;
   color: #fff;
   font-size: 26rpx;
   border-radius: 10rpx;

@@ -1,0 +1,26 @@
+<!-- 播放工具栏 -->
+<view class="play-bar-placeholder" wx:if="{{currentSong.id}}"></view>
+<view class="play-bar" wx:if="{{currentSong.id}}" bindtap="handlePlayBarClick">
+  <view class="left">
+    <image class="album album-anim" style="animation-play-state: {{playAnimState}};" mode="aspectFill" src="{{currentSong.al.picUrl}}"></image>
+    <view class="name" wx:if="{{!isPlaying}}" style="color: black;" scroll-with-animation>
+      <scroll-view scroll-x style="width: 460rpx;">
+        {{currentSong.name}} {{(currentSong.tns[0])}} - <block wx:for="{{currentSong.ar}}" wx:key="index">
+          <text wx:if="{{index === 0}}">{{item.name}} </text>
+          <text wx:else decode = "{{true}}"> / {{item.name}}</text>
+        </block>
+      </scroll-view>
+    </view>
+    <van-notice-bar id="demo" wx:else scrollable="{{ scrollPlaying }}" text="{{currentLyricText}}" style="width: 460rpx;" background="#fafafa" color="#26ce8a" speed="100" />
+    <!-- <view class="name" wx:else>
+      <scroll-view scroll-x style="width: 460rpx;" upper-threshold="50" bindscrolltoupper="aa" scroll-left="{{scrollWidth}}">
+        <text id="demo">{{currentLyricText}}</text>
+      </scroll-view>
+    </view> -->
+
+  </view>
+  <view class="right">
+    <image class="icon play" src="/assets/images/music/{{ isPlaying ? 'pause': 'play' }}_icon.png" catchtap="handlePlayBtnClick"></image>
+    <image class="icon playlist" src="/assets/images/music/playlist_icon.png"></image>
+  </view>
+</view>

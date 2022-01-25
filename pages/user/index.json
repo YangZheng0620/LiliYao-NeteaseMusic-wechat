@@ -2,6 +2,7 @@
   "usingComponents": {
     "van-tab": "@vant/weapp/tab/index",
     "van-tabs": "@vant/weapp/tabs/index",
-    "item-search": "../../components/item-search/index"
+    "item-search": "../../components/item-search/index",
+    "play-bar": "../../components/play-bar/index"
   }
 }

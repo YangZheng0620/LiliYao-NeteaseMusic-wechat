@@ -24,9 +24,9 @@ Component({
     handleSongItemClick: function () {
       const id = this.properties.item.id
       console.log(id);
-      // wx.navigateTo({
-      //   url: '/pages/music-player/index?id=' + id,
-      // })
+      wx.navigateTo({
+        url: '/pages/player/index?id=' + id,
+      })
 
       // // 对歌曲的数据请求和其他操作
       // playerStore.dispatch("playMusicWithSongIdAction", {

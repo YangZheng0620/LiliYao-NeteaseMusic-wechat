@@ -32,7 +32,7 @@
             <scroll-view scroll-x>
               <block wx:for="{{currentSong.ar}}" wx:key="index">
                 <text wx:if="{{index === 0}}">歌手：{{item.name}} </text>
-                <text wx:else>/ {{item.name}}</text>
+                <text wx:else decode = "{{true}}"> / {{item.name}}</text>
               </block>
             </scroll-view>
 
@@ -77,7 +77,7 @@
             <scroll-view scroll-x>
               <block wx:for="{{currentSong.ar}}" wx:key="index">
                 <text wx:if="{{index === 0}}">{{item.name}} </text>
-                <text wx:else>/ {{item.name}}</text>
+                <text wx:else decode = "{{true}}"> / {{item.name}}</text>
               </block>
             </scroll-view>
 

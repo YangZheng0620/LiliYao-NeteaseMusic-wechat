@@ -252,7 +252,7 @@ page {
 }
 
 .slider {
-  margin: 0 0 18rpx 20rpx;
+  margin: 0 10px 18rpx 10rpx;
 }
 
 .time {

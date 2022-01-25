@@ -1,89 +1,93 @@
 <!-- 首页 -->
 <view>
-<!-- 导航栏 -->
-<view class="nav-bar" style="height: {{navBarHeight}}px;">
-  <view class="menu-bar" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px; left:{{menuRight}}px; bottom:{{menuBotton}}px;">
-    <view wx:for="{{navList}}" wx:key="index" data-index="{{index}}" bindtap='switchNav' class="{{currentTab==index?'navbar-selected':'navbar-normal'}}">{{ item.title }}</view>
-    <view class='underline' style="left:{{navbarLeft - 7}}px; width: {{navbarWidth}}px;"></view>
+  <!-- 导航栏 -->
+  <view class="nav-bar" style="height: {{navBarHeight}}px;">
+    <view class="menu-bar" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px; left:{{menuRight}}px; bottom:{{menuBotton}}px;">
+      <view wx:for="{{navList}}" wx:key="index" data-index="{{index}}" bindtap='switchNav' class="{{currentTab==index?'navbar-selected':'navbar-normal'}}">{{ item.title }}</view>
+      <view class='underline' style="left:{{navbarLeft - 7}}px; width: {{navbarWidth}}px;"></view>
+    </view>
   </view>
-</view>
-<view class="text" style="margin-top: {{navBarHeight}}px;">
-  <swiper interval="5000" duration="500" current="{{currentTab}}" bindchange='sliderNav' class="indexStyle">
+  <view class="text" style="margin-top: {{navBarHeight}}px;">
+    <swiper interval="5000" duration="500" current="{{currentTab}}" bindchange='sliderNav' class="indexStyle">
 
-    <swiper-item>
-      <!-- 搜索框 -->
-      <item-search></item-search>
-      <!-- 轮播图 -->
-      <swiper class="swiper" indicator-dots circular autoplay style="height: {{swiperHeight}}px;">
-        <block wx:for="{{banners}}" wx:key="bannerId">
-          <swiper-item class="swiper-item">
-            <image class="swiper-image" src="{{item.pic}}" mode="widthFix" bindload="handleSwiperImageLoaded"></image>
-            <view class="type" style="background: {{item.titleColor}};">
-              <view>{{item.typeTitle}}</view>
-            </view>
-          </swiper-item>
-        </block>
-      </swiper>
+      <swiper-item>
+        <!-- 搜索框 -->
+        <item-search></item-search>
+        <!-- 轮播图 -->
+        <swiper class="swiper" indicator-dots circular autoplay style="height: {{swiperHeight}}px;">
+          <block wx:for="{{banners}}" wx:key="bannerId">
+            <swiper-item class="swiper-item">
+              <image class="swiper-image" src="{{item.pic}}" mode="widthFix" bindload="handleSwiperImageLoaded"></image>
+              <view class="type" style="background: {{item.titleColor}};">
+                <view>{{item.typeTitle}}</view>
+              </view>
 
-      <!-- 推荐歌曲 -->
-      <view class="recommend-song" wx:if="{{recommendSongs.length > 0}}">
-        <item-header title="推荐新歌" bind:click="handleMoreClick"></item-header>
-        <view class="song-list">
-          <block wx:for="{{recommendSongs}}" wx:key="id">
-            <song-item-v1 item="{{item}}"></song-item-v1>
+            </swiper-item>
           </block>
+        </swiper>
+
+        <!-- 推荐歌曲 -->
+        <view class="recommend-song" wx:if="{{recommendSongs.length > 0}}">
+          <item-header title="推荐新歌" bind:click="handleMoreClick"></item-header>
+          <view class="song-list">
+            <block wx:for="{{recommendSongs}}" wx:key="id">
+              <song-item-v1 item="{{item}}"></song-item-v1>
+            </block>
+          </view>
         </view>
-      </view>
-      <!-- 个性推荐 -->
-       <playlist-area class="demo" recommendPlaylists="{{recommendPlaylists}}"></playlist-area>
+        <!-- 个性推荐 -->
+         <playlist-area class="demo" recommendPlaylists="{{recommendPlaylists}}"></playlist-area>
 
-      <!-- 巅峰榜 -->
-      <view class="ranking">
-        <item-header title="巅峰榜"></item-header>
-        <view class="ranking-list">
-          <block wx:for="{{rankings}}" wx:key="index">
-            <ranking-area item="{{item}}" bindtap="handleRankingItemClick" data-idx="{{index}}"></ranking-area>
-          </block>
-          
+        <!-- 巅峰榜 -->
+        <view class="ranking">
+          <item-header title="巅峰榜"></item-header>
+          <view class="ranking-list">
+            <block wx:for="{{rankings}}" wx:key="index">
+              <ranking-area item="{{item}}" bindtap="handleRankingItemClick" data-idx="{{index}}"></ranking-area>
+            </block>
+
+          </view>
         </view>
-      </view>
-    </swiper-item>
+      </swiper-item>
 
 
 
-    <swiper-item>
+      <swiper-item>
 
-             <view>456</view>
-      <view>后天</view>
-      <view>后天</view>
-      <view>后天</view>
-      <view>后天</view>
-      <view>后天</view>
-      <view>后天</view>
-      <view>后天</view>
-      <view>后天</view>
-      <view>后天</view>
-      <view>后天</view>
-      <view>后天</view>
+               <view>456</view>
+        <view>后天</view>
+        <view>后天</view>
+        <view>后天</view>
+        <view>后天</view>
+        <view>后天</view>
+        <view>后天</view>
+        <view>后天</view>
+        <view>后天</view>
+        <view>后天</view>
+        <view>后天</view>
+        <view>后天</view>
 
-      <view>后天</view>
-      <view>后天</view>
-      <view>后天</view>
-      <view>后天</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-       
-    </swiper-item>
+        <view>后天</view>
+        <view>后天</view>
+        <view>后天</view>
+        <view>后天</view>
+        <view>1</view>
+        <view>1</view>
+        <view>1</view>
+        <view>1</view>
+        <view>1</view>
+        <view>1</view>
+        <view>1</view>
+        <view>1</view>
+        <view>1</view>
+        <view>1</view>
+        <view>1</view>
+         
+      </swiper-item>
 
-  </swiper>
-</view>
+    </swiper>
+
+
+  </view>
+  <play-bar></play-bar>
 </view>

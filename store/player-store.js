@@ -34,6 +34,8 @@ const playerStore = new HYEventStore({
 
     singerPic: "",
     singerId: 0,
+
+    currentSong: {},
   },
   actions: {
     playMusicWithSongIdAction(ctx, {
@@ -76,7 +78,13 @@ const playerStore = new HYEventStore({
 
         for (let i = 0; i < transLyrics.length; i++) {
           let index = lyrics.findIndex((value) => value.time == transLyrics[i].time)
-          lyrics[index]["transText"] = transLyrics[i].text
+
+          if (index === -1) {
+
+          } else {
+            lyrics[index]["transText"] = transLyrics[i].text
+          }
+
         }
         // 删除空白歌词
         for (let i = 0; i < lyrics.length; i++) {
@@ -164,6 +172,11 @@ const playerStore = new HYEventStore({
         ctx.isStoping = false
       }
       ctx.isPlaying ? audioContext.play() : audioContext.pause()
+
+      if (ctx.isStoping) {
+        audioContext.seek(ctx.currentTime)
+        ctx.isStoping = false
+      }
     },
 
     changeNewMusicAction(ctx, isNext = true) {

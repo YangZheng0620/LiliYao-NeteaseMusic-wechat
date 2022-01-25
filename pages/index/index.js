@@ -12,7 +12,7 @@ import {
 
 const app = getApp()
 
-const throttleQueryRect = throttle(queryRect) // 使用节流生成新函数来使用
+const throttleQueryRect = throttle(queryRect, 1000, { trailing: true }) // 使用节流生成新函数来使用
 
 Page({
 
@@ -171,7 +171,7 @@ Page({
 
       const rect = res[0]
       this.setData({
-        swiperHeight: rect
+        swiperHeight: rect.height
       })
     })
   },
