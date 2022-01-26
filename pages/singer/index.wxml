@@ -26,7 +26,7 @@
 </view>
 
 <view class="singer-content">
-  <van-tabs active="{{ active }}" nav-class="van-tabs-class" color="#26ce8a" title-active-color="#26ce8a">
+  <van-tabs active="{{ active }}" nav-class="van-tabs-class" color="#26ce8a" title-active-color="#26ce8a" animated swipeable>
     <van-tab title="百科">
       <view class="desc-info">
         <scroll-view scroll-y>
@@ -46,7 +46,7 @@
           <view class="title">
             精选歌曲
           </view>
-          <scroll-view scroll-y style="height: 300rpx;">
+          <scroll-view scroll-y style="height: 350rpx;">
             <block wx:for="{{singerHotSongsList}}" wx:key="id">
               <song-item-v4 item="{{item}}"></song-item-v4>
             </block>
@@ -81,8 +81,20 @@
 
       </view>
     </van-tab>
-    <van-tab title="歌曲">内容 2</van-tab>
-    <van-tab title="专辑">内容 3</van-tab>
+    <van-tab title="歌曲">
+      <view class="song-info">
+        <block wx:for="{{singerSongsList}}" wx:key="id">
+          <song-item-v3 item="{{item}}" showIndex="{{false}}"></song-item-v3>
+        </block>
+      </view>
+    </van-tab>
+    <van-tab title="专辑">
+      <view class="album-info">
+        <block wx:for="{{singerAlbumsList}}" wx:key="id">
+          <song-item-v5 item="{{item}}"></song-item-v5>
+        </block>
+      </view>
+    </van-tab>
     <van-tab title="视频">内容 4</van-tab>
   </van-tabs>
   <!-- <scroll-view scroll-y style="height: 100%;">

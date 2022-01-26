@@ -27,7 +27,7 @@
         {
           "name": "",
           "pathName": "pages/playlist-detail/index",
-          "query": "",
+          "query": "id=5134565770",
           "scene": null
         },
         {
@@ -51,7 +51,7 @@
         {
           "name": "",
           "pathName": "pages/singer/index",
-          "query": "id=32820626",
+          "query": "id=35488854",
           "scene": null
         }
       ]

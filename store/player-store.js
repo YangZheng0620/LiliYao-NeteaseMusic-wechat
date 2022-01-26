@@ -97,7 +97,9 @@ const playerStore = new HYEventStore({
 
       // 2.播放对应id的歌曲
       audioContext.stop()
-      audioContext.src = `https://music.163.com/song/media/outer/url?id=${id}.mp3`
+      // audioContext.src = `https://music.163.com/song/media/outer/url?id=${id}.mp3`
+
+
       audioContext.title = id
       audioContext.autoplay = true
 
@@ -180,6 +182,7 @@ const playerStore = new HYEventStore({
     },
 
     changeNewMusicAction(ctx, isNext = true) {
+
       // 1.获取当前索引
       let index = ctx.playListIndex
 
@@ -201,6 +204,7 @@ const playerStore = new HYEventStore({
 
       // 3.获取歌曲
       let currentSong = ctx.playListSongs[index]
+      console.log(currentSong);
       if (!currentSong) {
         currentSong = ctx.currentSong
       } else {
@@ -213,6 +217,31 @@ const playerStore = new HYEventStore({
         id: currentSong.id,
         isRefresh: true
       })
+
+    },
+
+    selectNewMusicAction(ctx, index) {
+
+      // 1.获取当前索引
+      
+      console.log(index)
+
+      // 3.获取歌曲
+      let currentSong = ctx.playListSongs[index]
+      console.log(currentSong);
+      if (!currentSong) {
+        currentSong = ctx.currentSong
+      } else {
+        // 记录最新的索引
+        ctx.playListIndex = index
+      }
+
+      // 4.播放新的歌曲
+      this.dispatch("playMusicWithSongIdAction", {
+        id: currentSong.id,
+        isRefresh: true
+      })
+
     }
   }
 })

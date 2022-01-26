@@ -3,7 +3,8 @@ import {
 } from '../../apis/api_music'
 
 import {
-  rankingStore
+  rankingStore,
+  playerStore
 } from "../../store/index"
 
 const app = getApp()
@@ -40,6 +41,13 @@ Page({
   },
   handleBackBtnClick: function () {
     wx.navigateBack()
+  },
+
+  handleSongItemClick: function (event) {
+    const index = event.currentTarget.dataset.index
+    console.log(index);
+    playerStore.setState("playListSongs", this.data.playlistInfo.tracks)
+    playerStore.setState("playListIndex", index)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

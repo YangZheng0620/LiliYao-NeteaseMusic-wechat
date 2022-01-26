@@ -85,7 +85,7 @@ page {
   justify-content: space-between;
   box-sizing: border-box;
   padding: 30rpx;
-  
+
 }
 
 .comment .info {
@@ -120,12 +120,12 @@ page {
   align-items: center;
 }
 
-.info .bg-info .singer-name .image{
+.info .bg-info .singer-name .image {
   width: 110rpx;
   height: 90rpx;
   border-radius: 50%;
   margin-right: 20rpx;
-  box-shadow:0 2px 2px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
 }
 
 .info .bg-info .album-name {
@@ -136,12 +136,12 @@ page {
   align-items: center;
 }
 
-.info .bg-info .album-name .image{
+.info .bg-info .album-name .image {
   width: 110rpx;
   height: 90rpx;
   border-radius: 20rpx;
   margin-right: 20rpx;
-  box-shadow:0 2px 2px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
 }
 
 /* 相关歌曲 */
@@ -174,7 +174,7 @@ page {
   height: 90rpx;
   border-radius: 20rpx;
   margin-right: 20rpx;
-  box-shadow:0 2px 2px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -336,16 +336,82 @@ page {
 
 .wrapper {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-flow: column;
+  justify-content: left;
   height: 100%;
-  box-sizing: border-box;
-  padding: 30rpx 40rpx;
+  padding: 30rpx 30rpx;
+}
+
+.operation-mini {
+  width: 96%;
+  height: 120rpx;
+  background: rgba(255, 255, 255, .3);
+  border-radius: 22rpx;
+  /* color: #26ce8a; */
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  margin-bottom: 10rpx;
+  padding: 0 10rpx;
+  font-size: 40rpx;
+  font-weight: 700;
+}
+
+.operation-mini .operation-info {
+  display: flex;
+  justify-content: space-between;
+  width: 96%;
+  align-items: center;
+}
+
+.operation-mini .operation-name {
+  display: flex;
+  align-items: center;
+}
+
+.operation-mini .btn {
+  display: inline-block;
+  width: 60rpx;
+  height: 60rpx;
+  padding: 0;
+}
+
+.operation-mini .btn-mode {
+  width: 80rpx;
+  height: 80rpx;
 }
 
 .block {
-  width: 120px;
-  height: 120px;
-  background-color: #fff;
+  width: 96%;
+  height: 120rpx;
+  background: rgba(255, 255, 255, .3);
+  border-radius: 22rpx;
+  /* color: #26ce8a; */
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  margin-bottom: 10rpx;
+  padding: 0 10rpx;
+  font-size: 40rpx;
+  font-weight: 700;
+}
+
+
+.block .song-name {
+  white-space: nowrap;
+  margin-left: 18rpx;
+}
+
+.block .song-name-active {
+  white-space: nowrap;
+  margin-left: 18rpx;
   color: #26ce8a;
+}
+
+
+.block .singer-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
 }

@@ -36,9 +36,7 @@
   font-size: 26rpx;
   margin-left: 10rpx;
   color: #999999;
-  overflow: hidden;
   white-space: nowrap;
-  text-overflow: ellipsis;
 }
 
 .info .source {
@@ -47,7 +45,7 @@
   font-size: 24rpx;
   color: #666;
   margin-top: 10rpx;
-  
+  min-width: 38rpx;
 }
 
 /* 专辑 */
@@ -55,6 +53,7 @@
   width: 38rpx;
   height: 22rpx;
   margin-right: 10rpx;
+  flex-shrink: 0;
 }
 
 .source .source-name {

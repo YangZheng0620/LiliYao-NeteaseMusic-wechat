@@ -1,0 +1,20 @@
+<!-- 专辑列表 歌手详情 -->
+<!-- 导入格式化工具 -->
+<wxs src="../../utils/format.wxs" module="format"></wxs>
+
+<view class="item" bindtap="handleSongItemClick" data-id="{{item.id}}">
+  <view class="image-info">
+    <image class="image" src="{{item.picUrl}}"></image>
+  </view>
+
+  <view class="content">
+    <view class="name-info">
+      <view class="name">{{item.name}}</view>
+      <view class="tran-name" wx:if="{{item.alias[0]}}">({{item.alias[0]}})</view>
+    </view>
+    <view class="source">{{format.formatTime(item.publishTime)}} · {{item.size + '首'}}</view>
+  </view>
+  <view class="arrow">
+    <image class="icon" src="/assets/images/icons/arrow-right.png"></image>
+  </view>
+</view>

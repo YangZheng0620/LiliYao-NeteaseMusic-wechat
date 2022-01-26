@@ -39,7 +39,7 @@ Page({
     playModeName: "order",
 
     isMusicLyric: true,
-    currentPage: 0,
+    currentPage: 1,
     contentHeight: 0,
     sliderValue: 0,
     isSliderChanging: false,
@@ -51,6 +51,8 @@ Page({
     normalComments: [],
     songId: 0,
     show: false,
+    canPlaySongList: [],
+    canPlaySongCurrentIndex: 0,
   },
 
   /**
@@ -105,6 +107,22 @@ Page({
       contentHeight,
       isMusicLyric: deviceRadio >= 2
     })
+
+    playerStore.onState("playListSongs", (res) => {
+      console.log(res);
+      this.setData({
+        canPlaySongList: res
+      })
+    })
+
+    playerStore.onState("playListIndex", (res) => {
+      console.log(res);
+      this.setData({
+        canPlaySongCurrentIndex: res
+      })
+    })
+
+
   },
   // 获取相似歌曲
   getSimiSongs: function (id) {
@@ -179,6 +197,12 @@ Page({
   },
   handleNextBtnClick: function () {
     playerStore.dispatch("changeNewMusicAction")
+  },
+
+  handleSelectBtnClick: function (event) {
+    const index = event.currentTarget.dataset.index
+    console.log(index);
+    playerStore.dispatch("selectNewMusicAction", index)
   },
 
   // ========================   数据监听   ======================== 

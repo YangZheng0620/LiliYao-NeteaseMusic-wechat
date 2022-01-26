@@ -1,6 +1,7 @@
 import {
   getSingerSongs,
-  getSimiSingers
+  getSimiSingers,
+  getSingerAlbums
 } from '../../apis/api_player'
 
 import {
@@ -25,6 +26,7 @@ Page({
     singerHotSongsList: [], // 歌手精选歌曲
     simiSingersList: [], // 相似歌手信息
     singerDescInfo: [], // 歌手信息
+    singerAlbumsList: [], // 歌手专辑信息
   },
 
   /**
@@ -59,7 +61,17 @@ Page({
     // 获取相似歌手信息
     getSimiSingers(id).then((res) => {
       console.log(res);
-      this.setData({getSimiSingers: res.artists})
+      this.setData({
+        getSimiSingers: res.artists
+      })
+    })
+
+    // 获取歌手专辑
+    getSingerAlbums(id).then((res) => {
+      console.log(res);
+      this.setData({
+        singerAlbumsList: res.hotAlbums
+      })
     })
 
   },
@@ -73,7 +85,7 @@ Page({
     return arr[index];
   },
 
-  handleSingerInfoBtn: function(event) {
+  handleSingerInfoBtn: function (event) {
     const id = event.currentTarget.dataset.id
     console.log(id);
     wx.navigateTo({

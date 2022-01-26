@@ -42,3 +42,9 @@ export function getSimiSingers(id) {
     id
   })
 }
+
+export function getSingerAlbums(id) {
+  return api.get("/artist/album", {
+    id
+  })
+}

@@ -25,14 +25,19 @@
       <view class="content">
         <view class="bg-info">
           <view class="title">
-            <scroll-view scroll-x>{{currentSong.name}} {{(currentSong.tns[0])}}</scroll-view>
+            <scroll-view scroll-x>
+              <view>
+                {{currentSong.name}}
+                <text wx:if="{{currentSong.tns[0]}}">({{currentSong.tns[0]}})</text>
+              </view>
+            </scroll-view>
           </view>
           <view class="singer-name">
             <image class="image" mode="aspectFill" src="{{singerPic}}"></image>
             <scroll-view scroll-x>
               <block wx:for="{{currentSong.ar}}" wx:key="index">
                 <text wx:if="{{index === 0}}">歌手：{{item.name}} </text>
-                <text wx:else decode = "{{true}}"> / {{item.name}}</text>
+                <text wx:else decode="{{true}}"> / {{item.name}}</text>
               </block>
             </scroll-view>
 
@@ -69,7 +74,12 @@
       </view>
       <view class="info">
         <view class="title">
-          <scroll-view scroll-x>{{currentSong.name}} {{(currentSong.tns[0])}}</scroll-view>
+          <scroll-view scroll-x>
+            <view>
+              {{currentSong.name}}
+              <text wx:if="{{currentSong.tns[0]}}">({{currentSong.tns[0]}})</text>
+            </view>
+          </scroll-view>
 
         </view>
         <view class="subtitle">
@@ -77,7 +87,7 @@
             <scroll-view scroll-x>
               <block wx:for="{{currentSong.ar}}" wx:key="index">
                 <text wx:if="{{index === 0}}">{{item.name}} </text>
-                <text wx:else decode = "{{true}}"> / {{item.name}}</text>
+                <text wx:else decode="{{true}}"> / {{item.name}}</text>
               </block>
             </scroll-view>
 
@@ -108,18 +118,32 @@
       </view>
       <van-overlay show="{{ show }}" bind:click="onClickHide" lock-scroll="{{false}}">
         <view class="wrapper">
+          <view class="operation-mini">
+            <view class="operation-info" >
+              <view class="operation-name">
+                <image class="btn btn-mode" src="../../assets/images/player/play_{{playModeName}}.png" catchtap="handleModeBtnClick"></image>
+                <text wx:if="{{playModeName === 'order'}}">顺序播放</text>
+                <text wx:elif="{{playModeName === 'random'}}">随机播放</text>
+                <text wx:else>单曲循环</text>
+              </view>
+              <image class="btn btn-mode" src="../../assets/images/player/play_{{playModeName}}.png" catchtap="handleModeBtnClick"></image>
+            </view>
+          </view>
           <scroll-view scroll-y style="height: 100%;">
-            <view class="block">123</view>
-            <view class="block">123</view>
-            <view class="block">123</view>
-            <view class="block">45</view>
-            <view class="block">1341</view>
-            <view class="block">123213</view>
-            <view class="block">asda</view>
+
+            <view class="block" wx:for="{{canPlaySongList}}" wx:key="id" catchtap="handleSelectBtnClick" data-index="{{index}}">
+              <view class="song-name {{canPlaySongCurrentIndex === index ? 'song-name-active' : ''}}">{{item.name}}</view>
+              <view class="singer-name {{canPlaySongCurrentIndex === index ? 'song-name-active' : ''}}">
+                <block wx:for="{{item.ar}}" wx:key="index">
+                  <text wx:if="{{index === 0}}" decode="{{true}}"> - {{item.name}} </text>
+                  <text wx:else decode="{{true}}"> / {{item.name}}</text>
+                </block>
+              </view>
+            </view>
           </scroll-view>
         </view>
       </van-overlay>
-      
+
     </scroll-view>
   </swiper-item>
   <swiper-item class="lyric">

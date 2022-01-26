@@ -12,7 +12,11 @@ Component({
     item: {
       type: Object,
       value: {}
-    }
+    },
+    showIndex: {
+      type: Boolean,
+      value: true
+    },
   },
 
   /**
@@ -26,6 +30,12 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    
+    handleSongItemClick: function(event) {
+      console.log(event.currentTarget.dataset.id);
+      const id = event.currentTarget.dataset.id
+      wx.navigateTo({
+        url: '/pages/player/index?id=' + id,
+      })
+    }
   }
 })

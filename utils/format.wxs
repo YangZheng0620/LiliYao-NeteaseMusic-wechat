@@ -48,7 +48,7 @@ function formatTime(time) {
   return formatTime
 }
 
-// 时间戳格式化（不带日期）
+// 时间戳格式化（带日期）
 function formatTimeWithDate(time) {
   if (!time) return
   // 判断时间戳是否为 13 位数，如果不是则 *1000

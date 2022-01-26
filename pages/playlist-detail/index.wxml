@@ -25,6 +25,6 @@
 
 <view class="playlist" style="margin-top: {{playlistHeaderHeight}}px;transition: 0.5s margin ease;">
   <block wx:for="{{playlistInfo.tracks}}" wx:key="id">
-    <song-item-v3 item="{{item}}" index="{{index+1}}"></song-item-v3>
+    <song-item-v3 item="{{item}}" index="{{index+1}}" bindtap="handleSongItemClick" data-index="{{index}}"></song-item-v3>
   </block>
 </view>
