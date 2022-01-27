@@ -38,7 +38,7 @@
 
             </view>
             <view class="desc-content">
-              <text>{{singerDescInfo.briefDesc}}</text>
+              <text user-select="{{true}}">{{singerDescInfo.briefDesc}}</text>
             </view>
           </view>
         </scroll-view>

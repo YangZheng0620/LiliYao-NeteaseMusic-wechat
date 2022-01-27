@@ -3,7 +3,8 @@ import {
   getRecommendSongs,
   getRecommendPlaylists,
   getAllTopList,
-  getTopListDetail
+  getTopListDetail,
+  getArtistList
 } from '../../apis/api_music'
 import queryRect from '../../utils/query-rect'
 import throttle from '../../utils/throttle'
@@ -51,6 +52,66 @@ Page({
       2: {}
     }, // 榜单数据（初始化数据保证数据顺序）
     allRankingList: [], // 所有榜单数据
+    areaList: [{
+        index: 0,
+        name: '全部',
+        value: -1
+      },
+      {
+        index: 1,
+        name: '华语',
+        value: 7
+      },
+      {
+        index: 2,
+        name: '欧美',
+        value: 96
+      },
+      {
+        index: 3,
+        name: '日本',
+        value: 8
+      },
+      {
+        index: 4,
+        name: '韩国',
+        value: 16
+      },
+      {
+        index: 5,
+        name: '其他',
+        value: 0
+      },
+    ],
+    typeList: [{
+        index: 0,
+        name: '全部',
+        value: -1
+      },
+      {
+        index: 1,
+        name: '男',
+        value: 1
+      },
+      {
+        index: 2,
+        name: '女',
+        value: 2
+      },
+      {
+        index: 3,
+        name: '乐队',
+        value: 3
+      },
+    ],
+
+    currentAreaIndex: 0, // 歌手地区索引
+    currentTypeIndex: 0, // 歌手类型索引
+    currentAreaValue: -1, // 歌手地区值
+    currentTypeValue: -1, // 歌手类型值
+    currentAreaName: '全部', // 歌手地区名字
+    currentTypeName: '全部', // 歌手类型名字
+    singerTypeList: [], // 歌手列表
   },
 
   /**
@@ -112,7 +173,12 @@ Page({
       })
     })
 
-
+    // 获取歌手列表
+    getArtistList(this.data.currentTypeValue, 30, 0, this.data.currentAreaValue).then(res => {
+      this.setData({
+        singerTypeList: res.artists
+      })
+    })
 
 
   },
@@ -193,6 +259,51 @@ Page({
       this.setData({
         swiperHeight: rect.height
       })
+    })
+  },
+
+
+  handleAreaActiveItem: function (event) {
+    // console.log(event.currentTarget.dataset.value);
+    const value = event.currentTarget.dataset.value
+    const index = event.currentTarget.dataset.index
+    const name = event.currentTarget.dataset.name
+    this.setData({
+      currentAreaIndex: index,
+      currentAreaValue: value,
+      currentAreaName: name
+    })
+
+    getArtistList(this.data.currentTypeValue, 30, 0, value).then(res => {
+      this.setData({
+        singerTypeList: res.artists
+      })
+    })
+  },
+
+  handleTypeActiveItem: function (event) {
+    // console.log(event.currentTarget.dataset.value);
+    const value = event.currentTarget.dataset.value
+    const index = event.currentTarget.dataset.index
+    const name = event.currentTarget.dataset.name
+    this.setData({
+      currentTypeIndex: index,
+      currentTypeValue: value,
+      currentTypeName: name
+    })
+
+    getArtistList(value, 30, 0, this.data.currentAreaValue).then(res => {
+      this.setData({
+        singerTypeList: res.artists
+      })
+    })
+  },
+
+  handleSingerIdItem: function(event) {
+    console.log(event.currentTarget.dataset.id);
+    const id = event.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '/pages/singer/index?id=' + id,
     })
   },
 

@@ -168,8 +168,8 @@ page {
 }
 
 .singer-area .area{
-  font-size: 36rpx;
-  padding: 20rpx;
+  font-size: 32rpx;
+  padding: 16rpx 20rpx;
   border-radius: 36rpx;
   background: rgba(0, 0, 0, 0.1);
   margin-right: 10rpx;
@@ -179,8 +179,8 @@ page {
 }
 
 .singer-area .area:last-of-type{
-  font-size: 36rpx;
-  padding: 20rpx;
+  font-size: 32rpx;
+  padding: 16rpx 20rpx;
   border-radius: 36rpx;
   background: rgba(0, 0, 0, 0.1);
   margin-right: 0;
@@ -191,15 +191,57 @@ page {
 }
 
 .singer-type .type{
-  font-size: 36rpx;
-  padding: 20rpx;
+  font-size: 32rpx;
+  padding: 16rpx 20rpx;
   border-radius: 36rpx;
   background: rgba(0, 0, 0, 0.1);
   margin-right: 10rpx;
   width: 70rpx;
   text-align: center;
+  margin-bottom: 20rpx;
 }
 
 .singer-area-active {
   background: #26ce8a;
 }
+
+
+.singer-team {
+  font-size: 36rpx;
+  font-weight: 700;
+  margin: 10rpx 0 30rpx 0;
+}
+
+.singer-item {
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, .1);
+  border-radius: 22rpx;
+  margin-bottom: 20rpx;
+}
+
+.singer-item .image {
+  border-radius: 50%;
+  height: 130rpx;
+  width: 155rpx;
+  margin-right: 40rpx;
+  
+}
+
+.singer-item .singer-name {
+  font-size: 36rpx;
+  font-weight: 700;
+}
+
+.singer-item .trans-name {
+  font-size: 26rpx;
+  color: #999999;
+}
+
+/* 消除 scroll-view 的滚动条 */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+

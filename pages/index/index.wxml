@@ -77,7 +77,7 @@
           <view class="alllist">
             <item-header title="所有榜单" showRightItem="{{false}}"></item-header>
             <view class="allrank-list">
-              <block wx:for="{{allRankingList}}" wx:key="id" >
+              <block wx:for="{{allRankingList}}" wx:key="id">
                 <view class="album" data-id="{{item.id}}" bindtap="handleAllRankingItemClick">
                   <image class="image" src="{{item.coverImgUrl}}" mode="aspectFill"></image>
                   <view class="play-counter">
@@ -101,46 +101,36 @@
           <!-- 搜索框 -->
           <item-search></item-search>
           <view class="singer-area">
-            <view class="area" style="background: #26ce8a;">全部</view>
-            <view class="area">华语</view>
-            <view class="area">欧美</view>
-            <view class="area">日本</view>
-            <view class="area">韩国</view>
-            <view class="area">其他</view>
+            <block wx:for="{{areaList}}" wx:key="index">
+              <view class="area" data-index="{{item.index}}" data-value="{{item.value}}" data-name="{{item.name}}" bindtap="handleAreaActiveItem" style="{{currentAreaIndex === index ? 'background: #26ce8a' : ''}}">{{item.name}}</view>
+            </block>
           </view>
           <view class="singer-type">
-            <view class="type">全部</view>
-            <view class="type">男</view>
-            <view class="type">女</view>
-            <view class="type">乐队</view>
+            <block wx:for="{{typeList}}" wx:key="index">
+              <view class="type" data-index="{{item.index}}" data-value="{{item.value}}" data-name="{{item.name}}" bindtap="handleTypeActiveItem" style="{{currentTypeIndex === index ? 'background: #26ce8a' : ''}}">{{item.name}}</view>
+            </block>
           </view>
-          <view>后天</view>
-          <view>后天</view>
-          <view>后天</view>
-          <view>后天</view>
-          <view>后天</view>
-          <view>后天</view>
-          <view>后天</view>
-          <view>后天</view>
-          <view>后天</view>
-          <view>后天</view>
-          <view>后天</view>
+          <view class="singer-team">
+            <text wx:if="{{currentAreaName !== '全部'}}">{{currentAreaName}}</text>
+            <text wx:if="{{currentAreaName !== '全部' && currentTypeName !== '全部'}}" decode="{{true}}"> - </text>
+            <text wx:if="{{currentTypeName !== '全部'}}">{{currentTypeName}}</text>
+          </view>
+          <view class="singer-content">
+            <block wx:for="{{singerTypeList}}" wx:key="id">
+              <view class="singer-item" bindtap="handleSingerIdItem" data-id="{{item.id}}">
+                <image class="image" src="{{item.picUrl}}"></image>
+                <scroll-view scroll-x style="width: 96%;">
+                  <block style="display: flex; align-items: center;">
+                    <text class="singer-name">{{item.name}}</text>
+                    <text class="trans-name" wx:if="{{item.transNames}}" decode="{{true}}"> - {{item.transNames}}</text>
+                  </block>
 
-          <view>后天</view>
-          <view>后天</view>
-          <view>后天</view>
-          <view>后天</view>
-          <view>1</view>
-          <view>1</view>
-          <view>1</view>
-          <view>1</view>
-          <view>1</view>
-          <view>1</view>
-          <view>1</view>
-          <view>1</view>
-          <view>1</view>
-          <view>1</view>
-          <view>1</view>
+                </scroll-view>
+
+              </view>
+            </block>
+          </view>
+          <view class="play-bar-placeholder"></view>
         </scroll-view>
 
          

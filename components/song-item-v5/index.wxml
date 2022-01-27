@@ -9,8 +9,14 @@
 
   <view class="content">
     <view class="name-info">
-      <view class="name">{{item.name}}</view>
-      <view class="tran-name" wx:if="{{item.alias[0]}}">({{item.alias[0]}})</view>
+      <scroll-view scroll-x>
+        <view style="display: flex; align-items: center;">
+          <view class="name">{{item.name}}</view>
+          <view class="tran-name" wx:if="{{item.alias[0]}}">({{item.alias[0]}})</view>
+        </view>
+
+      </scroll-view>
+
     </view>
     <view class="source">{{format.formatTime(item.publishTime)}} · {{item.size + '首'}}</view>
   </view>

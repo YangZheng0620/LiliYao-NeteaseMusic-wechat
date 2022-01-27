@@ -39,3 +39,13 @@ export function getTopListDetail(id) {
       id,
   })
 }
+
+// 获取歌手分类详情
+export function getArtistList(type, limit = 30, offset = 0, area) {
+  return api.get('/artist/list', {
+      type,
+      limit,
+      offset,
+      area
+  })
+}
