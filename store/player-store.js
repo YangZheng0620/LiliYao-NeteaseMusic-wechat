@@ -73,7 +73,9 @@ const playerStore = new HYEventStore({
       getSongLyric(id).then(res => {
         const lyricString = res.lrc.lyric
         const lyricTransString = res.tlyric.lyric
+        
         const lyrics = parseLyric(lyricString)
+        
         const transLyrics = parseLyric(lyricTransString) // 翻译歌词
 
         for (let i = 0; i < transLyrics.length; i++) {
@@ -92,12 +94,17 @@ const playerStore = new HYEventStore({
             lyrics.splice(i, 1);
           }
         }
-        ctx.lyricInfos = lyrics
+        if (lyrics === undefined) {
+          ctx.lyricInfos = []
+        } else {
+          ctx.lyricInfos = lyrics
+        }
+        
       })
 
       // 2.播放对应id的歌曲
       audioContext.stop()
-      // audioContext.src = `https://music.163.com/song/media/outer/url?id=${id}.mp3`
+      audioContext.src = `https://music.163.com/song/media/outer/url?id=${id}.mp3`
 
 
       audioContext.title = id
@@ -167,6 +174,7 @@ const playerStore = new HYEventStore({
 
     changeMusicPlayStatusAction(ctx, isPlaying = true) {
       ctx.isPlaying = isPlaying
+      console.log(ctx.isPlaying, ctx.isStoping);
       if (ctx.isPlaying && ctx.isStoping) {
         audioContext.src = `https://music.163.com/song/media/outer/url?id=${ctx.id}.mp3`
         audioContext.title = currentSong.name

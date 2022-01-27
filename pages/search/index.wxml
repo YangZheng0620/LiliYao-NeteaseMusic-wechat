@@ -3,7 +3,10 @@
 <!-- 导航栏 -->
 <view class="nav-bar" style="height: {{navBarHeight}}px;">
   <view class="menu-bar" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px; left:{{menuRight}}px; bottom:{{menuBotton}}px;">
-    <iconfont name="arrow_left_fat"></iconfont>123
+    <view class="left">
+      <iconfont name="arrow_left_fat" bindtap="handleBackBtnClick"></iconfont>
+      <iconfont name="home-hover" bindtap="backToIndex"></iconfont>
+    </view>
   </view>
 </view>
 
@@ -12,7 +15,7 @@
   <view class="search">
     <van-search value="{{ searchKeywords }}" placeholder="搜索 音乐/视频/歌手/歌单/电台" shape="round" background="#fafafa" bind:change="handleSearchChange" show-action="{{ searchKeywords }}" bind:search="handleSearchAction" />
   </view>
-  
+
 
 
 
@@ -21,7 +24,7 @@
     <item-header title="热门搜索" showRightItem="{{ false }}"></item-header>
     <view class="hotList">
       <block wx:for="{{ hotKeywords }}" wx:key="first">
-        <view class="hotItem">
+        <view class="hotItem" bindtap="handleKeywordItemClick" data-keyword="{{item.first}}">
           {{ item.first }}
         </view>
       </block>

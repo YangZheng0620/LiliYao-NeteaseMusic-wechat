@@ -396,6 +396,10 @@ page {
   font-weight: 700;
 }
 
+.block .noSongs {
+  margin: 0 auto;
+  color: #fafafa;
+}
 
 .block .song-name {
   white-space: nowrap;
@@ -411,7 +415,11 @@ page {
 
 .block .singer-name {
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  /* overflow: hidden;
+  text-overflow: ellipsis; */
 
+}
+
+.play-bar-placeholder {
+  height: 40rpx;
 }

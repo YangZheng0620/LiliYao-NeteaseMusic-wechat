@@ -8,7 +8,7 @@
 <view class="nav-bar" style="height: {{navBarHeight}}px;">
   <view class="menu-bar" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px; left:{{menuRight}}px; bottom:{{menuBotton}}px;">
     <view class="left">
-      <iconfont name="arrow_left_fat"></iconfont>
+      <iconfont name="arrow_left_fat" bindtap="handleBackBtnClick"></iconfont>
       <iconfont name="home-hover" bindtap="backToIndex"></iconfont>
     </view>
 
@@ -23,7 +23,7 @@
 </view>
 
 <view class="rankingList" style="margin-top: {{rankingHeaderHeight}}px;transition: 1s margin ease;">
-  <block wx:for="{{rankingInfo.tracks}}" wx:key="id">
-    <song-item-v2 item="{{item}}" index="{{index+1}}"></song-item-v2>
+  <block wx:for="{{rankingSongList}}" wx:key="id">
+    <song-item-v2 item="{{item}}" index="{{index+1}}" bindtap="handleSongItemClick" data-index="{{index}}"></song-item-v2>
   </block>
 </view>

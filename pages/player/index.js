@@ -190,6 +190,10 @@ Page({
 
   handlePlayBtnClick: function () {
     playerStore.dispatch("changeMusicPlayStatusAction", !this.data.isPlaying)
+
+
+
+
   },
 
   handlePrevBtnClick: function () {
@@ -283,7 +287,6 @@ Page({
   },
 
   onClickShow() {
-    console.log(123);
     this.setData({
       show: true
     });

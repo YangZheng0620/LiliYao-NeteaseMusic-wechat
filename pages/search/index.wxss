@@ -19,6 +19,13 @@
   color: #fff;
   font-size: 20px;
   font-weight: 700;
+  align-items: center;
+}
+
+/* 导航栏按钮 */
+.nav-bar .menu-bar .left {
+  display: flex;
+  flex: 1;
 }
 
 /* 搜索区域 */

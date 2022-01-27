@@ -1,6 +1,6 @@
 /* 播放工具栏 */
 .play-bar-placeholder {
-  height: 44px;
+  height: 40rpx;
 }
 
 .play-bar {
@@ -72,3 +72,92 @@
 .album-anim {
   animation: albumRotate 16s linear infinite;
 }
+
+.wrapper {
+  display: flex;
+  flex-flow: column;
+  justify-content: left;
+  height: 100%;
+  padding: 30rpx 30rpx;
+}
+
+.operation-mini {
+  width: 96%;
+  height: 120rpx;
+  background: rgba(255, 255, 255, .3);
+  border-radius: 22rpx;
+  /* color: #26ce8a; */
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  margin-bottom: 10rpx;
+  padding: 0 10rpx;
+  font-size: 40rpx;
+  font-weight: 700;
+}
+
+.operation-mini .operation-info {
+  display: flex;
+  justify-content: space-between;
+  width: 96%;
+  align-items: center;
+}
+
+.operation-mini .operation-name {
+  display: flex;
+  align-items: center;
+  color: #fafafa;
+}
+
+.operation-mini .btn {
+  display: inline-block;
+  width: 60rpx;
+  height: 60rpx;
+  padding: 0;
+}
+
+.operation-mini .btn-mode {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.block {
+  width: 96%;
+  height: 120rpx;
+  background: rgba(255, 255, 255, .3);
+  border-radius: 22rpx;
+  /* color: #26ce8a; */
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  margin-bottom: 10rpx;
+  padding: 0 10rpx;
+  font-size: 40rpx;
+  font-weight: 700;
+}
+
+.block .noSongs {
+  margin: 0 auto;
+  color: #fafafa;
+}
+
+.block .song-name {
+  white-space: nowrap;
+  margin-left: 18rpx;
+  color: #fafafa;
+}
+
+.block .singer-name {
+  white-space: nowrap;
+  /* overflow: hidden;
+  text-overflow: ellipsis; */
+  color: #fafafa;
+}
+
+.block .song-name-active {
+  white-space: nowrap;
+  margin-left: 18rpx;
+  color: #26ce8a;
+}
+
+

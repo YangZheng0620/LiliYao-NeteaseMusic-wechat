@@ -1,5 +1,6 @@
 import {
-  rankingStore
+  rankingStore,
+  playerStore
 } from "../../store/index"
 
 const app = getApp()
@@ -18,6 +19,7 @@ Page({
     rankingInfo: {},
     rankingHeaderHeight: 0, //  榜单详情头部高度
     rankingName: "", // 榜单名字
+    rankingSongList: [], // 歌单歌曲列表
   },
 
   /**
@@ -29,17 +31,22 @@ Page({
       rankingName: name
     })
 
-    rankingStore.dispatch("getRankingDataAction")
+    // rankingStore.dispatch("getRankingDataAction")
     // 获取数据
     rankingStore.onState(name, this.getRankingDataHandler)
 
 
     this.getPlaylistHeaderHeight()
   },
-
+  handleSongItemClick: function (event) {
+    const index = event.currentTarget.dataset.index
+    playerStore.setState("playListSongs", this.data.rankingSongList)
+    playerStore.setState("playListIndex", index)
+  },
   getRankingDataHandler: function (res) {
     this.setData({
-      rankingInfo: res
+      rankingInfo: res,
+      rankingSongList: res.tracks.splice(0, 50)
     })
   },
 
@@ -57,7 +64,7 @@ Page({
         })
       })
     })
-    
+
 
   },
   /**
@@ -109,5 +116,13 @@ Page({
 
   },
 
-
+  // 回到首页
+  backToIndex: function () {
+    wx.reLaunch({
+      url: '../index/index'
+    })
+  },
+  handleBackBtnClick: function () {
+    wx.navigateBack()
+  },
 })

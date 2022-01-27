@@ -153,7 +153,9 @@ Page({
   // 点击巅峰榜触发
   handleRankingItemClick: function (event) {
     const idx = event.currentTarget.dataset.idx
+    
     const rankingName = rankingMap[idx]
+    console.log(rankingName);
     this.navigateToDetailSongPage(rankingName)
   },
 

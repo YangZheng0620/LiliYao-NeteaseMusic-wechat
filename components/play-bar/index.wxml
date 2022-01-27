@@ -1,13 +1,16 @@
 <!-- 播放工具栏 -->
-<view class="play-bar-placeholder" wx:if="{{currentSong.id}}"></view>
-<view class="play-bar" wx:if="{{currentSong.id}}" bindtap="handlePlayBarClick">
+<!-- <view class="play-bar-placeholder" wx:if="{{currentSong.id}}"></view> -->
+<!-- <view class="play-bar" wx:if="{{currentSong.id}}" bindtap="handlePlayBarClick"> -->
+<view class="play-bar-placeholder" wx:if="{{true}}"></view>
+
+<view class="play-bar" wx:if="{{true}}" bindtap="handlePlayBarClick">
   <view class="left">
     <image class="album album-anim" style="animation-play-state: {{playAnimState}};" mode="aspectFill" src="{{currentSong.al.picUrl}}"></image>
     <view class="name" wx:if="{{!isPlaying}}" style="color: black;" scroll-with-animation>
       <scroll-view scroll-x style="width: 460rpx;">
         {{currentSong.name}} {{(currentSong.tns[0])}} - <block wx:for="{{currentSong.ar}}" wx:key="index">
           <text wx:if="{{index === 0}}">{{item.name}} </text>
-          <text wx:else decode = "{{true}}"> / {{item.name}}</text>
+          <text wx:else decode="{{true}}"> / {{item.name}}</text>
         </block>
       </scroll-view>
     </view>
@@ -21,6 +24,44 @@
   </view>
   <view class="right">
     <image class="icon play" src="/assets/images/music/{{ isPlaying ? 'pause': 'play' }}_icon.png" catchtap="handlePlayBtnClick"></image>
-    <image class="icon playlist" src="/assets/images/music/playlist_icon.png"></image>
+    <image class="icon playlist" src="/assets/images/music/playlist_icon.png" catchtap="onClickShow"></image>
   </view>
 </view>
+<van-overlay show="{{ show }}" bind:click="onClickHide" >
+  <view class="wrapper" style="margin-top: {{navBarHeight}}px;">
+    <view class="operation-mini">
+      <view class="operation-info">
+        <view class="operation-name">
+          <image class="btn btn-mode" src="../../assets/images/player/play_{{playModeName}}.png" catchtap="handleModeBtnClick"></image>
+          <text wx:if="{{playModeName === 'order'}}">顺序播放</text>
+          <text wx:elif="{{playModeName === 'random'}}">随机播放</text>
+          <text wx:else>单曲循环</text>
+        </view>
+        <image class="btn btn-mode" src="../../assets/images/player/play_{{playModeName}}.png" catchtap="handleModeBtnClick"></image>
+      </view>
+    </view>
+    <scroll-view scroll-y style="height: 80%;">
+
+      <view class="block" wx:for="{{canPlaySongList}}" wx:key="id" catchtap="handleSelectBtnClick" data-index="{{index}}">
+        <scroll-view scroll-x style="width: 95%;">
+          <view style="display: flex; align-items: center;">
+            <view class="song-name {{canPlaySongCurrentIndex === index ? 'song-name-active' : ''}}">{{item.name}}</view>
+            <view class="singer-name {{canPlaySongCurrentIndex === index ? 'song-name-active' : ''}}">
+              <block wx:for="{{item.ar}}" wx:key="index">
+                <text wx:if="{{index === 0}}" decode="{{true}}"> - {{item.name}} </text>
+                <text wx:else decode="{{true}}"> / {{item.name}}</text>
+              </block>
+            </view>
+          </view>
+          
+        </scroll-view>
+        
+      </view>
+      <view class="play-bar-placeholder"></view>
+      <view class="block" wx:if="{{!canPlaySongList.length}}">
+        <text class="noSongs">暂无播放歌曲</text>
+      </view>
+    </scroll-view>
+  </view>
+  
+</van-overlay>

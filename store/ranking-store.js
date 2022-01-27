@@ -22,7 +22,7 @@ const rankingStore = new HYEventStore({
   },
   actions: {
     getRankingDataAction(ctx) {
-      let arr = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+      let arr = [0, 1, 2, 3, 5, 7, 8, 15]
       let showArr = []
 
       for (let i = 0; i < 3; i++) {

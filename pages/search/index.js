@@ -175,5 +175,14 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  // 回到首页
+  backToIndex: function () {
+    wx.reLaunch({
+      url: '../index/index'
+    })
+  },
+  handleBackBtnClick: function () {
+    wx.navigateBack()
+  },
 })

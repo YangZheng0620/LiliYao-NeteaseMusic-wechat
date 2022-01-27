@@ -3,6 +3,7 @@ import {
 } from '../../store/index'
 
 const app = getApp()
+const playModeNames = ["order", "repeat", "random"]
 
 Component({
   /**
@@ -22,11 +23,35 @@ Component({
     currentLyricText: "",
     screenWidth: app.globalData.screenWidth, // 屏幕宽度
     scrollWidth: 0,
-    scrollPlaying: false
+    scrollPlaying: false,
+
+    show: false,
+    canPlaySongList: [],
+    canPlaySongCurrentIndex: 0,
+
+    playModeIndex: 0,
+    playModeName: "order",
+
+    navBarHeight: app.globalData.navBarHeight, // 导航栏高度
   },
   lifetimes: {
     attached: function () {
-      console.log(123);
+
+      playerStore.onState("playListSongs", (res) => {
+        console.log(res);
+        this.setData({
+          canPlaySongList: res
+        })
+      })
+
+      playerStore.onState("playListIndex", (res) => {
+        console.log(res);
+        this.setData({
+          canPlaySongCurrentIndex: res
+        })
+      })
+
+
       this.setupPlayerStoreListener()
 
     }
@@ -34,9 +59,13 @@ Component({
   observers: {
     'currentLyricText': function (value) {
       if (value.length > 14) {
-        this.setData({ scrollPlaying: true})
+        this.setData({
+          scrollPlaying: true
+        })
       } else {
-        this.setData({ scrollPlaying: false})
+        this.setData({
+          scrollPlaying: false
+        })
       }
     }
   },
@@ -74,12 +103,54 @@ Component({
         }
       })
 
+      // 3.监听播放模式相关的数据
+      playerStore.onStates(["playModeIndex", "isPlaying"], ({
+        playModeIndex,
+        isPlaying
+      }) => {
+        if (playModeIndex !== undefined) {
+          this.setData({
+            playModeIndex,
+            playModeName: playModeNames[playModeIndex]
+          })
+        }
+
+        if (isPlaying !== undefined) {
+          this.setData({
+            isPlaying,
+            playingName: isPlaying ? "pause" : "resume"
+          })
+        }
+      })
+
 
     },
 
     handlePlayBtnClick: function () {
       playerStore.dispatch("changeMusicPlayStatusAction", !this.data.isPlaying)
     },
+    onClickHide() {
+      this.setData({
+        show: false
+      });
+    },
+    onClickShow() {
+      this.setData({
+        show: true
+      });
+    },
+    handleModeBtnClick: function () {
+      // 计算最新的playModeIndex
+      let playModeIndex = this.data.playModeIndex + 1
+      if (playModeIndex === 3) playModeIndex = 0
+      // 设置playerStore中的playModeIndex
+      playerStore.setState("playModeIndex", playModeIndex)
+    },
 
+    handleSelectBtnClick: function (event) {
+      const index = event.currentTarget.dataset.index
+      console.log(index);
+      playerStore.dispatch("selectNewMusicAction", index)
+    },
   }
 })
