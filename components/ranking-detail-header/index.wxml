@@ -5,7 +5,7 @@
 
 <view class="header" style="padding-top: {{navBarHeight}}px; height: {{coverHeight}}rpx; transition: {{coverTransition}};" bindtouchstart="handleTouchStart" bindtouchmove="handleTouchMove" bindtouchend="handleTouchEnd">
   <!-- 背景 -->
-  <image class="bg-image" mode="aspectFill" src="{{rankingInfo.tracks[0].al.picUrl}}"></image>
+  <image class="bg-image" mode="aspectFill" src="{{rankingFirstPic}}"></image>
   <view class="bg-cover"></view>
   <!-- 内容 -->
   <view class="content">
@@ -26,7 +26,7 @@
 
     </view>
     <view>
-      <image class="image" mode="aspectFill" src="{{rankingInfo.tracks[0].al.picUrl}}"></image>
+      <image class="image" mode="aspectFill" src="{{rankingFirstPic}}"></image>
     </view>
 
 

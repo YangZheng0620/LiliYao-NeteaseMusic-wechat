@@ -25,7 +25,16 @@ page {
 
 
 /* 导航栏未激活样式 */
-.navbar-normal {
+.navbar-normal0 {
+  margin-right: 14px;
+}
+
+.navbar-normal1 {
+  margin-right: 14px;
+}
+
+/* 导航栏未激活样式 */
+.navbar-normal2 {
   margin-right: 14px;
 }
 
@@ -69,8 +78,9 @@ page {
 
 .swiper-item .swiper-image {
   width: 100%;
-  
+
 }
+
 .swiper-item .type {
   position: absolute;
   font-weight: 500;
@@ -101,4 +111,95 @@ page {
   position: absolute;
   bottom: 0;
   height: 100px;
+}
+
+.allrank-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* 解决最后一排数量不够自动向两端排列问题 */
+.allrank-list:after{
+  content: '';
+  width: 30%;
+  height: 220rpx;
+  margin-right: 20rpx;
+}
+
+.allrank-list .album {
+  position: relative;
+  width: 30%;
+  height: 220rpx;
+  display: flex;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+
+
+.allrank-list .album .image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 12rpx;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5)
+}
+
+.allrank-list .album .play-counter {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  right: 0;
+  bottom: 0rpx;
+  color: #fff;
+  font-size: 22rpx;
+  border-radius: 12rpx;
+  padding: 6rpx 10rpx;
+  background: rgba(0, 0, 0, .5);
+}
+
+.play-bar-placeholder {
+  height: 40rpx;
+}
+
+.singer-area {
+  display: flex;
+}
+
+.singer-area .area{
+  font-size: 36rpx;
+  padding: 20rpx;
+  border-radius: 36rpx;
+  background: rgba(0, 0, 0, 0.1);
+  margin-right: 10rpx;
+  margin-bottom: 10rpx;
+  width: 70rpx;
+  text-align: center;
+}
+
+.singer-area .area:last-of-type{
+  font-size: 36rpx;
+  padding: 20rpx;
+  border-radius: 36rpx;
+  background: rgba(0, 0, 0, 0.1);
+  margin-right: 0;
+}
+
+.singer-type {
+  display: flex;
+}
+
+.singer-type .type{
+  font-size: 36rpx;
+  padding: 20rpx;
+  border-radius: 36rpx;
+  background: rgba(0, 0, 0, 0.1);
+  margin-right: 10rpx;
+  width: 70rpx;
+  text-align: center;
+}
+
+.singer-area-active {
+  background: #26ce8a;
 }

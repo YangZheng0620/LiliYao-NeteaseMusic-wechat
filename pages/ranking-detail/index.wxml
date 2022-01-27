@@ -19,7 +19,7 @@
 
 <view class="ranking-header">
   <!-- 榜单详情头部 -->
-  <ranking-detail-header rankingInfo="{{rankingInfo}}" navBarHeight="{{navBarHeight}}"></ranking-detail-header>
+  <ranking-detail-header rankingInfo="{{rankingInfo}}" rankingFirstPic="{{rankingSongList[0].al.picUrl}}" navBarHeight="{{navBarHeight}}"></ranking-detail-header>
 </view>
 
 <view class="rankingList" style="margin-top: {{rankingHeaderHeight}}px;transition: 1s margin ease;">

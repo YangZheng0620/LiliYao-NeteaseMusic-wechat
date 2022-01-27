@@ -1,7 +1,9 @@
 import {
   getBanners,
   getRecommendSongs,
-  getRecommendPlaylists
+  getRecommendPlaylists,
+  getAllTopList,
+  getTopListDetail
 } from '../../apis/api_music'
 import queryRect from '../../utils/query-rect'
 import throttle from '../../utils/throttle'
@@ -12,7 +14,9 @@ import {
 
 const app = getApp()
 
-const throttleQueryRect = throttle(queryRect, 1000, { trailing: true }) // 使用节流生成新函数来使用
+const throttleQueryRect = throttle(queryRect, 1000, {
+  trailing: true
+}) // 使用节流生成新函数来使用
 
 Page({
 
@@ -33,7 +37,7 @@ Page({
         title: '音乐馆'
       },
     ],
-    currentTab: 0, // 当前 swiper
+    currentTab: 2, // 当前 swiper
     navbarLeft: 0, // 导航栏内容左距离
     navbarWidth: 0, // 导航栏内容宽度
     banners: [], // 轮播图数据
@@ -46,6 +50,7 @@ Page({
       1: {},
       2: {}
     }, // 榜单数据（初始化数据保证数据顺序）
+    allRankingList: [], // 所有榜单数据
   },
 
   /**
@@ -100,6 +105,14 @@ Page({
       })
     })
 
+    // 获取所有榜单
+    getAllTopList().then(res => {
+      this.setData({
+        allRankingList: res.list
+      })
+    })
+
+
 
 
   },
@@ -153,16 +166,21 @@ Page({
   // 点击巅峰榜触发
   handleRankingItemClick: function (event) {
     const idx = event.currentTarget.dataset.idx
-    
+
     const rankingName = rankingMap[idx]
-    console.log(rankingName);
     this.navigateToDetailSongPage(rankingName)
   },
-
+  handleAllRankingItemClick: function (event) {
+    const id = event.currentTarget.dataset.id
+    wx.navigateTo({
+      url: `/pages/ranking-detail/index?id=${id}&type=id`
+    })
+    console.log(id);
+  },
   // 跳转到榜单详情
   navigateToDetailSongPage: function (rankingName) {
     wx.navigateTo({
-      url: `/pages/ranking-detail/index?ranking=${rankingName}`
+      url: `/pages/ranking-detail/index?ranking=${rankingName}&type=rank`
     })
   },
 
@@ -232,17 +250,44 @@ Page({
     if (this.data.currentTab == e.currentTarget.dataset.index) {
       return false;
     } else {
-      queryRect('.navbar-normal').then(res => {
+      if (e.currentTarget.dataset.index === 0) {
+        queryRect('.navbar-normal0').then(res => {
 
-        const rect = res[0]
-        if (rect.left !== this.data.left) {
-          this.setData({
-            navbarLeft: rect.left,
-            navbarWidth: rect.width
-          })
-        }
+          const rect = res[0]
+          if (rect.left !== this.data.left) {
+            this.setData({
+              navbarLeft: rect.left,
+              navbarWidth: rect.width
+            })
+          }
 
-      })
+        })
+      } else if (e.currentTarget.dataset.index === 1) {
+        queryRect('.navbar-normal1').then(res => {
+
+          const rect = res[0]
+          if (rect.left !== this.data.left) {
+            this.setData({
+              navbarLeft: rect.left,
+              navbarWidth: rect.width
+            })
+          }
+
+        })
+      } else {
+        queryRect('.navbar-normal2').then(res => {
+
+          const rect = res[0]
+          if (rect.left !== this.data.left) {
+            this.setData({
+              navbarLeft: rect.left,
+              navbarWidth: rect.width
+            })
+          }
+
+        })
+      }
+
       // const query = wx.createSelectorQuery()
       // query.select('.navbar-normal').boundingClientRect()
       // query.exec((res) => {
@@ -263,17 +308,44 @@ Page({
   // 滑动切换
   sliderNav: function (e) {
     if (e.detail.source === 'touch') {
-      queryRect('.navbar-normal').then(res => {
+      if (e.detail.current === 0) {
+        queryRect('.navbar-normal0').then(res => {
 
-        const rect = res[0]
-        if (rect.left !== this.data.left) {
-          this.setData({
-            navbarLeft: rect.left,
-            navbarWidth: rect.width
-          })
-        }
+          const rect = res[0]
+          if (rect.left !== this.data.left) {
+            this.setData({
+              navbarLeft: rect.left,
+              navbarWidth: rect.width
+            })
+          }
 
-      })
+        })
+      } else if (e.detail.current === 1) {
+        queryRect('.navbar-normal1').then(res => {
+
+          const rect = res[0]
+          if (rect.left !== this.data.left) {
+            this.setData({
+              navbarLeft: rect.left,
+              navbarWidth: rect.width
+            })
+          }
+
+        })
+      } else {
+        queryRect('.navbar-normal2').then(res => {
+
+          const rect = res[0]
+          if (rect.left !== this.data.left) {
+            this.setData({
+              navbarLeft: rect.left,
+              navbarWidth: rect.width
+            })
+          }
+
+        })
+      }
+
 
       this.setData({
         currentTab: e.detail.current

@@ -1,9 +1,16 @@
 <!-- 首页 -->
+
+<!-- 导入格式化工具 -->
+<wxs src="../../utils/format.wxs" module="format"></wxs>
+
 <view>
   <!-- 导航栏 -->
   <view class="nav-bar" style="height: {{navBarHeight}}px;">
     <view class="menu-bar" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px; left:{{menuRight}}px; bottom:{{menuBotton}}px;">
-      <view wx:for="{{navList}}" wx:key="index" data-index="{{index}}" bindtap='switchNav' class="{{currentTab==index?'navbar-selected':'navbar-normal'}}">{{ item.title }}</view>
+      <!-- <view wx:for="{{navList}}" wx:key="index" data-index="{{index}}" bindtap='switchNav' class="{{currentTab==index?'navbar-selected':'navbar-normal'}}">{{ item.title }}</view> -->
+      <view data-index="{{0}}" bindtap='switchNav' class="{{currentTab==0?'navbar-selected':'navbar-normal0'}}">推荐</view>
+      <view data-index="{{1}}" bindtap='switchNav' class="{{currentTab==1?'navbar-selected':'navbar-normal1'}}">音乐馆</view>
+      <view data-index="{{2}}" bindtap='switchNav' class="{{currentTab==2?'navbar-selected':'navbar-normal2'}}">歌手</view>
       <view class='underline' style="left:{{navbarLeft - 7}}px; width: {{navbarWidth}}px;"></view>
     </view>
   </view>
@@ -54,37 +61,90 @@
 
       <swiper-item>
 
-               <view>456</view>
-        <view>后天</view>
-        <view>后天</view>
-        <view>后天</view>
-        <view>后天</view>
-        <view>后天</view>
-        <view>后天</view>
-        <view>后天</view>
-        <view>后天</view>
-        <view>后天</view>
-        <view>后天</view>
-        <view>后天</view>
+        <scroll-view scroll-y style="height: 100%;">
+          <!-- 搜索框 -->
+          <item-search></item-search>
+          <!-- 巅峰榜 -->
+          <view class="ranking">
+            <item-header title="巅峰榜" showRightItem="{{false}}"></item-header>
+            <view class="ranking-list">
+              <block wx:for="{{rankings}}" wx:key="index">
+                <ranking-area item="{{item}}" bindtap="handleRankingItemClick" data-idx="{{index}}"></ranking-area>
+              </block>
 
-        <view>后天</view>
-        <view>后天</view>
-        <view>后天</view>
-        <view>后天</view>
-        <view>1</view>
-        <view>1</view>
-        <view>1</view>
-        <view>1</view>
-        <view>1</view>
-        <view>1</view>
-        <view>1</view>
-        <view>1</view>
-        <view>1</view>
-        <view>1</view>
-        <view>1</view>
+            </view>
+          </view>
+          <view class="alllist">
+            <item-header title="所有榜单" showRightItem="{{false}}"></item-header>
+            <view class="allrank-list">
+              <block wx:for="{{allRankingList}}" wx:key="id" >
+                <view class="album" data-id="{{item.id}}" bindtap="handleAllRankingItemClick">
+                  <image class="image" src="{{item.coverImgUrl}}" mode="aspectFill"></image>
+                  <view class="play-counter">
+                    <iconfont name="arrow_right_fat" color="#26ce8a"></iconfont>
+                    {{format.formatCount(item.playCount)}}
+                  </view>
+                </view>
+              </block>
+            </view>
+          </view>
+          <view class="play-bar-placeholder"></view>
+        </scroll-view>
+
          
       </swiper-item>
 
+
+      <swiper-item>
+
+        <scroll-view scroll-y style="height: 100%;">
+          <!-- 搜索框 -->
+          <item-search></item-search>
+          <view class="singer-area">
+            <view class="area" style="background: #26ce8a;">全部</view>
+            <view class="area">华语</view>
+            <view class="area">欧美</view>
+            <view class="area">日本</view>
+            <view class="area">韩国</view>
+            <view class="area">其他</view>
+          </view>
+          <view class="singer-type">
+            <view class="type">全部</view>
+            <view class="type">男</view>
+            <view class="type">女</view>
+            <view class="type">乐队</view>
+          </view>
+          <view>后天</view>
+          <view>后天</view>
+          <view>后天</view>
+          <view>后天</view>
+          <view>后天</view>
+          <view>后天</view>
+          <view>后天</view>
+          <view>后天</view>
+          <view>后天</view>
+          <view>后天</view>
+          <view>后天</view>
+
+          <view>后天</view>
+          <view>后天</view>
+          <view>后天</view>
+          <view>后天</view>
+          <view>1</view>
+          <view>1</view>
+          <view>1</view>
+          <view>1</view>
+          <view>1</view>
+          <view>1</view>
+          <view>1</view>
+          <view>1</view>
+          <view>1</view>
+          <view>1</view>
+          <view>1</view>
+        </scroll-view>
+
+         
+      </swiper-item>
     </swiper>
 
 

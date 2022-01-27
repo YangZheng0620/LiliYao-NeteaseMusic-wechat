@@ -3,6 +3,10 @@ import {
   playerStore
 } from "../../store/index"
 
+import {
+  getTopListDetail
+} from '../../apis/api_music'
+
 const app = getApp()
 
 Page({
@@ -26,14 +30,27 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const name = options.ranking
-    this.setData({
-      rankingName: name
-    })
+    if (options.type === 'rank') {
+      const name = options.ranking
+      this.setData({
+        rankingName: name
+      })
 
-    // rankingStore.dispatch("getRankingDataAction")
-    // 获取数据
-    rankingStore.onState(name, this.getRankingDataHandler)
+      // rankingStore.dispatch("getRankingDataAction")
+      rankingStore.onState(name, this.getRankingDataHandler)
+    } else {
+      const id = options.id
+      getTopListDetail(id).then((res) => {
+          this.setData({
+            rankingInfo: res.playlist,
+            rankingSongList: res.playlist.tracks.splice(0, 50)
+          })
+        }
+
+      )
+    }
+
+
 
 
     this.getPlaylistHeaderHeight()

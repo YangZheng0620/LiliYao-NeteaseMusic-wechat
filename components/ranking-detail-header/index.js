@@ -18,6 +18,10 @@ Component({
     navBarHeight: {
       type: Number,
       value: 0
+    },
+    rankingFirstPic: {
+      type: String,
+      value: ''
     }
   },
 
