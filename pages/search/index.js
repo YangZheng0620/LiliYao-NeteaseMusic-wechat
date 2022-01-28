@@ -32,6 +32,8 @@ Page({
     menuBotton: app.globalData.menuBotton, // 导航栏高度
     menuHeight: app.globalData.menuHeight, // 导航栏高度
     searchRecord: [], // 历史搜索记录
+    playlistSearchList: [], // 关键词关联歌单
+    videoSearchList: [], // 关键词关联视频
   },
 
   /**
@@ -126,6 +128,22 @@ Page({
           songsRelatedSinger: res.result.artists[0]
         });
       })
+
+
+      // 寻找关联歌单
+      getSearchResult(searchKeywords, 30, 0, 1000).then(res => {
+        this.setData({
+          playlistSearchList: res.result.playlists
+        });
+      })
+
+      // 寻找关联视频
+      getSearchResult(searchKeywords, 30, 0, 1014).then(res => {
+        this.setData({
+          videoSearchList: res.result.videos
+        });
+      })
+
     })
 
     // 添加搜索历史记录
@@ -204,6 +222,21 @@ Page({
 
       }
     })
+  },
+  handleSingerDetail: function (event) {
+    const id = event.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '/pages/singer/index?id=' + id,
+    })
+  },
+
+  handleVideoItemClick: function(event) {
+    const vid = event.currentTarget.dataset.vid
+    console.log(vid);
+    wx.navigateTo({
+      url: '/pages/video-detail/index?id=' + vid,
+    })
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

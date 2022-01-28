@@ -3,7 +3,7 @@
   <view class="info">
     <image class="image" src="{{ songsRelatedSinger.img1v1Url }}"></image>
     <text class="firstText">{{ songsRelatedSinger.name }}</text>
-    <text>({{ songsRelatedSinger.alia[0] }})</text>
+    <text wx:if="{{ songsRelatedSinger.alia[0] }}">({{ songsRelatedSinger.alia[0] }})</text>
   </view>
   <view class="right">
     <image class="icon" src="/assets/images/icons/arrow-right.png"></image>

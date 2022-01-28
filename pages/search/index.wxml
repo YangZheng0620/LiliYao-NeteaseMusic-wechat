@@ -64,7 +64,7 @@
           <view class="title"></view>
           <view class="title"></view>
           <view class="title">最佳匹配</view>
-          <related-singer songsRelatedSinger="{{ songsRelatedSinger }}"></related-singer>
+          <related-singer songsRelatedSinger="{{ songsRelatedSinger }}" bindtap="handleSingerDetail" data-id="{{songsRelatedSinger.id}}"></related-singer>
           <view class="list">
             <block wx:for="{{resultSongs}}" wx:key="id">
               <song-item-v3 item="{{item}}" index="{{index+1}}"></song-item-v3>
@@ -72,9 +72,35 @@
           </view>
         </view>
       </van-tab>
-      <van-tab title="歌单">内容 2</van-tab>
-      <van-tab title="视频">内容 3</van-tab>
-      <van-tab title="电台">内容 4</van-tab>
+      <van-tab title="歌单">
+        <view class="result" style="margin-top: 44rpx;">
+          <view class="playlist-detail">
+            <view class="title"></view>
+            <view class="title"></view>
+            <view class="list">
+              <block wx:for="{{playlistSearchList}}" wx:key="id">
+                <song-item-v6 item="{{item}}"></song-item-v6>
+              </block>
+            </view>
+          </view>
+        </view>
+
+      </van-tab>
+      <van-tab title="视频">
+        <view class="result" style="margin-top: 44rpx;">
+          <view class="video-detail">
+            <view class="title"></view>
+            <view class="title"></view>
+            <view class="video-content">
+              <view class="video">
+                <view wx:for="{{videoSearchList}}" wx:key="id" class="item">
+                  <video-item-v3 item="{{item}}" bindtap="handleVideoItemClick" data-vid="{{item.vid}}"></video-item-v3>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </van-tab>
     </van-tabs>
   </view>
 </view>

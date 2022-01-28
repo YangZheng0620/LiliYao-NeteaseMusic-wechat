@@ -6,6 +6,8 @@
     "van-tabs": "@vant/weapp/tabs/index",
     "song-item-v3": "/components/song-item-v3/index",
     "related-singer": "/components/related-singer/index",
-    "van-icon": "@vant/weapp/icon/index"
+    "van-icon": "@vant/weapp/icon/index",
+    "song-item-v6": "/components/song-item-v6/index",
+    "video-item-v3": "/components/video-item-v3/index"
   }
 }
