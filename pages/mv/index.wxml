@@ -1,2 +1,34 @@
-<!--pages/mv/index.wxml-->
-<text>pages/mv/index.wxml</text>
+<!-- MV 首页 -->
+
+<!-- 导入格式化工具 -->
+<wxs src="../../utils/format.wxs" module="format"></wxs>
+
+<!-- 导航栏 -->
+<view class="nav-bar" style="height: {{navBarHeight}}px;">
+  <view class="menu-bar" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px; left:{{menuRight}}px; bottom:{{menuBotton}}px;">
+    <view wx:for="{{navList}}" wx:key="index" data-index="{{index}}" bindtap='switchNav' class="{{currentTab==index?'navbar-selected':'navbar-normal'}}">{{ item.title }}</view>
+    <view class='underline' style="left:{{navbarLeft - 7}}px; width: {{navbarWidth}}px;"></view>
+  </view>
+</view>
+
+<view style="margin-top: {{navBarHeight}}px;">
+  <view class="mvStyle">
+    <item-search></item-search>
+    <view class="singer-area">
+      <block wx:for="{{areaList}}" wx:key="index">
+        <view class="area" data-index="{{item.index}}" data-value="{{item.value}}" data-name="{{item.name}}" bindtap="handleAreaActiveItem" style="{{currentAreaIndex === index ? 'background: #26ce8a' : ''}}">{{item.name}}</view>
+      </block>
+    </view>
+    <van-dropdown-menu active-color="#26ce8a">
+      <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" bind:change="changeOrderValue" />
+    </van-dropdown-menu>
+    <view class="video-content">
+      <view class="video">
+        <view wx:for="{{topMVs}}" wx:key="id" class="item">
+          <video-item-v1 item="{{item}}" bindtap="handleVideoItemClick" data-item="{{item}}"></video-item-v1>
+        </view>
+      </view>
+    </view>
+  </view>
+  <play-bar></play-bar>
+</view>

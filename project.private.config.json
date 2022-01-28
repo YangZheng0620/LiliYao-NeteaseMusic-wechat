@@ -51,7 +51,19 @@
         {
           "name": "",
           "pathName": "pages/singer/index",
-          "query": "id=35796201",
+          "query": "id=46576382",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/mv/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/video-detail/index",
+          "query": "id=10929585",
           "scene": null
         }
       ]

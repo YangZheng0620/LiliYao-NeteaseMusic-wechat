@@ -219,3 +219,19 @@
 .album-info {
   padding: 30rpx 20rpx 30rpx 30rpx;
 }
+
+
+.video-content {
+  margin-top: 20rpx;
+  margin-left: 10rpx;
+}
+
+.video {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  width: 48%;
+  margin: 0 5rpx;
+}

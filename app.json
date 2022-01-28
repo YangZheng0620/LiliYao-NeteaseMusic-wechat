@@ -8,7 +8,9 @@
     "pages/playlist-detail/index",
     "pages/ranking-detail/index",
     "pages/player/index",
-    "pages/singer/index"
+    "pages/singer/index",
+    "pages/video-detail/index",
+    "pages/video-detail-v2/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

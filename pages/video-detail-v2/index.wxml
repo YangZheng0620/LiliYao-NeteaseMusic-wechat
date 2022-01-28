@@ -1,0 +1,47 @@
+<!-- MV 详情页 -->
+<!-- 导入格式化工具 -->
+<wxs src="../../utils/format.wxs" module="format"></wxs>
+
+
+<!-- 导航栏 -->
+<view class="nav-bar" style="height: {{navBarHeight}}px;">
+  <view class="menu-bar" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px; left:{{menuRight}}px; bottom:{{menuBotton}}px;">
+    <view class="left">
+      <iconfont name="arrow_left_fat" bindtap="handleBackBtnClick"></iconfont>
+      <iconfont name="home-hover" bindtap="backToIndex"></iconfont>
+    </view>
+
+    <view class="title">是否我就能够更加靠近你</view>
+    <view class="right"></view>
+  </view>
+</view>
+
+<view style="margin-top: {{navBarHeight}}px;">
+  <!-- 视频播放 -->
+  <video class="video" src="{{mvURLInfo.url}}" referrer-policy="origin" style="margin-top: {{navBarHeight}}px;"></video>
+  <!-- 视频详情 -->
+  <view class="info" style="margin-top: {{navBarHeight + mvHeight}}px;">
+    <view class="title">{{mvDetail.title}}</view>
+    <view class="desc">
+      <scroll-view scroll-x>
+        <block wx:for="{{mvDetail.artists}}" wx:key="id">
+          <text wx:if="{{index === 0}}">{{item.name}}</text>
+          <text wx:else decode="{{true}}"> - {{item.name}}</text>
+        </block>
+      </scroll-view>
+    </view>
+    <view class="other">
+      <text class="play-count" decode="{{true}}">{{format.formatCount(mvDetail.playTime)}}次播放 - </text>
+      <text class="publish-time">{{format.formatTime(mvDetail.publishTime)}}</text>
+    </view>
+  </view>
+  <!-- 相关视频推荐 -->
+  <view class="recommend">
+    <view class="title">推荐视频</view>
+    <view class="video-list">
+      <block wx:for="{{relatedVideos}}" wx:key="vid">
+        <video-item-v2 itemInfo="{{item}}" bindtap="handleVideoItemClick" data-item="{{item}}"></video-item-v2>
+      </block>
+    </view>
+  </view>
+</view>

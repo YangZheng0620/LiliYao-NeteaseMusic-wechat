@@ -31,9 +31,22 @@ export function getSongComment(id, limit = 10) {
   })
 }
 
-export function getSingerSongs(id) {
+export function getSingerDescInfo(id) {
   return api.get("/artists", {
     id
+  })
+}
+
+export function getSingerMV(id) {
+  return api.get("/artist/mv", {
+    id
+  })
+}
+
+export function getSingerSongs(id, limit = 100) {
+  return api.get("/artist/songs", {
+    id,
+    limit
   })
 }
 

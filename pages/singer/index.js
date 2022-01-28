@@ -1,7 +1,9 @@
 import {
-  getSingerSongs,
+  getSingerDescInfo,
   getSimiSingers,
-  getSingerAlbums
+  getSingerAlbums,
+  getSingerSongs,
+  getSingerMV
 } from '../../apis/api_player'
 
 import {
@@ -27,6 +29,7 @@ Page({
     simiSingersList: [], // 相似歌手信息
     singerDescInfo: [], // 歌手信息
     singerAlbumsList: [], // 歌手专辑信息
+    singerMVList: [], // 歌手 MV 列表
   },
 
   /**
@@ -40,11 +43,10 @@ Page({
   },
 
   getPageData: function (id) {
-    // 获取歌手歌曲
-    getSingerSongs(id).then((res) => {
+    // 获取歌手信息
+    getSingerDescInfo(id).then((res) => {
       console.log(res);
       this.setData({
-        singerSongsList: res.hotSongs,
         singerDescInfo: res.artist
       })
 
@@ -58,9 +60,24 @@ Page({
       })
     })
 
+    // 获取歌手全部歌曲
+    getSingerSongs(id).then((res) => {
+      console.log(res);
+      this.setData({
+        singerSongsList: res.songs
+      })
+    })
+
+
+    // 获取歌手 MV
+    getSingerMV(id).then((res) => {
+      this.setData({
+        singerMVList: res.mvs
+      })
+    })
+
     // 获取相似歌手信息
     getSimiSingers(id).then((res) => {
-      console.log(res);
       this.setData({
         getSimiSingers: res.artists
       })
@@ -91,6 +108,17 @@ Page({
     wx.navigateTo({
       url: '/pages/singer/index?id=' + id,
     })
+  },
+
+  // 封装事件处理的方法
+  handleVideoItemClick: function (event) {
+    // 获取页面 ID
+    const id = event.currentTarget.dataset.item.id
+    console.log(id);
+    // 跳转到指定页面
+    wx.navigateTo({
+      url: `/pages/video-detail/index?id=${id}`,
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

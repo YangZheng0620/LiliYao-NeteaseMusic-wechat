@@ -4,7 +4,8 @@
     "van-tabs": "@vant/weapp/tabs/index",
     "song-item-v3": "../../components/song-item-v3/index",
     "song-item-v4": "../../components/song-item-v4/index",
-    "song-item-v5": "../../components/song-item-v5/index"
+    "song-item-v5": "../../components/song-item-v5/index",
+    "video-item-v1": "/components/video-item-v1/index"
     
   }
 }

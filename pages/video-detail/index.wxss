@@ -1,0 +1,69 @@
+/* 顶部状态栏 */
+.nav-bar {
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  /* background: #999999; */
+  width: 100%;
+}
+
+/* 胶囊按钮区域 */
+.nav-bar .menu-bar {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  background: #333;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* 导航栏按钮 */
+.nav-bar .menu-bar .left {
+  display: flex;
+  flex: 1;
+}
+
+/* 导航栏标题 */
+.nav-bar .menu-bar .title {
+  flex: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+}
+
+/* 导航栏占位 */
+.nav-bar .menu-bar .right {
+  flex: 1;
+}
+
+.video {
+  position: fixed;
+  /* 不随滚动条移动 */
+  width: 100%;
+  top: 0;
+  z-index: 2;
+}
+
+.info {
+  padding: 30rpx;
+}
+
+.info .title {
+  font-weight: 700;
+}
+
+.info .desc,
+.info .other {
+  font-size: 24rpx;
+  margin-top: 10rpx;
+  color: #666;
+}
+
+/* 相关视频 */
+.recommend {
+  z-index: 1;
+  padding: 30rpx;
+}

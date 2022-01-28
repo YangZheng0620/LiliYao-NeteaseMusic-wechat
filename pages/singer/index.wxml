@@ -95,7 +95,15 @@
         </block>
       </view>
     </van-tab>
-    <van-tab title="视频">内容 4</van-tab>
+    <van-tab title="视频">
+      <view class="video-content">
+        <view class="video">
+          <view wx:for="{{singerMVList}}" wx:key="id" class="item">
+            <video-item-v1 item="{{item}}" bindtap="handleVideoItemClick" data-item="{{item}}"></video-item-v1>
+          </view>
+        </view>
+      </view>
+    </van-tab>
   </van-tabs>
   <!-- <scroll-view scroll-y style="height: 100%;">
     <view>123</view>

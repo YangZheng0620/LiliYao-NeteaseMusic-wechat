@@ -1,1 +1,113 @@
-/* pages/mv/index.wxss */
+page {
+  background: #fafafa;
+}
+
+/* 标签页背景 */
+.van-tabs__scroll {
+  background: #fafafa !important;
+  height: 44px;
+}
+
+/* 标签宽度 */
+.van-tabs-class {
+  width: 200rpx;
+}
+
+/* 标签文字样式 */
+.tab-class {
+  color: #26ce8a;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+}
+
+/* 顶部状态栏 */
+.nav-bar {
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  background: #fafafa;
+  width: 100%;
+}
+
+/* 胶囊按钮区域 */
+.nav-bar .menu-bar {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  background: #333;
+  padding-left: 14px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+
+/* 导航栏未激活样式 */
+.navbar-normal {
+  margin-right: 14px;
+}
+
+/* 导航栏激活样式 */
+.navbar-selected {
+  color: #999999;
+  transition: 0.2s all linear;
+  margin-right: 14px;
+  z-index: 2;
+}
+
+/* 导航栏下换线样式 */
+.underline {
+  position: absolute;
+  bottom: 5px;
+  background: #26ce8a;
+  height: 10rpx;
+  transition: all .3s linear;
+  border-radius: 10rpx;
+  z-index: 1;
+}
+
+/* 首页高度样式 */
+.mvStyle {
+  padding: 0 24rpx;
+}
+
+.video {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  width: 48%;
+  margin: 0 5rpx;
+}
+
+.van-dropdown-menu {
+  background: #fafafa !important;
+  border-radius: 22rpx !important;
+  margin: 30rpx 0 !important;
+}
+
+
+.singer-area {
+  display: flex;
+  justify-content: space-between;
+}
+
+.singer-area .area{
+  font-size: 32rpx;
+  padding: 16rpx 20rpx;
+  border-radius: 36rpx;
+  background: rgba(0, 0, 0, 0.1);
+  /* margin-right: 10rpx; */
+  margin: 10rpx 0;
+  width: 70rpx;
+  text-align: center;
+}
+
+.singer-area .area:last-of-type{
+  font-size: 32rpx;
+  padding: 16rpx 20rpx;
+  border-radius: 36rpx;
+  background: rgba(0, 0, 0, 0.1);
+  margin-right: 0;
+}
