@@ -31,6 +31,7 @@ Page({
     menuRight: app.globalData.menuRight, // 导航栏高度
     menuBotton: app.globalData.menuBotton, // 导航栏高度
     menuHeight: app.globalData.menuHeight, // 导航栏高度
+    searchRecord: [], // 历史搜索记录
   },
 
   /**
@@ -38,7 +39,19 @@ Page({
    */
   onLoad: function (options) {
     this.getPageData()
+
+
+    // 获取本地存储历史搜索记录
+    wx.getStorage({
+      key: 'searchRecord',
+      success: (res) => {
+        this.setData({
+          searchRecord: res.data
+        })
+      }
+    })
   },
+
 
   // 获取数据的网络请求
   getPageData: function () {
@@ -95,6 +108,8 @@ Page({
     // 1. 获取到输入关键字
     const searchKeywords = this.data.searchKeywords
 
+
+
     // 2. 搜索歌曲网络请求
     getSearchResult(searchKeywords).then(res => {
       this.setData({
@@ -113,6 +128,37 @@ Page({
       })
     })
 
+    // 添加搜索历史记录
+    let searchRecord = this.data.searchRecord
+    // 如果记录已存在，直接返回
+    for (let i = 0; i < searchRecord.length; i++) {
+      if (searchKeywords == searchRecord[i].value) return
+    }
+
+    if (searchRecord.length >= 8) {
+      searchRecord.pop() // 删除最早的一条记录
+    } else {
+      searchRecord.unshift({
+        value: searchKeywords,
+      })
+    }
+    // 将历史记录添加到缓存中
+    wx.setStorage({
+      key: 'searchRecord',
+      data: searchRecord,
+      success: () => {
+        wx.getStorage({
+          key: "searchRecord",
+          success: (res) => {
+            this.setData({
+              searchRecord: res.data
+            })
+          }
+        })
+
+      }
+    })
+
     // console.log(this.data.resultSongs);
   },
 
@@ -127,6 +173,37 @@ Page({
 
     // 3.发送网络请求
     this.handleSearchAction()
+  },
+
+  deleteHistroy: function (event) {
+    const detail = event.detail
+    this.setData({
+      searchRecord: detail
+    })
+  },
+
+  demo: function (event) {
+    const value = event.currentTarget.dataset.value
+    console.log(value);
+    const list = this.data.searchRecord
+    console.log(list);
+    const newList = list.filter(item => item.value !== value)
+    // 将历史记录添加到缓存中
+    wx.setStorage({
+      key: 'searchRecord',
+      data: newList,
+      success: () => {
+        wx.getStorage({
+          key: "searchRecord",
+          success: (res) => {
+            this.setData({
+              searchRecord: res.data
+            })
+          }
+        })
+
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

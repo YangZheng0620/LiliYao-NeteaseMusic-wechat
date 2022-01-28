@@ -34,3 +34,8 @@
   font-size: 28rpx;
   color: #777777;
 }
+
+.default .image {
+  height: 40rpx;
+  width: 40rpx;
+}

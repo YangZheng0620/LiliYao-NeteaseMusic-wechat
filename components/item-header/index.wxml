@@ -14,4 +14,13 @@
 
   </view>
 
+  <view class="right" wx:if="{{ showSearchItem }}">
+    <view class="slot"></view>
+    <view class="default">
+      <image class="image" src="../../assets/images/search/trash.png" bindtap="deleteAllHistoryRecord"></image>
+    </view>
+
+  </view>
+
+
 </view>

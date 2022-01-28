@@ -16,8 +16,19 @@
     <van-search value="{{ searchKeywords }}" placeholder="搜索 音乐/视频/歌手/歌单/电台" shape="round" background="#fafafa" bind:change="handleSearchChange" show-action="{{ searchKeywords }}" bind:search="handleSearchAction" />
   </view>
 
+  <!-- 历史搜索 -->
+  <view class="historySearch" wx:if="{{!searchKeywords.length && !suggestSongs.length}}">
+    <item-header title="历史搜索" showRightItem="{{ false }}" wx:if="{{searchRecord.length}}" bind:historyEvent="deleteHistroy" showSearchItem="{{ true }}"></item-header>
+    <view class="historyList" wx:if="{{searchRecord.length}}">
+      <block wx:for="{{ searchRecord }}" wx:key="index">
+        <view class="historyItem" bindtap="handleKeywordItemClick" data-keyword="{{item.value}}">
+          <text style="margin-right: 10rpx;">{{ item.value }}</text>
+          <van-icon name="close" catchtap="demo" data-value="{{ item.value }}" />
+        </view>
+      </block>
 
-
+    </view>
+  </view>
 
   <!-- 热门搜索 -->
   <view class="hotSearch" wx:if="{{ !searchKeywords.length && !suggestSongs.length }}">

@@ -15,6 +15,10 @@ Component({
       type: Boolean,
       value: true
     },
+    showSearchItem: {
+      type: Boolean,
+      value: false
+    }
   },
 
   /**
@@ -37,6 +41,18 @@ Component({
         })
       })
     },
+
+    deleteAllHistoryRecord: function () {
+      wx.removeStorage({
+        key: 'searchRecord',
+        success: () => {
+          this.triggerEvent('historyEvent', [])
+
+        }
+      })
+
+
+    }
   },
 
   lifetimes: {
