@@ -52,7 +52,7 @@
 }
 
 /* 导航栏下换线样式 */
-.underline{
+.underline {
   position: absolute;
   bottom: 5px;
   background: #26ce8a;
@@ -60,9 +60,146 @@
   transition: all .3s linear;
   border-radius: 10rpx;
   z-index: 1;
- }
+}
 
- .demo {
-   height: 1000px;
-   padding: 0 24rpx;
- }
+/* 消除 scroll-view 的滚动条 */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.user-content {
+  /* height: 1000px; */
+  padding: 0 24rpx;
+}
+
+
+
+
+.bg-image,
+.bg-cover {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.bg-cover {
+  background-color: rgba(0, 0, 0, .5);
+  backdrop-filter: blur(10px);
+}
+
+
+.van-search {
+  background: transparent !important;
+  border-radius: 22rpx !important;
+}
+
+.avatar {
+  width: 100%;
+  height: 280rpx;
+  background: rgba(0, 0, 0, .5);
+  margin-top: 70rpx;
+  position: relative;
+  border-radius: 22rpx;
+}
+
+.avatar .user-image {
+  border-radius: 50%;
+  height: 150rpx;
+  width: 150rpx;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: -50rpx;
+}
+
+.avatar .username {
+  color: #fff;
+  font-size: 46rpx;
+  font-weight: 700;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: 115rpx;
+  text-align: center;
+}
+
+.avatar .followeds {
+  color: #fff;
+  font-size: 36rpx;
+  font-weight: 700;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: 200rpx;
+  text-align: center;
+}
+
+.avatar .followeds .follows {
+  margin: 0 6rpx;
+}
+
+.history {
+  height: 400rpx;
+  background: rgba(255, 255, 255, .2);
+  margin-top: 70rpx;
+  position: relative;
+  border-radius: 22rpx;
+  padding: 0 20rpx;
+}
+
+.history .history-content {
+  margin-right: 30rpx;
+}
+
+.history .history-content .image {
+  height: 200rpx;
+  width: 200rpx;
+  border-radius: 22rpx;
+}
+
+.history .history-content .song-info {
+  display: block;
+  width: 200rpx;
+  /* width: 100%; */
+  font-size: 30rpx;
+  color: #fff;
+  /* 显示两行 */
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  display: -moz-box;
+  -moz-line-clamp: 2;
+  -moz-box-orient: vertical;
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: normal;
+  overflow: hidden;
+}
+
+.history-playlist {
+  height: 100%;
+  background: rgba(255, 255, 255, .2);
+  margin-top: 70rpx;
+  position: relative;
+  border-radius: 22rpx;
+  padding: 0 20rpx;
+}
+
+.play-bar-placeholder {
+  height: 80rpx;
+}
+
+.bottom {
+  margin-top: 30rpx;
+  display: flex;
+  justify-content: center;
+}

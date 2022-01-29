@@ -7,49 +7,72 @@
     <view class='underline' style="left:{{navbarLeft - 7}}px; width: {{navbarWidth}}px;"></view>
   </view>
 </view>
-<view style="margin-top: {{navBarHeight}}px;">
-  <swiper interval="5000" duration="500" current="{{currentTab}}" bindchange='sliderNav' class="demo">
+<view class="user-content" style="margin-top: {{navBarHeight}}px;">
+  <!-- 1.背景 -->
+  <image class="bg-image" mode="aspectFill" src="{{userInfoList.backgroundUrl}}"></image>
+  <view class="bg-cover"></view>
+  <!-- <swiper interval="5000" duration="500" current="{{currentTab}}" bindchange='sliderNav' >
 
     <swiper-item>
+      
+
+
+
+       
+    </swiper-item>
+
+  </swiper> -->
+
+  <scroll-view scroll-y style="height: 100%;">
     <item-search></item-search>
+    <view class="avatar">
+      <image class="user-image" src="{{userInfoList.avatarUrl}}"></image>
+      <view class="username">
+        <text>{{userInfoList.nickname}}</text>
+      </view>
+      <view class="followeds">
+        <text class="follows" decode="{{true}}">{{userInfoList.follows}} 关注</text>
+        <text class="follows" decode="{{true}}">{{userInfoList.followeds}} 粉丝</text>
+      </view>
 
-    
-       
-    </swiper-item>
+    </view>
 
-    <swiper-item>
+    <view class="history">
+      <item-header title="最近播放" showRightItem="{{false}}"></item-header>
+      <scroll-view scroll-x style="width: 96%; ">
+        <view style="display: flex; align-items: center;">
+          <block wx:for="{{userPlayRecord}}" wx:key="id">
+            <view class="history-content" bindtap="handleSongItemClick" data-id="{{item.song.id}}">
+              <image class="image" src="{{item.song.al.picUrl}}"></image>
+              <view class="song-info">
+                <text class="song-name">{{item.song.name}}</text>
+                <view wx:for="{{item.song.ar}}" wx:key="id" class="song-name">
+                  <text wx:if="{{index === 0}}" decode="{{true}}"> - {{item.name}}</text>
+                  <text wx:else decode="{{true}}"> / {{item.name}}</text>
+                </view>
+              </view>
+            </view>
+          </block>
+        </view>
 
-             <view>456</view>
-      <view>后天</view>
-      <view>后天</view>
-      <view>后天</view>
-      <view>后天</view>
-      <view>后天</view>
-      <view>后天</view>
-      <view>后天</view>
-      <view>后天</view>
-      <view>后天</view>
-      <view>后天</view>
-      <view>后天</view>
 
-      <view>后天</view>
-      <view>后天</view>
-      <view>后天</view>
-      <view>后天</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-      <view>1</view>
-       
-    </swiper-item>
+      </scroll-view>
+    </view>
+    <view class="history-playlist">
+      <item-header title="我的歌单" showRightItem="{{false}}"></item-header>
+      <scroll-view scroll-y style="height: 700rpx">
+        <block wx:for="{{userPlayList}}" wx:key="id">
+          <song-item-v7 item="{{item}}"></song-item-v7>
+        </block>
+      </scroll-view>
 
-  </swiper>
+
+    </view>
+  </scroll-view>
+  <view class="bottom">
+    <van-button type="primary" size="large" round>退出</van-button>
+  </view>
+
+  <view class="play-bar-placeholder"></view>
   <play-bar></play-bar>
 </view>

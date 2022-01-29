@@ -3,6 +3,9 @@
     "van-tab": "@vant/weapp/tab/index",
     "van-tabs": "@vant/weapp/tabs/index",
     "item-search": "../../components/item-search/index",
-    "play-bar": "../../components/play-bar/index"
+    "play-bar": "../../components/play-bar/index",
+    "item-header": "../../components/item-header/index",
+    "song-item-v7": "../../components/song-item-v7/index",
+    "van-button": "@vant/weapp/button/index"
   }
 }

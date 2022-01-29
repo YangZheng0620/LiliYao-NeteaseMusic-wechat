@@ -1,5 +1,7 @@
 const app = getApp()
 
+import {getUserRecord, getUserPlayList} from '../../apis/api_user'
+
 Page({
 
   /**
@@ -14,19 +16,38 @@ Page({
     navList: [{
         title: '我的'
       },
-      {
-        title: '手写的从前'
-      },
     ],
     currentTab: 0, // 当前 swiper
     navbarLeft: 0, // 导航栏内容左距离
     navbarWidth: 0, // 导航栏内容宽度
+    userInfoList: [], // 用户详情
+    userPlayRecord: [], // 用户最近播放记录
+    userPlayList: [], // 用户歌单
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    wx.getStorage({
+      key: 'userInfo',
+      success: (res) => {
+        // console.log(res.data)
+        const userInfo = JSON.parse(res.data)
+        this.setData({userInfoList: userInfo})
+
+        getUserRecord(userInfo.userId).then(res => {
+          this.setData({userPlayRecord: res.weekData})
+        })
+
+        getUserPlayList(userInfo.userId).then(res => {
+          console.log(res);
+          this.setData({userPlayList: res.playlist.splice(1)})
+        })
+      }
+    })
+
     // 获取导航栏内容宽高
     this.getNavBarStyle()
   },
@@ -41,6 +62,15 @@ Page({
         navbarWidth: res[0].width
       })
     })
+  },
+
+  handleSongItemClick: function (event) {
+    const id = event.currentTarget.dataset.id
+    console.log(id);
+    // wx.navigateTo({
+    //   url: '/pages/player/index?id=' + id,
+    // })
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
