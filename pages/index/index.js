@@ -38,7 +38,7 @@ Page({
         title: '音乐馆'
       },
     ],
-    currentTab: 2, // 当前 swiper
+    currentTab: 0, // 当前 swiper
     navbarLeft: 0, // 导航栏内容左距离
     navbarWidth: 0, // 导航栏内容宽度
     banners: [], // 轮播图数据

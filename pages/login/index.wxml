@@ -1,0 +1,38 @@
+<!-- 登录页面 -->
+<!-- 导入格式化工具 -->
+<wxs src="../../utils/format.wxs" module="format"></wxs>
+
+<!-- 1.背景 -->
+<image class="bg-image" mode="aspectFill" src="{{bgPicUrl}}"></image>
+<view class="bg-cover"></view>
+
+<player-nav-bar bind:click="handleBackBtnClick"></player-nav-bar>
+
+<view class="container">
+  <view class="wrapper">
+    <view class="left-top-sign">LOGIN</view>
+    <view class="welcome">
+      欢迎回来！
+    </view>
+    <view class="input-content">
+      <view class="input-item">
+        <view>
+          <van-icon name="phone-o" />
+          <text class="tit">手机号码</text>
+        </view>
+
+        <input type="text" placeholder="请输入手机号码" id="phone" bindinput="handleInput" />
+      </view>
+      <view class="input-item">
+        <view>
+          <van-icon name="closed-eye" />
+          <text class="tit">密码</text>
+        </view>
+
+        <input type="password" placeholder="请输入密码" id="password" bindinput="handleInput" />
+      </view>
+    </view>
+    <button class="confirm-btn" bindtap="login">登录</button>
+  </view>
+</view>
+<van-dialog id="van-dialog" />

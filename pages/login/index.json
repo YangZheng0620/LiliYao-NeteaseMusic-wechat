@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "player-nav-bar": "/components/player-nav-bar/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-dialog": "@vant/weapp/dialog/index"
+  }
+}

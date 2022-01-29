@@ -1,9 +1,9 @@
 <!-- 播放工具栏 -->
 <!-- <view class="play-bar-placeholder" wx:if="{{currentSong.id}}"></view> -->
 <!-- <view class="play-bar" wx:if="{{currentSong.id}}" bindtap="handlePlayBarClick"> -->
-<view class="play-bar-placeholder" wx:if="{{true}}"></view>
+<view class="play-bar-placeholder" wx:if="{{currentSong.id}}"></view>
 
-<view class="play-bar" wx:if="{{true}}" bindtap="handlePlayBarClick">
+<view class="play-bar" wx:if="{{currentSong.id}}" bindtap="handlePlayBarClick">
   <view class="left">
     <image class="album album-anim" style="animation-play-state: {{playAnimState}};" mode="aspectFill" src="{{currentSong.al.picUrl}}"></image>
     <view class="name" wx:if="{{!isPlaying}}" style="color: black;" scroll-with-animation>

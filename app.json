@@ -10,7 +10,8 @@
     "pages/player/index",
     "pages/singer/index",
     "pages/video-detail/index",
-    "pages/video-detail-v2/index"
+    "pages/video-detail-v2/index",
+    "pages/login/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

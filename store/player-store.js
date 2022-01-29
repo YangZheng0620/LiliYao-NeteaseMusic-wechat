@@ -174,19 +174,18 @@ const playerStore = new HYEventStore({
 
     changeMusicPlayStatusAction(ctx, isPlaying = true) {
       ctx.isPlaying = isPlaying
-      console.log(ctx.isPlaying, ctx.isStoping);
       if (ctx.isPlaying && ctx.isStoping) {
         audioContext.src = `https://music.163.com/song/media/outer/url?id=${ctx.id}.mp3`
-        audioContext.title = currentSong.name
+        audioContext.title = ctx.currentSong.name
         audioContext.startTime = ctx.currentTime / 1000
         ctx.isStoping = false
       }
       ctx.isPlaying ? audioContext.play() : audioContext.pause()
 
-      if (ctx.isStoping) {
-        audioContext.seek(ctx.currentTime)
-        ctx.isStoping = false
-      }
+      // if (ctx.isStoping) {
+      //   audioContext.seek(ctx.currentTime)
+      //   ctx.isStoping = false
+      // }
     },
 
     changeNewMusicAction(ctx, isNext = true) {

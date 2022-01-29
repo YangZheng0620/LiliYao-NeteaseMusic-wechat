@@ -33,9 +33,19 @@ class REQUEST {
         url: BASE_URL2 + URL,
         method: METHOD,
         data: PARAMS,
-
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          cookie: wx.getStorageSync('cookies') ? wx.getStorageSync('cookies').find(item => item.indexOf('MUSIC_U') !== -1) : ''
+        },
         // 成功回调
         success(res) {
+          if (res.loginType === 1) {
+            // 将用户的cookie存入至本地
+            wx.setStorage({
+              key: 'cookies',
+              data: res.cookies
+            })
+          }
           resolve(res.data)
         },
 
@@ -61,6 +71,11 @@ class REQUEST {
   // 封装 POST 请求
   POST(URL, DATA) {
     return this.request(URL, 'POST', DATA)
+  }
+
+  // 封装 post 请求
+  post(URL, DATA) {
+    return this.request2(URL, 'POST', DATA)
   }
 
 }
