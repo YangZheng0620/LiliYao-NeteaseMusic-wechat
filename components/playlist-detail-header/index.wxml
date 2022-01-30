@@ -38,7 +38,7 @@
     </view>
     <view class="share item">
       <image class="icon" mode="widthFix" src="/assets/images/icons/share_icon.png"></image>
-      <text class="text" bindtap="handleShare">分享</text>
+      <text class="text" bindtap="handleShare" open-type="share">分享</text>
     </view>
   </view>
 </view>

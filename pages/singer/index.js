@@ -109,6 +109,7 @@ Page({
   handleVideoItemClick: function (event) {
     // 获取页面 ID
     const id = event.currentTarget.dataset.item.id
+    playerStore.dispatch("changeMusicPlayStatusAction", false)
     // 跳转到指定页面
     wx.navigateTo({
       url: `/pages/video-detail/index?id=${id}`,

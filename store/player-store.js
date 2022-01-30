@@ -42,7 +42,6 @@ const playerStore = new HYEventStore({
       id,
       isRefresh = false
     }) {
-      console.log(ctx.id == id, !isRefresh);
       if (ctx.id == id && !isRefresh) {
         this.dispatch("changeMusicPlayStatusAction", true)
         return
@@ -61,9 +60,12 @@ const playerStore = new HYEventStore({
       // 1.根据id请求数据
       // 请求歌曲详情
       getSongDetail(id).then(res => {
+        console.log(res);
         ctx.currentSong = res.songs[0]
         ctx.durationTime = res.songs[0].dt
         audioContext.title = res.songs[0].name
+        audioContext.coverImgUrl = res.songs[0].al.picUrl
+        audioContext.webUrl = res.songs[0].al.picUrl
         // 获取歌手信息
         getSingerDetail(res.songs[0].ar[0].id).then(res => {
           ctx.singerPic = res.data.artist.cover
