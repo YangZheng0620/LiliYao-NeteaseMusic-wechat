@@ -3,7 +3,7 @@
   position: fixed;
   top: 0;
   z-index: 99;
-  background: #999999;
+  background: #fafafa;
   width: 100%;
 }
 
