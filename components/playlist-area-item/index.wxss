@@ -9,7 +9,8 @@
 }
 
 .top .image {
-  width: 100%;
+  width: 200rpx;
+  height: 200rpx;
   border-radius: 12rpx;
   background-size: cover;
   box-shadow:0 5px 5px rgba(0,0,0,0.5)
@@ -28,10 +29,15 @@
   background: rgba(0, 0, 0, .5);
 }
 
+.top .play-counter .arrow {
+  height: 36rpx;
+  width: 36rpx;
+}
+
 .item .bottom {
   width: 100%;
   font-size: 26rpx;
-
+  height: 70rpx;
   /* 显示两行 */
   text-overflow: ellipsis;
   display: -webkit-box;

@@ -5,38 +5,40 @@
 
 <view class="header" style="padding-top: {{navBarHeight}}px; height: {{coverHeight}}rpx; transition: {{coverTransition}};" bindtouchstart="handleTouchStart" bindtouchmove="handleTouchMove" bindtouchend="handleTouchEnd">
   <!-- 背景 -->
-  <image class="bg-image" mode="aspectFill" src="{{playlistInfo.coverImgUrl}}"></image>
+  <image class="bg-image" mode="aspectFill" src="{{playlistInfo.coverImgUrl || picUrl}}"></image>
   <view class="bg-cover"></view>
   <!-- 内容 -->
   <view class="content">
     <view>
-      <image class="image" mode="aspectFill" src="{{playlistInfo.coverImgUrl}}"></image>
+      <image class="image" mode="aspectFill" src="{{playlistInfo.coverImgUrl || picUrl}}"></image>
     </view>
 
     <view class="info">
-      <view class="title">{{playlistInfo.name}}</view>
+      <view class="title">{{playlistInfo.name || name}}</view>
       <view class="anthor">
         <image class="avatar" mode="aspectFill" src="{{playlistInfo.creator.avatarUrl}}"></image>
         <text class="nickname">{{playlistInfo.creator.nickname}}</text>
       </view>
       <view class="desc">
-        <view class="desc-info">简介: {{playlistInfo.description}}</view>
-        <iconfont name="arrow_right_fat"></iconfont>
+        <view class="desc-info" wx:if="{{playlistInfo.description}}">简介: {{playlistInfo.description}}</view>
+        <view class="desc-info" wx:else>暂无简介</view>
       </view>
     </view>
   </view>
   <view class="operation">
     <view class="favor item">
       <image class="icon" mode="widthFix" src="/assets/images/icons/favor_icon.png"></image>
-      <text class="text">{{format.formatCount(playlistInfo.playCount)}}</text>
+      <text class="text" wx:if="{{playlistInfo.playCount}}">{{format.formatCount(playlistInfo.playCount)}}</text>
+      <text class="text" wx:else>{{format.formatCount(albumInfo.shareCount)}}</text>
     </view>
     <view class="comment item">
-      <image class="icon" mode="widthFix" src="/assets/images/icons/favor_icon.png"></image>
-      <text class="text">{{format.formatCount(playlistInfo.commentCount)}}</text>
+      <image class="icon" mode="widthFix" src="/assets/images/icons/comment.png"></image>
+      <text class="text" wx:if="{{playlistInfo.commentCount}}">{{format.formatCount(playlistInfo.commentCount)}}</text>
+      <text class="text" wx:else>{{format.formatCount(albumInfo.commentCount)}}</text>
     </view>
     <view class="share item">
       <image class="icon" mode="widthFix" src="/assets/images/icons/share_icon.png"></image>
-      <text class="text">分享</text>
+      <text class="text" bindtap="handleShare">分享</text>
     </view>
   </view>
 </view>

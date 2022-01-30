@@ -16,9 +16,9 @@ page {
   display: flex;
   position: absolute;
   width: 100%;
-  background: #333;
+  /* background: #333; */
   padding-left: 14px;
-  color: #fff;
+  /* color: #fff; */
   font-size: 20px;
   font-weight: 700;
 }
@@ -41,6 +41,7 @@ page {
 /* 导航栏激活样式 */
 .navbar-selected {
   color: #999999;
+  font-size: 20.5px;
   transition: 0.2s all linear;
   margin-right: 14px;
   z-index: 2;
@@ -222,7 +223,7 @@ page {
 
 .singer-item .image {
   border-radius: 50%;
-  height: 130rpx;
+  height: 124rpx;
   width: 155rpx;
   margin-right: 40rpx;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);

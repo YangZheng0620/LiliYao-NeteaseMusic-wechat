@@ -37,7 +37,6 @@ Page({
    */
   onLoad: function (options) {
     const id = options.id
-    console.log(id);
 
     this.getPageData(id)
   },
@@ -45,7 +44,6 @@ Page({
   getPageData: function (id) {
     // 获取歌手信息
     getSingerDescInfo(id).then((res) => {
-      console.log(res);
       this.setData({
         singerDescInfo: res.artist
       })
@@ -62,7 +60,6 @@ Page({
 
     // 获取歌手全部歌曲
     getSingerSongs(id).then((res) => {
-      console.log(res);
       this.setData({
         singerSongsList: res.songs
       })
@@ -85,7 +82,6 @@ Page({
 
     // 获取歌手专辑
     getSingerAlbums(id).then((res) => {
-      console.log(res);
       this.setData({
         singerAlbumsList: res.hotAlbums
       })
@@ -104,7 +100,6 @@ Page({
 
   handleSingerInfoBtn: function (event) {
     const id = event.currentTarget.dataset.id
-    console.log(id);
     wx.navigateTo({
       url: '/pages/singer/index?id=' + id,
     })
@@ -114,7 +109,6 @@ Page({
   handleVideoItemClick: function (event) {
     // 获取页面 ID
     const id = event.currentTarget.dataset.item.id
-    console.log(id);
     // 跳转到指定页面
     wx.navigateTo({
       url: `/pages/video-detail/index?id=${id}`,

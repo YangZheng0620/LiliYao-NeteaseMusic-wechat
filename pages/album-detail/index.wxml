@@ -20,11 +20,11 @@
 
 <view class="playlist-header">
   <!-- 歌单详情头部 -->
-  <playlist-detail-header playlistInfo="{{playlistInfo}}" navBarHeight="{{navBarHeight}}"></playlist-detail-header>
+  <playlist-detail-header playlistInfo="{{playlistInfo}}" navBarHeight="{{navBarHeight}}" name="{{name}}" picUrl="{{picUrl}}" albumInfo="{{albumInfo}}"></playlist-detail-header>
 </view>
 
 <view class="playlist" style="margin-top: {{playlistHeaderHeight}}px;transition: 0.5s margin ease;">
-  <block wx:for="{{playlistInfo.tracks}}" wx:key="id">
-    <song-item-v3 item="{{item}}" index="{{index+1}}" bindtap="handleSongItemClick" data-index="{{index}}"></song-item-v3>
+  <block wx:for="{{playlistInfo}}" wx:key="id">
+    <song-item-v3 item="{{item}}" index="{{index+1}}" bindtap="handleSongItemClick" data-id="{{item.id}}"></song-item-v3>
   </block>
 </view>

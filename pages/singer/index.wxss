@@ -25,6 +25,12 @@
   flex: 1;
 }
 
+.nav-bar .menu-bar .arrow {
+  height: 40rpx;
+  width: 40rpx;
+  margin-right: 10rpx;
+}
+
 /* 导航栏标题 */
 .nav-bar .menu-bar .title {
   flex: 2;

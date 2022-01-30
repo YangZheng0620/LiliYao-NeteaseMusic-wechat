@@ -7,7 +7,7 @@
   <view class="image-info">
     <image class="image" src="{{item.picUrl}}"></image>
     <view class="play-counter">
-      <iconfont name="arrow_right_fat" color="#26ce8a"></iconfont>
+      <image class="arrow" src="../../assets/images/icons/right-arrow.png"></image>
       {{format.formatCount(item.song.bMusic.playTime)}}
     </view>
   </view>

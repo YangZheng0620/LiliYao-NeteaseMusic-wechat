@@ -2,7 +2,7 @@
 <!-- 导入格式化工具 -->
 <wxs src="../../utils/format.wxs" module="format"></wxs>
 
-<view class="item" bindtap="handleSongItemClick" data-id="{{item.id}}">
+<view class="item" bindtap="handleSongItemClick" data-id="{{item.id}}" data-picUrl="{{item.picUrl}}" data-name="{{item.name}}" data-picId="{{item.picId_str}}">
   <view class="image-info">
     <image class="image" src="{{item.picUrl}}"></image>
   </view>

@@ -47,7 +47,7 @@
 
         <!-- 巅峰榜 -->
         <view class="ranking">
-          <item-header title="巅峰榜"></item-header>
+          <item-header title="巅峰榜" showRightItem="{{false}}"></item-header>
           <view class="ranking-list">
             <block wx:for="{{rankings}}" wx:key="index">
               <ranking-area item="{{item}}" bindtap="handleRankingItemClick" data-idx="{{index}}"></ranking-area>

@@ -242,7 +242,6 @@ Page({
     wx.navigateTo({
       url: `/pages/ranking-detail/index?id=${id}&type=id`
     })
-    console.log(id);
   },
   // 跳转到榜单详情
   navigateToDetailSongPage: function (rankingName) {
@@ -265,7 +264,6 @@ Page({
 
 
   handleAreaActiveItem: function (event) {
-    // console.log(event.currentTarget.dataset.value);
     const value = event.currentTarget.dataset.value
     const index = event.currentTarget.dataset.index
     const name = event.currentTarget.dataset.name
@@ -283,7 +281,6 @@ Page({
   },
 
   handleTypeActiveItem: function (event) {
-    // console.log(event.currentTarget.dataset.value);
     const value = event.currentTarget.dataset.value
     const index = event.currentTarget.dataset.index
     const name = event.currentTarget.dataset.name
@@ -301,7 +298,6 @@ Page({
   },
 
   handleSingerIdItem: function (event) {
-    console.log(event.currentTarget.dataset.id);
     const id = event.currentTarget.dataset.id
     wx.navigateTo({
       url: '/pages/singer/index?id=' + id,
@@ -347,39 +343,40 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    if (this.data.currentTab === 2) {
+      const offset = this.data.singerTypeList.length
+      getArtistList(this.data.currentTypeValue, 30, offset, this.data.currentAreaValue).then(res => {
+        if (!this.data.hasMore && offset !== 0) return
 
-    const offset = this.data.singerTypeList.length
-    getArtistList(this.data.currentTypeValue, 30, offset, this.data.currentAreaValue).then(res => {
-      if (!this.data.hasMore && offset !== 0) return
+        // 展示加载动画
+        wx.showNavigationBarLoading()
 
-      // 展示加载动画
-      wx.showNavigationBarLoading()
+        let newData = this.data.singerTypeList
 
-      let newData = this.data.singerTypeList
+        // 第一次请求数据，则使用新数据
+        if (offset === 0) {
+          newData = res.artists
 
-      // 第一次请求数据，则使用新数据
-      if (offset === 0) {
-        newData = res.artists
+          // 第 n 次请求数据，则将新数据和原数据进行拼接
+        } else {
 
-        // 第 n 次请求数据，则将新数据和原数据进行拼接
-      } else {
+          newData = newData.concat(res.artists)
+        }
+        this.setData({
+          singerTypeList: newData,
+          hasMore: res.more
+        })
 
-        newData = newData.concat(res.artists)
-        console.log(newData);
-      }
-      this.setData({
-        singerTypeList: newData,
-        hasMore: res.more
+        // 关闭加载动画
+        wx.hideNavigationBarLoading()
+
+        // 关闭下拉刷新动画（数据加载完后主动停止，不设置则会在一定时间内停止）
+        if (offset === 0) {
+          wx.stopPullDownRefresh();
+        }
       })
+    }
 
-      // 关闭加载动画
-      wx.hideNavigationBarLoading()
-
-      // 关闭下拉刷新动画（数据加载完后主动停止，不设置则会在一定时间内停止）
-      if (offset === 0) {
-        wx.stopPullDownRefresh();
-      }
-    })
   },
 
   /**

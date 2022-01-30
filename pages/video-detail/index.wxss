@@ -13,7 +13,7 @@
   align-items: center;
   position: absolute;
   width: 100%;
-  background: #333;
+  /* background: #333; */
   color: #fff;
   font-size: 20px;
   font-weight: 700;
@@ -32,6 +32,12 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   text-align: center;
+}
+
+.nav-bar .menu-bar .arrow {
+  height: 40rpx;
+  width: 40rpx;
+  margin-right: 10rpx;
 }
 
 /* 导航栏占位 */

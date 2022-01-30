@@ -1,6 +1,8 @@
 import {
-  getPlaylistDetail
-} from '../../apis/api_music'
+  getAlbumsContnent,
+  getAlbumsInfo,
+  getSongDetail
+} from '../../apis/api_player'
 
 import {
   rankingStore,
@@ -22,6 +24,10 @@ Page({
     menuHeight: app.globalData.menuHeight, // 导航栏高度
     playlistInfo: {},
     playlistHeaderHeight: 0, //  歌单详情头部高度
+    picUrl: '',
+    name: '',
+    albumInfo: '',
+    songDetail: [],
   },
 
   /**
@@ -29,10 +35,24 @@ Page({
    */
   onLoad: function (options) {
     const id = options.id
+    const picUrl = options.picUrl
+    const name = options.name
+    const picId = options.picId
+    let picRealUrl = `${picUrl}==/${picId}.jpg`
+    this.setData({
+      picUrl: picRealUrl,
+      name
+    })
     // let id = '2537308137'
-    getPlaylistDetail(id).then(res => {
+    getAlbumsContnent(id).then(res => {
       this.setData({
-        playlistInfo: res.playlist
+        playlistInfo: res.songs
+      })
+    })
+
+    getAlbumsInfo(id).then(res => {
+      this.setData({
+        albumInfo: res
       })
     })
 
@@ -43,10 +63,48 @@ Page({
   },
 
   handleSongItemClick: function (event) {
-    const index = event.currentTarget.dataset.index
-    console.log(index);
-    playerStore.setState("playListSongs", this.data.playlistInfo.tracks)
-    playerStore.setState("playListIndex", index)
+    const id = event.currentTarget.dataset.id
+
+
+    let newSong = {}
+    let index = 0
+    let flag = false
+    getSongDetail(id).then((res) => {
+      newSong = [res.songs[0]]
+      this.setData({
+        songDetail: [res.songs[0]]
+      })
+
+      for (let i = 0; i < this.data.playListSongs.length; i++) {
+        if (id === this.data.playListSongs[i].id) {
+          index = i
+          flag = true
+        }
+      }
+
+      if (flag) {
+        playerStore.setState("playListSongs", this.data.playListSongs)
+        playerStore.setState("playListIndex", index)
+      } else {
+        let playListSongs = newSong.concat(this.data.playListSongs)
+        this.setData({
+          playListSongs
+        })
+        playerStore.setState("playListSongs", this.data.playListSongs)
+        playerStore.setState("playListIndex", 0)
+      }
+
+    })
+
+    playerStore.onState("playListSongs", (res) => {
+      this.setData({
+        playListSongs: res
+      })
+
+    })
+    wx.navigateTo({
+      url: '/pages/player/index?id=' + id,
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

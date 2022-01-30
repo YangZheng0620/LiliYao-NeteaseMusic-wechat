@@ -7,6 +7,7 @@
     <view class='underline' style="left:{{navbarLeft - 7}}px; width: {{navbarWidth}}px;"></view>
   </view>
 </view>
+
 <view class="user-content" style="margin-top: {{navBarHeight}}px;">
   <!-- 1.背景 -->
   <image class="bg-image" mode="aspectFill" src="{{userInfoList.backgroundUrl}}"></image>
@@ -39,38 +40,44 @@
 
     <view class="history">
       <item-header title="最近播放" showRightItem="{{false}}"></item-header>
-      <scroll-view scroll-x style="width: 96%; ">
+      <scroll-view scroll-x style="width: 96%; " wx:if="{{userPlayRecord.length}}">
         <view style="display: flex; align-items: center;">
           <block wx:for="{{userPlayRecord}}" wx:key="id">
             <view class="history-content" bindtap="handleSongItemClick" data-id="{{item.song.id}}">
               <image class="image" src="{{item.song.al.picUrl}}"></image>
-              <view class="song-info">
+              <text class="song-info">
                 <text class="song-name">{{item.song.name}}</text>
-                <view wx:for="{{item.song.ar}}" wx:key="id" class="song-name">
+                <block wx:for="{{item.song.ar}}" wx:key="id" class="song-name">
                   <text wx:if="{{index === 0}}" decode="{{true}}"> - {{item.name}}</text>
                   <text wx:else decode="{{true}}"> / {{item.name}}</text>
-                </view>
-              </view>
+                </block>
+              </text>
             </view>
           </block>
+
         </view>
 
 
       </scroll-view>
+      <view class="no-record" wx:else>
+        <text class="no-record-name">暂无最近播放记录</text>
+      </view>
     </view>
     <view class="history-playlist">
       <item-header title="我的歌单" showRightItem="{{false}}"></item-header>
-      <scroll-view scroll-y style="height: 700rpx">
+      <scroll-view scroll-y style="height: 700rpx" wx:if="{{userPlayList.length}}">
         <block wx:for="{{userPlayList}}" wx:key="id">
           <song-item-v7 item="{{item}}"></song-item-v7>
         </block>
       </scroll-view>
-
+      <view class="no-record-playlist" wx:else>
+        <text class="no-record-name">暂无歌单</text>
+      </view>
 
     </view>
   </scroll-view>
   <view class="bottom">
-    <van-button type="primary" size="large" round>退出</van-button>
+    <van-button type="primary" size="large" round bind:click="logout">退出</van-button>
   </view>
 
   <view class="play-bar-placeholder"></view>

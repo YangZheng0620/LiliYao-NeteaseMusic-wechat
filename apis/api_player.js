@@ -61,3 +61,16 @@ export function getSingerAlbums(id) {
     id
   })
 }
+
+export function getAlbumsContnent(id) {
+  return api.get("/album", {
+    id
+  })
+}
+
+
+export function getAlbumsInfo(id) {
+  return api.get("/album/detail/dynamic", {
+    id
+  })
+}

@@ -2,14 +2,13 @@
 <view class="header">
   <view class="title-info">
     <view class="title">{{ title }}</view>
-
     <view class='underline' style="width: {{titleWidth}}px;"></view>
   </view>
   <view class="right" wx:if="{{ showRightItem }}">
     <view class="slot"></view>
-    <view class="default">
+    <view class="default" bindtap="toNewRanking">
       <text>{{ rightText }}</text>
-      <iconfont name="arrow_right_fat" color="#26ce8a"></iconfont>
+      <image class="arrow" src="../../assets/images/icons/right-arrow.png"></image>
     </view>
 
   </view>

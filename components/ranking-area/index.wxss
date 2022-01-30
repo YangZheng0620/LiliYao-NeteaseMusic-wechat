@@ -75,6 +75,11 @@
   background: rgba(0, 0, 0, .5);
 }
 
+.album .play-counter .arrow {
+  height: 36rpx;
+  width: 36rpx;
+}
+
 .bottom-image {
   position: absolute;
   bottom: 0;

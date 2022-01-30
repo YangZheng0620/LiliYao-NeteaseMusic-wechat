@@ -1,6 +1,6 @@
 <!-- 推荐歌单列表 -->
 <view class="area">
-  <item-header title="个性推荐"></item-header>
+  <item-header title="个性推荐" showRightItem="{{false}}"></item-header>
   <scroll-view class="album-list" scroll-x>
     <block wx:for="{{recommendPlaylists}}" wx:key="id">
       <view class="album-item">

@@ -14,5 +14,5 @@
 }
 
 .album-item:last-of-type {
-  margin-right: 20rpx;
+  margin-right: 30rpx;
 }

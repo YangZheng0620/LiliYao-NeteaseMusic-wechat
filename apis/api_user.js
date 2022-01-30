@@ -16,3 +16,8 @@ export function getUserPlayList(uid, limit = 30, offset = 0) {
     offset
   })
 }
+
+// 退出登录
+export function logout() {
+  return api.get('/logout')
+}

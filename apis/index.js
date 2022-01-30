@@ -39,7 +39,7 @@ class REQUEST {
         },
         // 成功回调
         success(res) {
-          if (res.loginType === 1) {
+          if (res.data.loginType === 1) {
             // 将用户的cookie存入至本地
             wx.setStorage({
               key: 'cookies',

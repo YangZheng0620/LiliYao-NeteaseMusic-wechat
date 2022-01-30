@@ -13,7 +13,7 @@
   align-items: center;
   position: absolute;
   width: 100%;
-  background: #333;
+  /* background: #333; */
   color: #fff;
   font-size: 20px;
   font-weight: 700;
@@ -23,6 +23,12 @@
 .nav-bar .menu-bar .left {
   display: flex;
   flex: 1;
+}
+
+.nav-bar .menu-bar .arrow {
+  height: 40rpx;
+  width: 40rpx;
+  margin-right: 10rpx;
 }
 
 /* 导航栏标题 */

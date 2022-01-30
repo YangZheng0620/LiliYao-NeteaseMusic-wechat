@@ -1,6 +1,10 @@
 const app = getApp()
 
-import {getUserRecord, getUserPlayList} from '../../apis/api_user'
+import {
+  getUserRecord,
+  getUserPlayList,
+  logout
+} from '../../apis/api_user'
 
 Page({
 
@@ -14,9 +18,8 @@ Page({
     menuBotton: app.globalData.menuBotton, // 导航栏高度
     menuHeight: app.globalData.menuHeight, // 导航栏高度
     navList: [{
-        title: '我的'
-      },
-    ],
+      title: '我的'
+    }, ],
     currentTab: 0, // 当前 swiper
     navbarLeft: 0, // 导航栏内容左距离
     navbarWidth: 0, // 导航栏内容宽度
@@ -35,15 +38,26 @@ Page({
       success: (res) => {
         // console.log(res.data)
         const userInfo = JSON.parse(res.data)
-        this.setData({userInfoList: userInfo})
+        this.setData({
+          userInfoList: userInfo
+        })
 
         getUserRecord(userInfo.userId).then(res => {
-          this.setData({userPlayRecord: res.weekData})
+          this.setData({
+            userPlayRecord: res.weekData
+          })
         })
 
         getUserPlayList(userInfo.userId).then(res => {
-          console.log(res);
-          this.setData({userPlayList: res.playlist.splice(1)})
+          this.setData({
+            userPlayList: res.playlist.splice(1)
+          })
+        })
+
+      },
+      fail: (res) => {
+        wx.redirectTo({
+          url: '/pages/login/index',
         })
       }
     })
@@ -71,6 +85,21 @@ Page({
     //   url: '/pages/player/index?id=' + id,
     // })
 
+  },
+
+  logout: function () {
+    console.log(123);
+    // logout()
+    wx.removeStorage({
+      key: 'userInfo',
+    })
+    wx.removeStorage({
+      key: 'cookies',
+    })
+
+    wx.reLaunch({
+      url: '/pages/login/index',
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

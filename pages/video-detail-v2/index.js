@@ -65,7 +65,6 @@ Page({
   handleVideoItemClick: function (event) {
     // 获取页面 ID
     const id = event.currentTarget.dataset.item.vid
-    console.log(id);
     // 跳转到指定页面
     wx.navigateTo({
       url: `/pages/video-detail-v2/index?id=${id}`,
@@ -77,7 +76,6 @@ Page({
     const query = wx.createSelectorQuery()
     query.select('.video').boundingClientRect()
     query.exec((res) => {
-      console.log(res[0].height);
       this.setData({
         mvHeight: res[0].height
       })

@@ -11,7 +11,8 @@
     "pages/singer/index",
     "pages/video-detail/index",
     "pages/video-detail-v2/index",
-    "pages/login/index"
+    "pages/login/index",
+    "pages/album-detail/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -42,8 +43,8 @@
       {
         "pagePath": "pages/user/index",
         "text": "我的",
-        "iconPath": "assets/images/tabbar/user_normal.png",
-        "selectedIconPath": "assets/images/tabbar/user_active.png"
+        "iconPath": "assets/images/tabbar/profile_normal.png",
+        "selectedIconPath": "assets/images/tabbar/profile_active.png"
       }
     ]
   },

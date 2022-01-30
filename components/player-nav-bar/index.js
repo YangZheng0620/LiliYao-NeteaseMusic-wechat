@@ -11,6 +11,10 @@ Component({
     title: {
       type: String,
       value: ""
+    },
+    showUserLogin: {
+      type: Boolean,
+      value: true
     }
   },
 
@@ -28,6 +32,11 @@ Component({
   methods: {
     handleLeftClick: function () {
       this.triggerEvent('click')
+    },
+    handleLeftClickToIndex: function () {
+      wx.reLaunch({
+        url: '/pages/index/index',
+      })
     }
   }
 })

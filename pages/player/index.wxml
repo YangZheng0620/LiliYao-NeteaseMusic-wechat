@@ -32,7 +32,7 @@
               </view>
             </scroll-view>
           </view>
-          <view class="singer-name">
+          <view class="singer-name" bindtap="handleToSingerPage" data-id="{{singerId}}">
             <image class="image" mode="aspectFill" src="{{singerPic}}"></image>
             <scroll-view scroll-x>
               <block wx:for="{{currentSong.ar}}" wx:key="index">
@@ -42,7 +42,7 @@
             </scroll-view>
 
           </view>
-          <view class="album-name" wx:if="{{currentSong.alia[0] || currentSong.al.name}}">
+          <view class="album-name" wx:if="{{currentSong.alia[0] || currentSong.al.name}}" bindtap="handleToPlayListPage" data-id="{{currentSong.al.id}}" data-picUrl="{{currentSong.al.picUrl}}" data-name="{{currentSong.al.name}}" data-picId="{{currentSong.al.pic_str}}">
             <image class="image" mode="aspectFill" src="{{currentSong.al.picUrl}}"></image>
             <scroll-view scroll-x>专辑: {{currentSong.alia[0] || currentSong.al.name}}</scroll-view>
           </view>
@@ -126,7 +126,7 @@
                 <text wx:elif="{{playModeName === 'random'}}">随机播放</text>
                 <text wx:else>单曲循环</text>
               </view>
-              <image class="btn btn-mode" src="../../assets/images/player/play_{{playModeName}}.png" catchtap="handleModeBtnClick"></image>
+              <image class="btn btn-close" src="../../assets/images/icons/close.png" show="{{ !show }}"></image>
             </view>
           </view>
           <scroll-view scroll-y style="height: 85%;">

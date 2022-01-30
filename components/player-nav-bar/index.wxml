@@ -2,12 +2,20 @@
 <view class="nav">
   <view style="height: {{statusBarHeight}}px;"></view>
   <view class="nav-bar" style="height: {{navBarHeight}}px;">
-    <view class="left" bindtap="handleLeftClick">
+    <view class="left" bindtap="handleLeftClick" wx:if="{{showUserLogin}}">
       <view class="left-slot">
         <slot name="left"></slot>
       </view>
       <view class="left-arrow">
         <image class="icon" mode="widthFix" src="/assets/images/icons/arrow-left.png"></image>
+      </view>
+    </view>
+    <view class="left" bindtap="handleLeftClickToIndex" wx:else>
+      <view class="left-slot">
+        <slot name="left"></slot>
+      </view>
+      <view class="left-arrow">
+        <image class="icon" mode="widthFix" src="/assets/images/icons/index.png"></image>
       </view>
     </view>
     <view class="center">

@@ -4,6 +4,10 @@ import {
   getTopMV
 } from '../../apis/api_video'
 
+import {
+  playerStore
+} from '../../store/index'
+
 Page({
 
   /**
@@ -105,7 +109,7 @@ Page({
     // 开始请求数据
     getTopMV(offset, area, limit).then((res) => {
       let newData = this.data.topMVs
-      
+
       // 第一次请求数据，则使用新数据
       if (offset === 0) {
         newData = res.data
@@ -139,7 +143,7 @@ Page({
   handleVideoItemClick: function (event) {
     // 获取页面 ID
     const id = event.currentTarget.dataset.item.id
-    console.log(id);
+    playerStore.dispatch("changeMusicPlayStatusAction", false)
     // 跳转到指定页面
     wx.navigateTo({
       url: `/pages/video-detail/index?id=${id}`,

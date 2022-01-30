@@ -42,14 +42,14 @@
 
 .content .name-info .name {
   font-size: 32rpx;
-  color: #555;
+  color: #fafafa;
   font-weight: 600;
   white-space: nowrap;
 }
 
 .content .name-info .tran-name {
   font-size: 24rpx;
-  color: #999999;
+  color: #dad8d8;
   margin-left: 10rpx;
   overflow: hidden;
   white-space: nowrap;
@@ -60,7 +60,7 @@
 .content .source {
   margin-top: 16rpx;
   font-size: 24rpx;
-  color: #999;
+  color: #dad8d8;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

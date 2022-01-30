@@ -30,5 +30,6 @@
       </view>
     </view>
   </view>
+  <view class="play-bar-placeholder"></view>
   <play-bar></play-bar>
 </view>

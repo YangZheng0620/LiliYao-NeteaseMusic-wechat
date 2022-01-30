@@ -5,6 +5,7 @@
     "item-search": "../../components/item-search/index",
     "video-item-v1": "/components/video-item-v1/index",
     "van-dropdown-menu": "@vant/weapp/dropdown-menu/index",
-    "van-dropdown-item": "@vant/weapp/dropdown-item/index"
+    "van-dropdown-item": "@vant/weapp/dropdown-item/index",
+    "play-bar": "../../components/play-bar/index"
   }
 }

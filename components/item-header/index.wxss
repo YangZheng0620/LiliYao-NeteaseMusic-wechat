@@ -5,6 +5,7 @@
   height: 88rpx;
 }
 
+
 .header .title-info {
   font-size: 36rpx;
   font-weight: 700;
@@ -36,6 +37,11 @@
 }
 
 .default .image {
+  height: 40rpx;
+  width: 40rpx;
+}
+
+.default .arrow {
   height: 40rpx;
   width: 40rpx;
 }

@@ -207,11 +207,10 @@ const playerStore = new HYEventStore({
           break
       }
 
-      console.log(index)
+    
 
       // 3.获取歌曲
       let currentSong = ctx.playListSongs[index]
-      console.log(currentSong);
       if (!currentSong) {
         currentSong = ctx.currentSong
       } else {
@@ -231,11 +230,9 @@ const playerStore = new HYEventStore({
 
       // 1.获取当前索引
       
-      console.log(index)
 
       // 3.获取歌曲
       let currentSong = ctx.playListSongs[index]
-      console.log(currentSong);
       if (!currentSong) {
         currentSong = ctx.currentSong
       } else {

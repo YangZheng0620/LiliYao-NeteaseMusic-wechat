@@ -45,7 +45,7 @@
         {
           "name": "",
           "pathName": "pages/player/index",
-          "query": "id=30394495",
+          "query": "id=1829893313",
           "scene": null
         },
         {
@@ -70,6 +70,12 @@
           "name": "",
           "pathName": "pages/login/index",
           "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/album-detail/index",
+          "query": "id=136550694",
           "scene": null
         }
       ]

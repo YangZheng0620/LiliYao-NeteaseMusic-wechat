@@ -5,7 +5,8 @@ import {
 
 import {
   getSimiSong,
-  getSongComment
+  getSongComment,
+  getSongDetail
 } from '../../apis/api_player'
 
 const playModeNames = ["order", "repeat", "random"]
@@ -53,6 +54,8 @@ Page({
     show: false,
     canPlaySongList: [],
     canPlaySongCurrentIndex: 0,
+
+    songDetail: [],
   },
 
   /**
@@ -109,14 +112,12 @@ Page({
     })
 
     playerStore.onState("playListSongs", (res) => {
-      console.log(res);
       this.setData({
         canPlaySongList: res
       })
     })
 
     playerStore.onState("playListIndex", (res) => {
-      console.log(res);
       this.setData({
         canPlaySongCurrentIndex: res
       })
@@ -205,7 +206,6 @@ Page({
 
   handleSelectBtnClick: function (event) {
     const index = event.currentTarget.dataset.index
-    console.log(index);
     playerStore.dispatch("selectNewMusicAction", index)
   },
 
@@ -280,6 +280,42 @@ Page({
   },
   handleSongItemClick: function (event) {
     const id = event.currentTarget.dataset.id
+    let newSong = {}
+    let index = 0
+    let flag = false
+    getSongDetail(id).then((res) => {
+      newSong = [res.songs[0]]
+      this.setData({
+        songDetail: [res.songs[0]]
+      })
+
+      for (let i = 0; i < this.data.playListSongs.length; i++) {
+        if (id === this.data.playListSongs[i].id) {
+          index = i
+          flag = true
+        }
+      }
+
+      if (flag) {
+        playerStore.setState("playListSongs", this.data.playListSongs)
+        playerStore.setState("playListIndex", index)
+      } else {
+        let playListSongs = newSong.concat(this.data.playListSongs)
+        this.setData({
+          playListSongs
+        })
+        playerStore.setState("playListSongs", this.data.playListSongs)
+        playerStore.setState("playListIndex", 0)
+      }
+
+    })
+
+    playerStore.onState("playListSongs", (res) => {
+      this.setData({
+        playListSongs: res
+      })
+
+    })
     wx.navigateTo({
       url: '/pages/player/index?id=' + id,
     })
@@ -296,6 +332,23 @@ Page({
     this.setData({
       show: false
     });
+  },
+
+  handleToSingerPage: function (event) {
+    const id = event.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '/pages/singer/index?id=' + id,
+    })
+  },
+
+  handleToPlayListPage: function (event) {
+    const id = event.currentTarget.dataset.id
+    const picUrl = event.currentTarget.dataset.picurl
+    const name = event.currentTarget.dataset.name
+    const picId = event.currentTarget.dataset.picid
+    wx.navigateTo({
+      url: `/pages/album-detail/index?id=${id}&picUrl=${picUrl}&picId=${picId}&name=${name}`,
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -322,7 +375,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    playerStore.offStates(["currentSong", "durationTime", "lyricInfos"], this.handleCurrentMusicListener)
+    // playerStore.offStates(["currentSong", "durationTime", "lyricInfos"], this.handleCurrentMusicListener)
   },
 
   /**

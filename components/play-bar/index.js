@@ -38,14 +38,12 @@ Component({
     attached: function () {
 
       playerStore.onState("playListSongs", (res) => {
-        console.log(res);
         this.setData({
           canPlaySongList: res
         })
       })
 
       playerStore.onState("playListIndex", (res) => {
-        console.log(res);
         this.setData({
           canPlaySongCurrentIndex: res
         })
@@ -149,7 +147,6 @@ Component({
 
     handleSelectBtnClick: function (event) {
       const index = event.currentTarget.dataset.index
-      console.log(index);
       playerStore.dispatch("selectNewMusicAction", index)
     },
   }

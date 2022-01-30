@@ -20,12 +20,14 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    handleSongItemClick: function () {
+    handleSongItemClick: function (event) {
       const id = this.properties.item.id
-      console.log(id);
-      // wx.navigateTo({
-      //   url: '/pages/playlist-detail/index?id=' + id,
-      // })
+      const picUrl = event.currentTarget.dataset.picurl
+      const name = event.currentTarget.dataset.name
+      const picId = event.currentTarget.dataset.picid
+      wx.navigateTo({
+        url: `/pages/album-detail/index?id=${id}&picUrl=${picUrl}&picId=${picId}&name=${name}`,
+      })
 
       // // 对歌曲的数据请求和其他操作
       // playerStore.dispatch("playMusicWithSongIdAction", {

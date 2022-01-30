@@ -28,6 +28,11 @@
   background: rgba(0, 0, 0, .5);
 }
 
+.image-info .play-counter .arrow {
+  height: 40rpx;
+  width: 40rpx;
+}
+
 .content {
   margin-left: 16rpx;
   flex: 1;

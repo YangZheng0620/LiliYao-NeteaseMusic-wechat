@@ -6,7 +6,7 @@
 <image class="bg-image" mode="aspectFill" src="{{bgPicUrl}}"></image>
 <view class="bg-cover"></view>
 
-<player-nav-bar bind:click="handleBackBtnClick"></player-nav-bar>
+<player-nav-bar bind:click="handleBackBtnClick" showUserLogin="{{false}}"></player-nav-bar>
 
 <view class="container">
   <view class="wrapper">

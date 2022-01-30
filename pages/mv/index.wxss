@@ -34,9 +34,9 @@ page {
   display: flex;
   position: absolute;
   width: 100%;
-  background: #333;
+  /* background: #333; */
   padding-left: 14px;
-  color: #fff;
+  /* color: #fff; */
   font-size: 20px;
   font-weight: 700;
 }
@@ -49,7 +49,7 @@ page {
 
 /* 导航栏激活样式 */
 .navbar-selected {
-  color: #999999;
+  /* color: #999999; */
   transition: 0.2s all linear;
   margin-right: 14px;
   z-index: 2;
@@ -110,4 +110,8 @@ page {
   border-radius: 36rpx;
   background: rgba(0, 0, 0, 0.1);
   margin-right: 0;
+}
+
+.play-bar-placeholder {
+  height: 40rpx;
 }

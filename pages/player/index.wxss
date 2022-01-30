@@ -287,6 +287,8 @@ page {
   height: 80rpx;
 }
 
+
+
 .operation .btn-pause {
   width: 130rpx;
   height: 130rpx;
@@ -379,6 +381,11 @@ page {
 .operation-mini .btn-mode {
   width: 80rpx;
   height: 80rpx;
+}
+
+.operation-mini .btn-close {
+  width: 40rpx ;
+  height: 40rpx;
 }
 
 .block {

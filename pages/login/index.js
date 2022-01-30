@@ -37,7 +37,6 @@ Page({
     this.setData({
       bgPicUrl: bgPicUrl
     })
-    console.log(bgPicUrl);
 
   },
   // 获取数组随机值
@@ -106,10 +105,8 @@ Page({
       return;
     }
     const md5_password = hexMD5(password)
-    console.log(md5_password);
     // 后端验证
     login(phone, md5_password).then(res => {
-      console.log(res);
       if (res.code === 200) {
 
         Dialog.alert({

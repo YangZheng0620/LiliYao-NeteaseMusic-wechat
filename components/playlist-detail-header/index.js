@@ -18,6 +18,18 @@ Component({
     navBarHeight: {
       type: Number,
       value: 0
+    },
+    name: {
+      type: String,
+      value: ''
+    },
+    picUrl: {
+      type: String,
+      value: ""
+    },
+    albumInfo: {
+      type: Object,
+      value: []
     }
 
   },
@@ -66,5 +78,11 @@ Component({
         coverTransition: 'height 1.2s ease'
       });
     },
+    handleShare: function () {
+      wx.showShareMenu({
+        withShareTicket: true,
+        menus: ['shareAppMessage', 'shareTimeline']
+      })
+    }
   }
 })

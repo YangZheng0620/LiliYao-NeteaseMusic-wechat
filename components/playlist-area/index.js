@@ -27,7 +27,6 @@ Component({
   methods: {
     handleMenuItemClick: function (event) {
       const item = event.currentTarget.dataset.item
-      console.log(item.id);
       wx.navigateTo({
         url: `/pages/playlist-detail/index?id=${item.id}`,
       });

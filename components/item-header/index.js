@@ -52,7 +52,12 @@ Component({
       })
 
 
-    }
+    },
+    toNewRanking: function () {
+      wx.navigateTo({
+        url: '/pages/ranking-detail/index?id=3779629',
+      })
+    },
   },
 
   lifetimes: {
