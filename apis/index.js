@@ -1,4 +1,4 @@
-const BASE_URL = 'http://123.207.32.32:9001' // 接口 BASE_URL 地址
+const BASE_URL = 'http://cloud-music.pl-fe.cn' // 接口 BASE_URL 地址http://123.207.32.32:9001
 const BASE_URL2 = 'http://cloud-music.pl-fe.cn'
 
 class REQUEST {
