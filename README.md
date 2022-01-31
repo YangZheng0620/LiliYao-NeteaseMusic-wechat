@@ -1,7 +1,7 @@
 # 微信小程序云音乐项目
 
 ### 1. 项目介绍
-LiliYao-NeteaseMusic-wechat
+LiliYao-NeteaseMusic-wechat 如果对各位朋友有用的话, 希望可以给个star⭐
 
 #### 技术栈
 - 使用微信小程序原生 WXML + WXSS + JS 进行开发
@@ -30,13 +30,13 @@ LiliYao-NeteaseMusic-wechat
 2.  xxxx
 3.  xxxx
 
-#### 使用说明
+### 4. 项目说明
 
 1.  xxxx
 2.  xxxx
 3.  xxxx
 
-### 4. 感谢
+### 5. 致谢
 - 非常感谢王红元老师的小程序音乐项目开发实战让我学习到很多小程序相关的知识
 - 非常感谢后台提供者Binaryify，接口很稳定，文档很完善，收获很多
 
