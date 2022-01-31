@@ -27,7 +27,7 @@
     <image class="icon playlist" src="/assets/images/music/playlist_icon.png" catchtap="onClickShow"></image>
   </view>
 </view>
-<van-overlay show="{{ show }}" bind:click="onClickHide" >
+<van-overlay show="{{ show }}" bind:click="onClickHide">
   <view class="wrapper" style="margin-top: {{navBarHeight}}px;">
     <view class="operation-mini">
       <view class="operation-info">
@@ -37,7 +37,7 @@
           <text wx:elif="{{playModeName === 'random'}}">随机播放</text>
           <text wx:else>单曲循环</text>
         </view>
-        <image class="btn btn-mode" src="../../assets/images/player/play_{{playModeName}}.png" catchtap="handleModeBtnClick"></image>
+        <image class="btn btn-close" src="../../assets/images/icons/close.png" show="{{ !show }}"></image>
       </view>
     </view>
     <scroll-view scroll-y style="height: 80%;">
@@ -53,9 +53,9 @@
               </block>
             </view>
           </view>
-          
+
         </scroll-view>
-        
+
       </view>
       <view class="play-bar-placeholder"></view>
       <view class="block" wx:if="{{!canPlaySongList.length}}">
@@ -63,5 +63,5 @@
       </view>
     </scroll-view>
   </view>
-  
+
 </van-overlay>
