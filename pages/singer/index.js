@@ -7,7 +7,8 @@ import {
 } from '../../apis/api_player'
 
 import {
-  rankingStore
+  rankingStore,
+  playerStore
 } from "../../store/index"
 
 const app = getApp()
