@@ -87,6 +87,7 @@ LiliYao-NeteaseMusic-wechat 如果对各位朋友有用的话, 希望可以给�
 ### 3. 项目源码与 API 接口
 - 项目 Github 地址：
 - 项目 Gitee 地址：
+- 视频演示地址：https://www.bilibili.com/video/BV1Wr4y1Y71D/
 - API 接口：https://binaryify.github.io/NeteaseCloudMusicApi/#/
 
 
