@@ -121,6 +121,11 @@
   height: 80rpx;
 }
 
+.operation-mini .btn-close {
+  width: 40rpx ;
+  height: 40rpx;
+}
+
 .block {
   width: 96%;
   height: 120rpx;
