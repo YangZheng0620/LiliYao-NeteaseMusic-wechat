@@ -60,6 +60,8 @@ LiliYao-NeteaseMusic-wechat 如果对各位朋友有用的话, 希望可以给�
 
 2. 歌曲 / 歌手 / 歌单 / 视频
 ![输入图片说明](assets/iconfont/E1CF528E48ABE5917F923B1F9DE42D31.jpg)
+![输入图片说明](assets/iconfont/9C191490869586B8397812489796DCA8.jpg)
+![输入图片说明](assets/iconfont/C768E1BF87F63520CC31C6C5188E24FC.jpg)
 
 3. 英文转拼音适配 / 文字高亮
 ![输入图片说明](assets/iconfont/A5DB1B0983CDF07BA6D55211FF160E4C.jpg)
