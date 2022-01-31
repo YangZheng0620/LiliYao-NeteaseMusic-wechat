@@ -1,7 +1,8 @@
 # 微信小程序云音乐项目
 
 ### 1. 项目介绍
-LiliYao-NeteaseMusic-wechat 如果对各位朋友有用的话, 希望可以给个star⭐
+LiliYao-NeteaseMusic-wechat
+如果对各位朋友有用的话, 希望可以给个star⭐
 
 #### 技术栈
 - 使用微信小程序原生 WXML + WXSS + JS 进行开发
@@ -88,7 +89,7 @@ LiliYao-NeteaseMusic-wechat 如果对各位朋友有用的话, 希望可以给�
 
 ### 3. 项目源码与 API 接口
 - 项目 Github 地址：
-- 项目 Gitee 地址：
+- 项目 Gitee 地址：https://gitee.com/YangZheng0620/lili-yao-netease-music-wechat
 - 视频演示地址：https://www.bilibili.com/video/BV1Wr4y1Y71D/
 - API 接口：https://binaryify.github.io/NeteaseCloudMusicApi/#/
 
