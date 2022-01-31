@@ -56,6 +56,7 @@ Page({
     canPlaySongCurrentIndex: 0,
 
     songDetail: [],
+    commentFlag: true,
   },
 
   /**
@@ -72,23 +73,23 @@ Page({
     const id = options.id
 
     // 获取相似歌曲
-    this.getSimiSongs(id)
+    // this.getSimiSongs(id)
 
     // 获取歌手照片
-    playerStore.onState("singerPic", (res) => {
-      this.setData({
-        singerPic: res
-      })
-    })
+    // playerStore.onState("singerPic", (res) => {
+    //   this.setData({
+    //     singerPic: res
+    //   })
+    // })
 
-    playerStore.onState("singerId", (res) => {
-      this.setData({
-        singerId: res
-      })
-    })
+    // playerStore.onState("singerId", (res) => {
+    //   this.setData({
+    //     singerId: res
+    //   })
+    // })
 
     // 获取歌手评论
-    this.getSongComments(id)
+    // this.getSongComments(id)
 
     this.setData({
       id
@@ -144,6 +145,34 @@ Page({
   },
   handleSwiperChange: function (event) {
     const current = event.detail.current
+    // const id = this.data.songId
+    if (current === 0 && this.data.commentFlag) {
+
+      playerStore.onState("songId", (res) => {
+        // 获取歌手评论
+        // this.getSongComments(res)
+        this.setData({songId: res})
+        // 获取相似歌曲
+        this.getSimiSongs(res)
+      })
+
+
+      // 获取歌手照片
+      playerStore.onState("singerPic", (res) => {
+        this.setData({
+          singerPic: res
+        })
+      })
+
+      playerStore.onState("singerId", (res) => {
+        this.setData({
+          singerId: res
+        })
+      })
+      this.setData({
+        commentFlag: false
+      })
+    }
     this.setData({
       currentPage: current
     })
@@ -199,9 +228,15 @@ Page({
 
   handlePrevBtnClick: function () {
     playerStore.dispatch("changeNewMusicAction", false)
+    // this.setData({
+    //   commentFlag: true
+    // })
   },
   handleNextBtnClick: function () {
     playerStore.dispatch("changeNewMusicAction")
+    // this.setData({
+    //   commentFlag: true
+    // })
   },
 
   handleSelectBtnClick: function (event) {

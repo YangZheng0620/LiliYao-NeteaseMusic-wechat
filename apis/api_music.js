@@ -25,7 +25,7 @@ export function getRecommendSongs() {
 
 // 获取推荐歌单数据
 export function getRecommendPlaylists() {
-  return api.get('/personalized')
+  return api.GET('/personalized')
 }
 
 // 获取所有榜单

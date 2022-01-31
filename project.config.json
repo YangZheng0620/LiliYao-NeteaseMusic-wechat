@@ -47,7 +47,7 @@
     "useCompilerPlugins": false
   },
   "compileType": "miniprogram",
-  "libVersion": "2.18.0",
+  "libVersion": "2.8.3",
   "appid": "wxa1d7fdc9b8c40ece",
   "projectname": "LiliYao-NeteaseMusic-wechat",
   "debugOptions": {

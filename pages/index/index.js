@@ -113,6 +113,8 @@ Page({
     currentTypeName: '全部', // 歌手类型名字
     singerTypeList: [], // 歌手列表
     hasMore: true,
+    rankingFlag: true,
+    singerFlag: true,
   },
 
   /**
@@ -168,18 +170,18 @@ Page({
     })
 
     // 获取所有榜单
-    getAllTopList().then(res => {
-      this.setData({
-        allRankingList: res.list
-      })
-    })
+    // getAllTopList().then(res => {
+    //   this.setData({
+    //     allRankingList: res.list
+    //   })
+    // })
 
     // 获取歌手列表
-    getArtistList(this.data.currentTypeValue, 30, 0, this.data.currentAreaValue).then(res => {
-      this.setData({
-        singerTypeList: res.artists
-      })
-    })
+    // getArtistList(this.data.currentTypeValue, 30, 0, this.data.currentAreaValue).then(res => {
+    //   this.setData({
+    //     singerTypeList: res.artists
+    //   })
+    // })
 
 
   },
@@ -415,6 +417,18 @@ Page({
           }
 
         })
+
+        if (this.data.rankingFlag) {
+          // 获取所有榜单
+          getAllTopList().then(res => {
+            this.setData({
+              allRankingList: res.list
+            })
+          })
+          this.setData({
+            rankingFlag: false
+          })
+        }
       } else {
         queryRect('.navbar-normal2').then(res => {
 
@@ -427,6 +441,18 @@ Page({
           }
 
         })
+
+        if (this.data.singerFlag) {
+          // 获取歌手列表
+          getArtistList(this.data.currentTypeValue, 30, 0, this.data.currentAreaValue).then(res => {
+            this.setData({
+              singerTypeList: res.artists
+            })
+          })
+          this.setData({
+            singerFlag: false
+          })
+        }
       }
 
       // const query = wx.createSelectorQuery()
@@ -473,6 +499,19 @@ Page({
           }
 
         })
+
+        if (this.data.rankingFlag) {
+          // 获取所有榜单
+          getAllTopList().then(res => {
+            this.setData({
+              allRankingList: res.list
+            })
+          })
+          this.setData({
+            rankingFlag: false
+          })
+        }
+
       } else {
         queryRect('.navbar-normal2').then(res => {
 
@@ -485,6 +524,19 @@ Page({
           }
 
         })
+
+        if (this.data.singerFlag) {
+          // 获取歌手列表
+          getArtistList(this.data.currentTypeValue, 30, 0, this.data.currentAreaValue).then(res => {
+            this.setData({
+              singerTypeList: res.artists
+            })
+          })
+          this.setData({
+            singerFlag: false
+          })
+        }
+
       }
 
 

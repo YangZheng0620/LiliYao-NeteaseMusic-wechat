@@ -223,7 +223,7 @@ page {
 
 .singer-item .image {
   border-radius: 50%;
-  height: 124rpx;
+  height: 120rpx;
   width: 155rpx;
   margin-right: 40rpx;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);

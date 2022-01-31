@@ -6,6 +6,15 @@ import {
   logout
 } from '../../apis/api_user'
 
+
+import {
+  getSongDetail
+} from '../../apis/api_player'
+
+import {
+  playerStore
+} from "../../store/index";
+
 Page({
 
   /**
@@ -26,6 +35,8 @@ Page({
     userInfoList: [], // 用户详情
     userPlayRecord: [], // 用户最近播放记录
     userPlayList: [], // 用户歌单
+    playListSongs: [],
+    songDetail: [],
   },
 
   /**
@@ -80,15 +91,49 @@ Page({
 
   handleSongItemClick: function (event) {
     const id = event.currentTarget.dataset.id
-    console.log(id);
-    // wx.navigateTo({
-    //   url: '/pages/player/index?id=' + id,
-    // })
+    let newSong = {}
+    let index = 0
+    let flag = false
+    getSongDetail(id).then((res) => {
+      newSong = [res.songs[0]]
+      this.setData({
+        songDetail: [res.songs[0]]
+      })
+
+      for (let i = 0; i < this.data.playListSongs.length; i++) {
+        if (id === this.data.playListSongs[i].id) {
+          index = i
+          flag = true
+        }
+      }
+
+      if (flag) {
+        playerStore.setState("playListSongs", this.data.playListSongs)
+        playerStore.setState("playListIndex", index)
+      } else {
+        let playListSongs = newSong.concat(this.data.playListSongs)
+        this.setData({
+          playListSongs
+        })
+        playerStore.setState("playListSongs", this.data.playListSongs)
+        playerStore.setState("playListIndex", 0)
+      }
+
+    })
+
+    playerStore.onState("playListSongs", (res) => {
+      this.setData({
+        playListSongs: res
+      })
+
+    })
+    wx.navigateTo({
+      url: '/pages/player/index?id=' + id,
+    })
 
   },
 
   logout: function () {
-    console.log(123);
     // logout()
     wx.removeStorage({
       key: 'userInfo',

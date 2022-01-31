@@ -23,7 +23,6 @@ Component({
   methods: {
     handleSongItemClick: function () {
       const id = this.properties.item.id
-      console.log(id);
       wx.navigateTo({
         url: '/pages/player/index?id=' + id,
       })

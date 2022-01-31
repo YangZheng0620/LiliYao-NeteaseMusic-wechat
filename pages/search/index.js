@@ -202,9 +202,7 @@ Page({
 
   demo: function (event) {
     const value = event.currentTarget.dataset.value
-    console.log(value);
     const list = this.data.searchRecord
-    console.log(list);
     const newList = list.filter(item => item.value !== value)
     // 将历史记录添加到缓存中
     wx.setStorage({
@@ -232,7 +230,6 @@ Page({
 
   handleVideoItemClick: function(event) {
     const vid = event.currentTarget.dataset.vid
-    console.log(vid);
     wx.navigateTo({
       url: '/pages/video-detail/index?id=' + vid,
     })

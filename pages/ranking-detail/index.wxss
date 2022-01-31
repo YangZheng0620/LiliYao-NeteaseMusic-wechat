@@ -45,9 +45,9 @@
 }
 
 /* 导航栏占位 */
-.nav-bar .menu-bar .right {
-  /* flex: 0.5; */
-}
+/* .nav-bar .menu-bar .right {
+  flex: 0.5;
+} */
 
 /* 榜单头部 */
 .ranking-header {

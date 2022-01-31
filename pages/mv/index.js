@@ -169,7 +169,6 @@ Page({
     this.setData({
       value1: order
     })
-    console.log(order);
     this.getTopMVData(0, this.data.currentAreaValue, order) // 下拉刷新
   },
   /**

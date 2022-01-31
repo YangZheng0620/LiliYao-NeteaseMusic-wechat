@@ -34,6 +34,7 @@ const playerStore = new HYEventStore({
 
     singerPic: "",
     singerId: 0,
+    songId: 0,
 
     currentSong: {},
   },
@@ -56,16 +57,15 @@ const playerStore = new HYEventStore({
       ctx.currentTime = 0
       ctx.currentLyricIndex = 0
       ctx.currentLyricText = ""
-
       // 1.根据id请求数据
       // 请求歌曲详情
       getSongDetail(id).then(res => {
-        console.log(res);
         ctx.currentSong = res.songs[0]
         ctx.durationTime = res.songs[0].dt
         audioContext.title = res.songs[0].name
         audioContext.coverImgUrl = res.songs[0].al.picUrl
         audioContext.webUrl = res.songs[0].al.picUrl
+        ctx.songId = res.songs[0].id
         // 获取歌手信息
         getSingerDetail(res.songs[0].ar[0].id).then(res => {
           ctx.singerPic = res.data.artist.cover
@@ -75,7 +75,12 @@ const playerStore = new HYEventStore({
       // 请求歌词数据
       getSongLyric(id).then(res => {
         const lyricString = res.lrc.lyric
-        const lyricTransString = res.tlyric.lyric
+        let lyricTransString = ""
+        try {
+          lyricTransString = res.tlyric.lyric
+        } catch (error) {
+        }
+        
         
         const lyrics = parseLyric(lyricString)
         

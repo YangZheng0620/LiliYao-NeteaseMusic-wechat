@@ -44,7 +44,6 @@ Page({
 
   handleSongItemClick: function (event) {
     const index = event.currentTarget.dataset.index
-    console.log(index);
     playerStore.setState("playListSongs", this.data.playlistInfo.tracks)
     playerStore.setState("playListIndex", index)
   },

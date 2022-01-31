@@ -10,7 +10,10 @@ class REQUEST {
         url: BASE_URL + URL,
         method: METHOD,
         data: PARAMS,
-
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          cookie: wx.getStorageSync('cookies') ? wx.getStorageSync('cookies').find(item => item.indexOf('MUSIC_U') !== -1) : ''
+        },
         // 成功回调
         success(res) {
           resolve(res.data)

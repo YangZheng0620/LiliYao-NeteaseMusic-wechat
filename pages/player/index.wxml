@@ -99,7 +99,8 @@
         </view>
       </view>
       <view class="lyric" wx:if="{{isMusicLyric}}">
-        <text class="song-lyric">{{currentLyricText}}</text>
+        <text class="song-lyric" wx:if="{{lyricInfos.length}}">{{currentLyricText}}</text>
+        <text class="song-lyric" wx:else>此歌曲为没有填词的纯音乐，请您欣赏</text>
       </view>
       <view class="progress">
         <slider class="slider" block-size="{{12}}" value="{{sliderValue}}" bindchanging="handleSliderChanging" bindchange="handleSliderChange">
